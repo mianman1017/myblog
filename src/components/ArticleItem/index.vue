@@ -95,7 +95,7 @@ export default {
 <style>
 .article-card {
     background-color: var(--theme_card_color);
-    border-color: var(--theme_card_color);
+    border: 0;
     color: var(--theme_text_color);
     width: 530px;
     height: 170px;
