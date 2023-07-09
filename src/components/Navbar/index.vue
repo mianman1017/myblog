@@ -1,7 +1,6 @@
 <template>
     <el-menu
         :default-active="activeIndex"
-        class="el-menu-demo"
         mode="horizontal"
         :ellipsis="false"
         @select="handleSelect"
@@ -12,6 +11,23 @@
         <el-menu-item index="2">分类</el-menu-item>
         <el-menu-item index="3">关于我</el-menu-item>
         <div class="flex-grow" />
+
+        <template v-if="!user.login">
+            <el-button style="" type="text">登录</el-button>
+            <el-button type="text">注册</el-button>
+        </template>
+
+        <template v-else>
+            <el-submenu index>
+                <template slot="title">
+                    <img class="me-header-picture" :src="user.avatar" />
+                </template>
+                <el-menu-item index @click="logout"
+                    ><i class="el-icon-back"></i>退出</el-menu-item
+                >
+            </el-submenu>
+        </template>
+
         <el-switch
             v-model="value"
             class="ml-2"
@@ -45,8 +61,20 @@
 import { ref } from 'vue';
 
 export default {
+    name: 'Navbar',
+    props: {
+        simple: {
+            type: Boolean,
+            default: false,
+        },
+    },
     data() {
-        return {};
+        return {
+            user: {
+                login: false,
+                avatar: '',
+            },
+        };
     },
     setup() {
         const value = ref(true);
@@ -114,13 +142,19 @@ export default {
 }
 .el-menu-item {
     font-family: 'Harmony';
+    color: var(--theme_text_color) !important;
 }
+
+.el-menu-item:hover,
+.el-menu-item:focus {
+    background-color: var(--theme_hover_color) !important;
+}
+
 .logo {
     cursor: default;
     font-family: '华康手札体W5P';
     font-weight: bold;
     font-size: 20px;
-    font-style: italic;
     line-height: 57.6px;
     text-indent: 30px;
 }

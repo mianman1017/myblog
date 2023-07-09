@@ -1,59 +1,39 @@
 <template>
     <el-card class="me-card" style="border-radius: 3px">
-        <el-avatar :src="avatar" :size="80" />
+        <el-avatar :src="avatar" :size="80" draggable="false" />
         <div class="me-profile">
             <h3 class="me-name">MianMan</h3>
             <el-tag class="me-tag" effect="dark" type="danger" size="small"
                 >💞ZX</el-tag
             >
         </div>
+        <div class="me-msg">
+            <div>
+                <el-icon><LocationInformation /></el-icon>
+                <span class="me-msg-text">南开大学</span>
+            </div>
+            <div>
+                <el-icon><EditPen /></el-icon>
+                <span class="me-msg-text">追风赶月莫停留，平芜尽处是春山</span>
+            </div>
+        </div>
         <div class="me-iconlist">
             <div style="display: flex">
-                <el-popover
-                popper-class=""
-                    placement="bottom-start"
-                    title="Github"
-                    :width="200"
-                    trigger="hover"
+                <el-tooltip content="GitHub：NKUmianman" effect="customized">
+                    <button class="me-icon github"></button>
+                </el-tooltip>
+                <el-tooltip
+                    content="BiliBili：绵满从小就AC"
+                    effect="customized"
                 >
-                    <template #reference>
-                        <el-button class="me-icon github"></el-button>
-                    </template>
-                    <template #default> nihao </template>
-                </el-popover>
-                <el-popover
-                    placement="bottom-start"
-                    title="BiliBili"
-                    :width="200"
-                    trigger="hover"
-                    content="this is content, this is content, this is content"
-                >
-                    <template #reference>
-                        <el-button class="me-icon bilibili"></el-button>
-                    </template>
-                </el-popover>
-                <el-popover
-                    placement="bottom-start"
-                    title="WeChat"
-                    :width="200"
-                    trigger="hover"
-                    content="this is content, this is content, this is content"
-                >
-                    <template #reference>
-                        <el-button class="me-icon wechat"></el-button>
-                    </template>
-                </el-popover>
-                <el-popover
-                    placement="bottom-start"
-                    title="QQ"
-                    :width="200"
-                    trigger="hover"
-                    content="this is content, this is content, this is content"
-                >
-                    <template #reference>
-                        <el-button class="me-icon qq"></el-button>
-                    </template>
-                </el-popover>
+                    <button class="me-icon bilibili"></button>
+                </el-tooltip>
+                <el-tooltip content="WeChat：mianm1017" effect="customized">
+                    <button class="me-icon wechat"></button>
+                </el-tooltip>
+                <el-tooltip content="QQ:1277463846" effect="customized">
+                    <button class="me-icon qq"></button>
+                </el-tooltip>
             </div>
         </div>
     </el-card>
@@ -61,6 +41,7 @@
 
 <script>
 import avatar from '@/assets/avatar.jpg';
+
 export default {
     name: 'CardMe',
     data() {
@@ -68,28 +49,18 @@ export default {
             avatar: avatar,
         };
     },
-    methods: {
-        popoverEffect() {
-            var currentTheme = getComputedStyle(document.documentElement)
-                .getPropertyValue('--theme_card_color')
-                .trim();
-            if (currentTheme === 'rgb(255, 255, 255, 0.9)') {
-                return 'light';
-            } else {
-                return 'dark';
-            }
-        },
-    },
 };
 </script>
 
 <style>
 .me-card {
     margin-top: 0 !important;
-    width: 280px;
+    width: 270px;
+    height: 270px;
     background-color: var(--theme_card_color);
     border-color: var(--theme_card_color);
     color: var(--theme_text_color);
+
     /* opacity: 0.7;
     transition: opacity 0.15s; */
 }
@@ -97,7 +68,17 @@ export default {
 .me-profile {
     display: flex;
     padding-bottom: 10px;
+}
+
+.me-msg {
+    height: 50px;
     border-bottom: solid plum 2px;
+}
+.me-msg-text {
+    position: relative;
+    font-family: '华康手札体W5P';
+    font-size: 14px;
+    top: -3px;
 }
 
 /* .me-card:hover {
@@ -106,13 +87,13 @@ export default {
 
 .el-avatar {
     position: relative;
-    left: 35%;
+    left: 33%;
 }
 
 .me-name {
     position: relative;
     font-family: '华康手札体W5P';
-    left: 30%;
+    left: 27%;
     margin: 0;
 }
 
@@ -121,7 +102,7 @@ export default {
     font-family: '华康手札体W5P';
     padding-top: 2px;
     top: 4px;
-    left: 33%;
+    left: 30%;
 }
 .me-iconlist {
     padding-top: 15px;
@@ -133,6 +114,7 @@ export default {
     font-family: 'Harmony';
     color: black;
     text-decoration: none;
+    text-indent: 5px;
     line-height: 35px;
     border-bottom: solid pink 2px;
 }
@@ -141,6 +123,7 @@ export default {
     width: 40px;
     height: 40px;
     border: 0;
+    margin: auto;
 }
 
 .me-icon:hover {
@@ -162,7 +145,14 @@ export default {
     background-size: contain;
 }
 
-.el-popover {
-    background-color: aqua;
+.el-popper.is-customized {
+    /* Set padding to ensure the height is 32px */
+    padding: 6px 12px;
+    background: linear-gradient(90deg, rgb(51, 103, 216), rgb(191, 114, 230));
+}
+
+.el-popper.is-customized .el-popper__arrow::before {
+    background: linear-gradient(45deg, #5476ca, #9d63e0);
+    right: 0;
 }
 </style>

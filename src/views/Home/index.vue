@@ -1,9 +1,11 @@
 <template>
-    <div class="common-layout">
+    <div class="common-layout" onselectstart="return false">
         <Navbar></Navbar>
         <el-row class="main-container">
             <el-col :xs="24" :sm="8" :md="10">
-                <CardMe></CardMe>
+                <div class="me-aside">
+                    <CardMe></CardMe>
+                </div>
             </el-col>
             <el-col :xs="24" :sm="16" :md="14">
                 <div class="me-articles">
@@ -20,15 +22,32 @@
 import ArticleList from '@/components/ArticleList/index';
 import Navbar from '@/components/Navbar/index';
 import CardMe from '@/components/CardMe/index';
+import { ElNotification } from 'element-plus';
 
 export default {
+    name: 'Home',
     data() {
-        return {};
+        return {
+            activeIndex: '/',
+            footerShow: true,
+        };
     },
     components: {
         ArticleList,
         Navbar,
         CardMe,
+    },
+    methods: {
+        Welcome() {
+            ElNotification({
+                title: '这里是绵满的个人博客૮(˶ᵔ ᵕ ᵔ˶)ა',
+                customClass: 'notification', //自定义类名
+                duration: 5000,
+            });
+        },
+    },
+    mounted() {
+        this.Welcome();
     },
 };
 </script>
@@ -49,7 +68,11 @@ export default {
 .me-articles {
     display: flex;
     flex-direction: row-reverse;
-    margin-right: 10px;
+    margin-right: 17px;
+}
+
+.me-aside {
+    margin-bottom: 20px;
 }
 .el-header {
     margin-bottom: 20px;
@@ -64,3 +87,4 @@ export default {
     flex-grow: 1;
 }
 </style>
+)
