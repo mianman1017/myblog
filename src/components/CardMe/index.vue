@@ -55,7 +55,7 @@ export default {
 <style>
 .me-card {
     margin-top: 0 !important;
-    width: 270px;
+    width: 280px;
     height: 270px;
     background-color: var(--theme_card_color);
     border-color: var(--theme_card_color);

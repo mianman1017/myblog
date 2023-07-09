@@ -7,14 +7,13 @@
     >
         <div class="logo">MianMan's Blog</div>
         <div style="width: 50px"></div>
-        <el-menu-item index="1">首页</el-menu-item>
+        <el-menu-item index="1"> 首页</el-menu-item>
         <el-menu-item index="2">分类</el-menu-item>
         <el-menu-item index="3">关于我</el-menu-item>
         <div class="flex-grow" />
 
         <template v-if="!user.login">
-            <el-button style="" type="text">登录</el-button>
-            <el-button type="text">注册</el-button>
+            <el-button class="nav-button" type="text">登录</el-button>
         </template>
 
         <template v-else>
@@ -161,5 +160,13 @@ export default {
 .el-switch {
     margin-top: 10px;
     margin-right: 30px;
+}
+.nav-button {
+    position: relative;
+    font-family: 'Harmony';
+    color: var(--theme_text_color);
+    width: 57.6px;
+    top: 10px;
+    margin-right: 10px;
 }
 </style>
