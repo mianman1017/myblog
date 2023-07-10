@@ -141,7 +141,7 @@ export default {
 .nav-button {
     position: relative;
     font-family: 'Harmony';
-    color: var(--text_color);
+    color: var(--text_color) !important;
     width: 57.6px;
     top: -2px;
     margin-right: 10px;
