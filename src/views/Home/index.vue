@@ -31,7 +31,20 @@ export default {
         return {
             activeIndex: '/',
             footerShow: true,
-            tags: [],
+            tags: [
+                {
+                    id: 1,
+                    tagName: 'Vue',
+                },
+                {
+                    id: 2,
+                    tagName: 'Django',
+                },
+                {
+                    id: 3,
+                    tagName: 'Spring Boot',
+                },
+            ],
         };
     },
     components: {

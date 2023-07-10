@@ -6,10 +6,8 @@
                 <!--type="primary"-->
                 <el-button
                     @click="tag(t.id)"
-                    size="mini"
-                    type="primary"
-                    round
-                    plain
+                    size="small"
+                    :type="getType(t.id)"
                     >{{ t.tagName }}</el-button
                 >
             </li>
@@ -27,8 +25,9 @@ export default {
         return {};
     },
     methods: {
-        moreTags() {
-            this.$router.push('/tag/all');
+        getType(id) {
+            var types = ['success', 'warning', 'danger'];
+            return types[id - 1];
         },
         tag(id) {
             this.$router.push({ path: `/tag/${id}` });
@@ -57,6 +56,7 @@ export default {
 
 .tag-list {
     list-style-type: none;
+    padding-left: 0;
 }
 
 .tag-item {
