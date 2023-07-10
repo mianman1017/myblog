@@ -1,16 +1,19 @@
 <template>
-    <Loading
-        :loading="loading"
-        :offset="offset"
-        :nodata="noData"
-        @load="load"
-    ></Loading>
-    <div class="article-list">
-        <ArticleItem
-            v-for="article in articles"
-            :key="article.id"
-            v-bind="article"
-        />
+    <div class="articlelist-container">
+        <Loading
+            v-if="loading"
+            :loading="loading"
+            :offset="offset"
+            :nodata="noData"
+            @load="load"
+        ></Loading>
+        <div class="article-list">
+            <ArticleItem
+                v-for="article in articles"
+                :key="article.id"
+                v-bind="article"
+            />
+        </div>
     </div>
 </template>
 
@@ -38,7 +41,7 @@ export default {
                     summary: '概要11',
                     author: '作者',
                     tags: [{ tagName: 'vue' }],
-                    createDate: Date.now(),
+                    createDate: '2023-7-7',
                 },
                 {
                     id: '2',
@@ -49,7 +52,7 @@ export default {
                     summary: '概要11',
                     author: '作者',
                     tags: [{ tagName: 'vue' }],
-                    createDate: Date.now() - 3600 * 60,
+                    createDate: '2023-7-7',
                 },
                 {
                     id: '3',
@@ -60,7 +63,7 @@ export default {
                     summary: '概要11',
                     author: '作者',
                     tags: [{ tagName: 'vue' }],
-                    createDate: '222',
+                    createDate: '2023-7-7',
                 },
                 {
                     id: '4',
@@ -71,7 +74,7 @@ export default {
                     summary: '概要11',
                     author: '作者',
                     tags: [{ tagName: 'vue' }],
-                    createDate: '3333',
+                    createDate: '2023-7-7',
                 },
                 {
                     id: '5',
@@ -82,7 +85,7 @@ export default {
                     summary: '概要11',
                     author: '作者',
                     tags: [{ tagName: 'vue' }],
-                    createDate: '3333',
+                    createDate: '2023-7-7',
                 },
                 {
                     id: '6',
@@ -93,7 +96,7 @@ export default {
                     summary: '概要11',
                     author: '作者',
                     tags: [{ tagName: 'vue' }],
-                    createDate: '2222',
+                    createDate: '2023-7-7',
                 },
                 {
                     id: '7',
@@ -104,7 +107,7 @@ export default {
                     summary: '概要11',
                     author: '作者',
                     tags: [{ tagName: 'vue' }],
-                    createDate: '2222',
+                    createDate: '2023-7-7',
                 },
             ],
         };
@@ -149,4 +152,10 @@ export default {
 };
 </script>
 
-<style></style>
+<style>
+@media screen and (max-width: 768px) {
+    .articlelist-container {
+        margin: auto;
+    }
+}
+</style>

@@ -54,12 +54,11 @@ export default {
 
 <style>
 .me-card {
-    margin-top: 0 !important;
-    width: 280px;
-    height: 270px;
-    background-color: var(--theme_card_color);
-    border-color: var(--theme_card_color);
+    max-width: 280px;
+    min-width: 230px;
+    height: 280px;
     color: var(--theme_text_color);
+    margin-left: 7px;
 
     /* opacity: 0.7;
     transition: opacity 0.15s; */
@@ -72,6 +71,7 @@ export default {
 
 .me-msg {
     height: 50px;
+    padding-bottom: 7px;
     border-bottom: solid plum 2px;
 }
 .me-msg-text {
@@ -154,5 +154,10 @@ export default {
 .el-popper.is-customized .el-popper__arrow::before {
     background: linear-gradient(45deg, #5476ca, #9d63e0);
     right: 0;
+}
+@media screen and (max-width: 768px) {
+    .me-card {
+        display: none;
+    }
 }
 </style>

@@ -1,20 +1,20 @@
 <template>
     <div class="common-layout" onselectstart="return false">
-        <Navbar></Navbar>
+        <Navbar :activeIndex="activeIndex"></Navbar>
         <el-row class="main-container">
-            <el-col :xs="24" :sm="8" :md="10">
+            <el-col :xs="24" :sm="9" :md="10">
                 <div class="me-aside">
                     <CardMe></CardMe>
+
+                    <TagCloud :tags="tags"></TagCloud>
                 </div>
             </el-col>
-            <el-col :xs="24" :sm="16" :md="14">
+            <el-col :xs="24" :sm="13" :md="14">
                 <div class="me-articles">
                     <ArticleList></ArticleList>
                 </div>
             </el-col>
         </el-row>
-
-        <el-footer>Footer</el-footer>
     </div>
 </template>
 
@@ -22,6 +22,7 @@
 import ArticleList from '@/components/ArticleList/index';
 import Navbar from '@/components/Navbar/index';
 import CardMe from '@/components/CardMe/index';
+import TagCloud from '@/components/TagCloud/index';
 import { ElNotification } from 'element-plus';
 
 export default {
@@ -30,12 +31,14 @@ export default {
         return {
             activeIndex: '/',
             footerShow: true,
+            tags: [],
         };
     },
     components: {
         ArticleList,
         Navbar,
         CardMe,
+        TagCloud,
     },
     methods: {
         Welcome() {
@@ -46,6 +49,11 @@ export default {
             });
         },
     },
+    beforeRouteEnter(to, from, next) {
+        next((vm) => {
+            vm.activeIndex = to.path;
+        });
+    },
     mounted() {
         this.Welcome();
     },
@@ -53,6 +61,11 @@ export default {
 </script>
 
 <style>
+.el-card {
+    font-family: '华康手札体W5P';
+    border: 0;
+    background-color: var(--theme_card_color);
+}
 .el-card:hover {
     background-color: var(--theme_hover_color);
 }
@@ -66,20 +79,21 @@ export default {
     overflow-x: hidden;
 }
 .me-articles {
+    /* font-family: 'Harmony'; */
     display: flex;
     flex-direction: row-reverse;
-    margin-right: 17px;
+    margin: auto;
 }
 
 .me-aside {
+    position: relative;
+    margin: auto;
     margin-bottom: 20px;
 }
 .el-header {
     margin-bottom: 20px;
 }
-.el-card {
-    border-radius: 0;
-}
+
 .el-card:not(:first-child) {
     margin-top: 20px;
 }
@@ -87,4 +101,3 @@ export default {
     flex-grow: 1;
 }
 </style>
-)

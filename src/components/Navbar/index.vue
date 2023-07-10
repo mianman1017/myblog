@@ -5,11 +5,14 @@
         :ellipsis="false"
         @select="handleSelect"
     >
-        <div class="logo">MianMan's Blog</div>
+        <div class="logo">M-Blog</div>
         <div style="width: 50px"></div>
-        <el-menu-item index="1"> 首页</el-menu-item>
-        <el-menu-item index="2">分类</el-menu-item>
-        <el-menu-item index="3">关于我</el-menu-item>
+        <el-menu-item index="/">首页</el-menu-item>
+        <el-menu-item index="/category/all">分类</el-menu-item>
+        <el-menu-item index="/timeline">时间轴</el-menu-item>
+        <el-menu-item index="/post">说说</el-menu-item>
+        <el-menu-item index="/message">留言</el-menu-item>
+        <el-menu-item index="/friends">友链</el-menu-item>
         <div class="flex-grow" />
 
         <template v-if="!user.login">
@@ -17,14 +20,14 @@
         </template>
 
         <template v-else>
-            <el-submenu index>
+            <el-sub-menu index>
                 <template slot="title">
                     <img class="me-header-picture" :src="user.avatar" />
                 </template>
                 <el-menu-item index @click="logout"
                     ><i class="el-icon-back"></i>退出</el-menu-item
                 >
-            </el-submenu>
+            </el-sub-menu>
         </template>
 
         <el-switch
@@ -62,6 +65,7 @@ import { ref } from 'vue';
 export default {
     name: 'Navbar',
     props: {
+        activeIndex: String,
         simple: {
             type: Boolean,
             default: false,
@@ -131,7 +135,7 @@ export default {
 
 <style>
 .el-menu {
-    margin-bottom: 20px;
+    margin-bottom: 30px;
     background-color: var(--theme_card_color);
     border-color: var(--theme_card_color);
     color: var(--theme_text_color);

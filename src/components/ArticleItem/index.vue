@@ -6,25 +6,20 @@
     >
         <el-row>
             <el-col :span="10">
-                <el-image
-                    style="width: 100%; height: 170px"
-                    :src="url"
-                    fit="fill"
-                />
+                <el-image class="article-img" :src="url" fit="fill" />
             </el-col>
             <el-col :span="14"
                 ><div class="me-article">
                     <div class="me-article-header">
-                        <a @click="view(id)" class="me-article-title">{{
-                            title
-                        }}</a>
-
-                        <el-button
-                            v-if="weight > 0"
-                            class="me-article-icon"
-                            type="text"
-                            >置顶</el-button
-                        >
+                        <span>
+                            <el-icon><Paperclip /></el-icon>
+                            <el-button
+                                v-if="weight > 0"
+                                class="me-article-icon"
+                                type="text"
+                                >置顶</el-button
+                            >
+                        </span>
                         <span class="me-pull-right">
                             <span class="me-article-count">
                                 <el-icon><ChatLineRound /></el-icon>&nbsp;{{
@@ -37,17 +32,21 @@
                                 }}
                             </span>
                             <span class="me-article-count">
-                                <el-icon><Clock /></el-icon>&nbsp;{{
-                                    $filters.format(createDate)
+                                <el-icon><Calendar /></el-icon>&nbsp;{{
+                                    // $filters.format(createDate)
+                                    createDate
                                 }}
                             </span>
                         </span>
                     </div>
+                    <a @click="view(id)" class="me-article-title">{{
+                        title
+                    }}</a>
                     <div class="me-article-description">
                         {{ summary }}
                     </div>
                     <div class="me-article-footer">
-                        <el-icon style="color: #aa00ff"><PriceTag /></el-icon>
+                        <el-icon class="tag-icon"><PriceTag /></el-icon>
                         <el-tag
                             v-for="t in tags"
                             :key="t.tagName"
@@ -94,11 +93,13 @@ export default {
 
 <style>
 .article-card {
-    background-color: var(--theme_card_color);
     border: 0;
     color: var(--theme_text_color);
     width: 530px;
-    height: 170px;
+    height: 180px;
+    margin-right: 10px;
+    margin-bottom: 20px;
+    transition: width 0s;
     /* opacity: 0.7;
     transition: opacity 0.15s; */
 }
@@ -107,22 +108,39 @@ export default {
     opacity: 0.85;
 } */
 
+.article-img {
+    width: 100%;
+    height: 180px;
+}
+
 .me-article {
-    padding: 10px;
+    padding: 7px 0 0 10px;
 }
 
 .me-article-header {
-    padding-bottom: 10px;
 }
 .me-article-title {
+    cursor: pointer;
+    position: relative;
     font-weight: 600;
+    top: -2px;
 }
+.me-article-title:hover {
+    color: cadetblue;
+}
+
 .me-article-icon {
-    padding: 3px 8px;
+    font-family: '华康手札体W5P';
+    font-weight: 600;
+    position: relative;
+    color: #f56c6c;
+    top: -2.5px;
+    left: 2px;
+    padding: 0;
 }
 .me-article-count {
-    color: #ff00ff;
-    padding-left: 10px;
+    color: var(--theme_text_color);
+    padding-right: 7px;
     font-size: 13px;
 }
 .me-pull-right {
@@ -131,7 +149,14 @@ export default {
 .me-article-description {
     font-size: 13px;
     line-height: 24px;
-    margin-bottom: 10px;
+    margin-bottom: 5px;
+    height: 75px;
+}
+
+.tag-icon {
+    position: relative;
+    top: 3px;
+    color: #ff00ff;
 }
 
 .article-tag {
@@ -140,5 +165,25 @@ export default {
     background-color: #ff00ff;
     border-color: var(--theme_card_color);
     transition: border-color 0.2s;
+}
+
+.me-view {
+    height: 27px;
+    width: 65px;
+    background-color: hotpink;
+    border-radius: 8px 0 0 0;
+    text-indent: 10px;
+}
+
+@media screen and (max-width: 992px) {
+    .article-card {
+        width: 97%;
+    }
+}
+
+@media screen and (max-width: 768px) {
+    .article-card {
+        margin: auto;
+    }
 }
 </style>
