@@ -57,7 +57,7 @@ export default {
     max-width: 280px;
     min-width: 230px;
     height: 280px;
-    color: var(--theme_text_color);
+    color: var(--text_color);
     margin-left: 7px;
 
     /* opacity: 0.7;
@@ -126,8 +126,6 @@ export default {
     margin: auto;
 }
 
-.me-icon:hover {
-}
 .github {
     background: url('../../assets/github.png') no-repeat;
     background-size: contain;

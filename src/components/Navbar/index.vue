@@ -1,10 +1,5 @@
 <template>
-    <el-menu
-        :default-active="activeIndex"
-        mode="horizontal"
-        :ellipsis="false"
-        @select="handleSelect"
-    >
+    <el-menu :default-active="activeIndex" mode="horizontal" :ellipsis="false">
         <div class="logo">M-Blog</div>
         <div style="width: 50px"></div>
         <el-menu-item index="/">首页</el-menu-item>
@@ -16,7 +11,7 @@
         <div class="flex-grow" />
 
         <template v-if="!user.login">
-            <el-button class="nav-button" type="text">登录</el-button>
+            <el-button class="nav-button" link>登录</el-button>
         </template>
 
         <template v-else>
@@ -85,49 +80,29 @@ export default {
     },
     methods: {
         changeTheme() {
-            var currentTheme = getComputedStyle(document.documentElement)
-                .getPropertyValue('--theme_card_color')
-                .trim();
-            var text_color = currentTheme;
-            var card_color = currentTheme;
-            var hover_color = currentTheme;
-            // console.log(currentTheme);
-            if (currentTheme === 'rgb(255, 255, 255, 0.9)') {
-                currentTheme = 'rgb(0, 0, 0, 0.85)';
-                hover_color = 'rgb(0, 0, 0)';
+            const theme = document.getElementById('theme');
+            console.log(theme.href);
+            if (theme.href.includes('light.css')) {
+                theme.href = '../theme/dark.css';
             } else {
-                currentTheme = 'rgb(255, 255, 255, 0.9)';
-                hover_color = 'rgb(255, 255, 255)';
+                theme.href = '../theme/light.css';
             }
-            card_color = currentTheme;
+            this.$nextTick(() => {
+                // 等待DOM更新后强制重绘滚动条
+                const html = document.documentElement;
+                html.scroll;
+                // 删除滚动条
+                html.style.overflow = 'hidden';
+                // 用于暂时撑起滚动条的宽度，这样页面就不会抖动
+                html.style.paddingRight = `10px`;
 
-            document.documentElement.style.setProperty(
-                '--theme_card_color',
-                card_color
-            );
-            document.documentElement.style.setProperty(
-                '--theme_hover_color',
-                hover_color
-            );
-            document.documentElement.style.setProperty(
-                '--theme_text_color',
-                text_color
-            );
-
-            // 切换背景图片
-            // const buildingElement = document.querySelector('#building');
-            // const currentBackground = getComputedStyle(buildingElement)
-            //     .getPropertyValue('background-image')
-            //     .trim();
-
-            // const dayBackgroundURL = 'url("/imgs/background-day.jpg")';
-            // const nightBackgroundURL = 'url("/imgs/background-night.jpg")';
-
-            // if (currentBackground === dayBackgroundURL) {
-            //     buildingElement.style.backgroundImage = nightBackgroundURL;
-            // } else {
-            //     buildingElement.style.backgroundImage = dayBackgroundURL;
-            // }
+                // 等待1ms
+                setTimeout(() => {
+                    // 重新添加滚动条
+                    html.style.overflow = '';
+                    html.style.paddingRight = '';
+                }, 1);
+            });
         },
     },
 };
@@ -136,21 +111,19 @@ export default {
 <style>
 .el-menu {
     margin-bottom: 30px;
-    background-color: var(--theme_card_color);
-    border-color: var(--theme_card_color);
-    color: var(--theme_text_color);
-    transition: background-color 0.2s;
-    transition: border-color 0.1s;
+    background-color: var(--card_color);
+    border-color: var(--card_color);
+    color: var(--text_color);
     /* opacity: 0.7; */
 }
 .el-menu-item {
     font-family: 'Harmony';
-    color: var(--theme_text_color) !important;
+    color: var(--text_color) !important;
 }
 
 .el-menu-item:hover,
 .el-menu-item:focus {
-    background-color: var(--theme_hover_color) !important;
+    background-color: var(--hover_color) !important;
 }
 
 .logo {
@@ -168,9 +141,9 @@ export default {
 .nav-button {
     position: relative;
     font-family: 'Harmony';
-    color: var(--theme_text_color);
+    color: var(--text_color);
     width: 57.6px;
-    top: 10px;
+    top: -2px;
     margin-right: 10px;
 }
 </style>

@@ -14,6 +14,14 @@ export default {
     components: {
         GoTop,
     },
+    mounted() {
+        let link = document.createElement('link');
+        link.type = 'text/css';
+        link.id = 'theme';
+        link.rel = 'stylesheet';
+        link.href = '../theme/light.css';
+        document.getElementsByTagName('head')[0].appendChild(link);
+    },
 };
 </script>
 
@@ -40,6 +48,23 @@ body,
     height: 100%;
 }
 
+/* 自定义全局滚动条样式 */
+html::-webkit-scrollbar {
+    width: 10px;
+    height: 10px;
+    /**/
+}
+html::-webkit-scrollbar-track {
+    background: var(--scroll_track_color);
+}
+html::-webkit-scrollbar-thumb {
+    background: var(--scroll_thumb_color);
+    border-radius: 10px;
+}
+html::-webkit-scrollbar-thumb:hover {
+    background: var(--scroll_hover_color);
+}
+
 /* 用于添加全局背景图 */
 #building {
     background: url('../public/imgs/background.jpg');
@@ -49,13 +74,5 @@ body,
     position: fixed;
     background-size: 100% 100%;
     z-index: -1;
-}
-
-/* 定义全局的css变量 */
-:root {
-    /* 卡片颜色 */
-    --theme_card_color: rgb(255, 255, 255, 0.9);
-    --theme_hover_color: rgb(255, 255, 255);
-    --theme_text_color: rgb(0, 0, 0, 0.85);
 }
 </style>

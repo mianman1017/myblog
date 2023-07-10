@@ -13,11 +13,8 @@
                     <div class="me-article-header">
                         <span>
                             <el-icon><Paperclip /></el-icon>
-                            <el-button
-                                v-if="weight > 0"
-                                class="me-article-icon"
-                                type="text"
-                                >置顶</el-button
+                            <span v-if="weight > 0" class="me-article-icon"
+                                >置顶</span
                             >
                         </span>
                         <span class="me-pull-right">
@@ -50,7 +47,7 @@
                         <el-tag
                             v-for="t in tags"
                             :key="t.tagName"
-                            size="mini"
+                            size="small"
                             type="success"
                             class="article-tag"
                             >{{ t.tagName }}</el-tag
@@ -94,9 +91,9 @@ export default {
 <style>
 .article-card {
     border: 0;
-    color: var(--theme_text_color);
+    color: var(--text_color);
     width: 530px;
-    height: 180px;
+    height: 175px;
     margin-right: 10px;
     margin-bottom: 20px;
     transition: width 0s;
@@ -110,15 +107,13 @@ export default {
 
 .article-img {
     width: 100%;
-    height: 180px;
+    height: 175px;
 }
 
 .me-article {
     padding: 7px 0 0 10px;
 }
 
-.me-article-header {
-}
 .me-article-title {
     cursor: pointer;
     position: relative;
@@ -130,7 +125,9 @@ export default {
 }
 
 .me-article-icon {
+    cursor: default;
     font-family: '华康手札体W5P';
+    font-size: 14px;
     font-weight: 600;
     position: relative;
     color: #f56c6c;
@@ -139,7 +136,7 @@ export default {
     padding: 0;
 }
 .me-article-count {
-    color: var(--theme_text_color);
+    color: var(--text_color);
     padding-right: 7px;
     font-size: 13px;
 }
@@ -163,7 +160,7 @@ export default {
     margin-left: 6px;
     color: #ffffff;
     background-color: #ff00ff;
-    border-color: var(--theme_card_color);
+    border-color: var(--card_color);
     transition: border-color 0.2s;
 }
 
@@ -178,6 +175,7 @@ export default {
 @media screen and (max-width: 992px) {
     .article-card {
         width: 97%;
+        min-width: 470px;
     }
 }
 

@@ -1,7 +1,6 @@
 <template>
     <el-card class="tag-card" :body-style="{ padding: '8px 18px' }">
-        <div slot="header" class="tag-header">标签云</div>
-
+        <div class="tag-header">标签云</div>
         <ul class="tag-list">
             <li class="tag-item" v-for="t in tags" :key="t.id">
                 <!--type="primary"-->
@@ -43,11 +42,12 @@ export default {
     max-width: 280px;
     min-width: 230px;
     height: 200px;
-    color: var(--theme_text_color);
+    color: var(--text_color);
     margin-left: 7px;
 }
 .tag-header {
     font-weight: 600;
+    border-bottom: solid 2px var(--text_color);
 }
 
 .tag-more {

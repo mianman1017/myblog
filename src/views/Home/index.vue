@@ -64,10 +64,11 @@ export default {
 .el-card {
     font-family: '华康手札体W5P';
     border: 0;
-    background-color: var(--theme_card_color);
+    background-color: var(--card_color);
+    transition: background-color 0s;
 }
 .el-card:hover {
-    background-color: var(--theme_hover_color);
+    background-color: var(--hover_color);
 }
 .common-layout {
     height: 100vh;

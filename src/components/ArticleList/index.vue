@@ -67,7 +67,7 @@ export default {
                 },
                 {
                     id: '4',
-                    weight: 1,
+                    weight: 0,
                     title: '标题1',
                     commentCounts: 123,
                     viewCounts: 123,
@@ -78,7 +78,7 @@ export default {
                 },
                 {
                     id: '5',
-                    weight: 1,
+                    weight: 0,
                     title: '标题1',
                     commentCounts: 123,
                     viewCounts: 123,
@@ -89,7 +89,7 @@ export default {
                 },
                 {
                     id: '6',
-                    weight: 1,
+                    weight: 0,
                     title: '标题3',
                     commentCounts: 123,
                     viewCounts: 123,
@@ -100,7 +100,7 @@ export default {
                 },
                 {
                     id: '7',
-                    weight: 1,
+                    weight: 0,
                     title: '标题3',
                     commentCounts: 123,
                     viewCounts: 123,
