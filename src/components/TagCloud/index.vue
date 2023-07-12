@@ -26,8 +26,8 @@ export default {
     },
     methods: {
         getType(id) {
-            var types = ['success', 'warning', 'danger'];
-            return types[id - 1];
+            var types = ['success', 'warning', 'danger', 'primary', 'info'];
+            return types[(id - 1) % 5];
         },
         tag(id) {
             this.$router.push({ path: `/tag/${id}` });

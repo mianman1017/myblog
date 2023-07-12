@@ -1,18 +1,25 @@
 <template>
     <div id="building" ref="buildingRef"></div>
-    <!-- 渲染路由匹配到的组件 -->
-    <router-view />
 
-    <!-- 回到顶部的组件 -->
-    <GoTop></GoTop>
+    <div class="common-layout" onselectstart="return false">
+        <Navbar :activeIndex="activeIndex"></Navbar>
+
+        <!-- 渲染路由匹配到的组件 -->
+        <router-view />
+
+        <!-- 回到顶部的组件 -->
+        <GoTop></GoTop>
+    </div>
 </template>
 
 <script>
 import GoTop from '@/components/GoTop/index';
+import Navbar from '@/components/Navbar/index';
 
 export default {
     components: {
         GoTop,
+        Navbar,
     },
     mounted() {
         let link = document.createElement('link');

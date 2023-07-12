@@ -1,21 +1,18 @@
 <template>
-    <div class="common-layout" onselectstart="return false">
-        <Navbar :activeIndex="activeIndex"></Navbar>
-        <el-row class="main-container">
-            <el-col :xs="24" :sm="9" :md="10">
-                <div class="me-aside">
-                    <CardMe></CardMe>
+    <el-row class="main-container">
+        <el-col :xs="24" :sm="9" :md="10">
+            <div class="me-aside">
+                <CardMe />
 
-                    <TagCloud :tags="tags"></TagCloud>
-                </div>
-            </el-col>
-            <el-col :xs="24" :sm="13" :md="14">
-                <div class="me-articles">
-                    <ArticleList></ArticleList>
-                </div>
-            </el-col>
-        </el-row>
-    </div>
+                <TagCloud :tags="tags" />
+            </div>
+        </el-col>
+        <el-col :xs="24" :sm="13" :md="14">
+            <div class="me-articles">
+                <ArticleList></ArticleList>
+            </div>
+        </el-col>
+    </el-row>
 </template>
 
 <script>
@@ -44,6 +41,38 @@ export default {
                     id: 3,
                     tagName: 'Spring Boot',
                 },
+                {
+                    id: 4,
+                    tagName: 'Git',
+                },
+                {
+                    id: 5,
+                    tagName: 'Docker',
+                },
+                {
+                    id: 6,
+                    tagName: 'Python',
+                },
+                {
+                    id: 7,
+                    tagName: 'Java',
+                },
+                {
+                    id: 8,
+                    tagName: 'C++',
+                },
+                {
+                    id: 9,
+                    tagName: 'MySQL',
+                },
+                {
+                    id: 10,
+                    tagName: 'QT Creater',
+                },
+                {
+                    id: 11,
+                    tagName: 'MATLAB',
+                },
             ],
         };
     },
@@ -58,7 +87,7 @@ export default {
             ElNotification({
                 title: '这里是绵满的个人博客૮(˶ᵔ ᵕ ᵔ˶)ა',
                 customClass: 'notification', //自定义类名
-                duration: 5000,
+                duration: 3000,
             });
         },
     },
@@ -83,9 +112,7 @@ export default {
 .el-card:hover {
     background-color: var(--hover_color);
 }
-.common-layout {
-    height: 100vh;
-}
+
 .main-container {
     display: flex;
     flex-direction: row-reverse;

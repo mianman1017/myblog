@@ -1,5 +1,10 @@
 <template>
-    <el-menu :default-active="activeIndex" mode="horizontal" :ellipsis="false">
+    <el-menu
+        :router="true"
+        :default-active="activeIndex"
+        mode="horizontal"
+        :ellipsis="false"
+    >
         <div class="logo">M-Blog</div>
         <div style="width: 50px"></div>
         <el-menu-item index="/">首页</el-menu-item>
@@ -110,14 +115,14 @@ export default {
 
 <style>
 .el-menu {
-    margin-bottom: 30px;
-    background-color: var(--card_color);
-    border-color: var(--card_color);
-    color: var(--text_color);
+    margin-bottom: 30px !important;
+    background-color: var(--card_color) !important;
+    border-color: var(--card_color) !important;
+    color: var(--text_color) !important;
     /* opacity: 0.7; */
 }
 .el-menu-item {
-    font-family: 'Harmony';
+    font-family: 'Harmony' !important;
     color: var(--text_color) !important;
 }
 

@@ -20,6 +20,14 @@ const routes = [
         component: () =>
             import(/* webpackChunkName: "about" */ '../views/Home/index.vue'),
     },
+    {
+        path: '/category/all',
+        name: 'Category',
+        component: () =>
+            import(
+                /* webpackChunkName: "about" */ '../views/Category/index.vue'
+            ),
+    },
 ];
 
 const router = createRouter({

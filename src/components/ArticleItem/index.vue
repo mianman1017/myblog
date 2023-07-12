@@ -161,7 +161,6 @@ export default {
     color: #ffffff;
     background-color: #ff00ff;
     border-color: var(--card_color);
-    transition: border-color 0.2s;
 }
 
 .me-view {
