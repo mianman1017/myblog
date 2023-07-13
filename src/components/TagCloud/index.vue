@@ -49,11 +49,6 @@ export default {
     border-bottom: solid 2px var(--text_color);
 }
 
-.tag-more {
-    font-size: 14px;
-    color: #78b6f7;
-}
-
 .tag-list {
     list-style-type: none;
     padding-left: 0;

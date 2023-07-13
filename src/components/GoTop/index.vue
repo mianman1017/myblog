@@ -1,6 +1,11 @@
 <template>
     <Transition>
-        <el-backtop v-if="needToTop" :right="100" :bottom="100" />
+        <el-backtop
+            class="backtotop"
+            v-if="needToTop"
+            :right="100"
+            :bottom="50"
+        />
     </Transition>
 </template>
 
@@ -30,4 +35,12 @@ export default {
 };
 </script>
 
-<style></style>
+<style>
+.backtotop {
+    color: hotpink !important;
+    background-color: var(--card_color) !important;
+}
+.backtotop:hover {
+    background-color: var(--hover_color) !important;
+}
+</style>

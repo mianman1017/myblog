@@ -1,14 +1,18 @@
 <template>
     <el-menu
+        ref="navbar"
         :router="true"
         :default-active="activeIndex"
+        :class="{
+            'navbar-transform': isNavbarTransformed,
+            'navbar-padding': hasPadding,
+        }"
         mode="horizontal"
         :ellipsis="false"
     >
         <div class="logo">M-Blog</div>
         <div style="width: 50px"></div>
         <el-menu-item index="/">首页</el-menu-item>
-        <el-menu-item index="/category/all">分类</el-menu-item>
         <el-menu-item index="/timeline">时间轴</el-menu-item>
         <el-menu-item index="/post">说说</el-menu-item>
         <el-menu-item index="/message">留言</el-menu-item>
@@ -77,6 +81,12 @@ export default {
                 login: false,
                 avatar: '',
             },
+            scrollAction: {
+                x: 'undefined',
+                y: 'undefined',
+            },
+            isNavbarTransformed: false,
+            hasPadding: false,
         };
     },
     setup() {
@@ -95,30 +105,77 @@ export default {
             this.$nextTick(() => {
                 // 等待DOM更新后强制重绘滚动条
                 const html = document.documentElement;
-                html.scroll;
                 // 删除滚动条
                 html.style.overflow = 'hidden';
                 // 用于暂时撑起滚动条的宽度，这样页面就不会抖动
                 html.style.paddingRight = `10px`;
+                // 用于暂时撑起导航栏右侧的宽度，这样导航栏就不会抖动
+                this.hasPadding = true;
 
                 // 等待1ms
                 setTimeout(() => {
                     // 重新添加滚动条
                     html.style.overflow = '';
                     html.style.paddingRight = '';
+                    this.hasPadding = false;
                 }, 1);
             });
         },
+        isDownDirection() {
+            if (typeof this.scrollAction.x == 'undefined') {
+                this.scrollAction.x = window.scrollX;
+                this.scrollAction.y = window.scrollY;
+            }
+            var diffX = this.scrollAction.x - window.scrollX;
+            var diffY = this.scrollAction.y - window.scrollY;
+
+            this.scrollAction.x = window.scrollX;
+            this.scrollAction.y = window.scrollY;
+
+            if (diffX < 0) {
+                // Scroll right
+            } else if (diffX > 0) {
+                // Scroll left
+            } else if (diffY < 0) {
+                // Scroll down
+                return true;
+            } else if (diffY > 0) {
+                // Scroll up
+            } else {
+                // First scroll event
+            }
+            return false;
+        },
+        HandleScrollForNavbarShow() {
+            this.$nextTick(() => {
+                const navbar = this.$refs.navbar;
+                if (navbar) {
+                    const isDownDirection = this.isDownDirection();
+                    if (isDownDirection && !this.isNavbarTransformed) {
+                        this.isNavbarTransformed = true;
+                    } else if (!isDownDirection && this.isNavbarTransformed) {
+                        this.isNavbarTransformed = false;
+                    }
+                }
+            });
+        },
+    },
+    mounted() {
+        window.addEventListener('scroll', this.HandleScrollForNavbarShow);
     },
 };
 </script>
 
 <style>
 .el-menu {
+    position: fixed !important;
+    width: 100% !important;
     margin-bottom: 30px !important;
     background-color: var(--card_color) !important;
     border-color: var(--card_color) !important;
     color: var(--text_color) !important;
+    transition: transform 0.3s ease;
+    z-index: 100;
     /* opacity: 0.7; */
 }
 .el-menu-item {
@@ -150,5 +207,13 @@ export default {
     width: 57.6px;
     top: -2px;
     margin-right: 10px;
+}
+
+.navbar-transform {
+    transform: translateY(-100%);
+}
+
+.navbar-padding {
+    padding-right: 10px;
 }
 </style>

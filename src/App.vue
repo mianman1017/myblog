@@ -1,9 +1,13 @@
 <template>
     <div id="building" ref="buildingRef"></div>
-
-    <div class="common-layout" onselectstart="return false">
-        <Navbar :activeIndex="activeIndex"></Navbar>
-
+    <div class="header">
+        <Navbar ref="navbar" :activeIndex="activeIndex" />
+    </div>
+    <div
+        class="common-layout"
+        style="padding-top: 90px"
+        onselectstart="return false"
+    >
         <!-- 渲染路由匹配到的组件 -->
         <router-view />
 

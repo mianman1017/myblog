@@ -5,6 +5,7 @@
             :loading="loading"
             :offset="offset"
             :nodata="noData"
+            @isDownDirection="isDownDirection"
             @load="load"
         ></Loading>
         <div class="article-list">
@@ -87,28 +88,6 @@ export default {
                     tags: [{ tagName: 'vue' }],
                     createDate: '2023-7-7',
                 },
-                {
-                    id: '6',
-                    weight: 0,
-                    title: '标题3',
-                    commentCounts: 123,
-                    viewCounts: 123,
-                    summary: '概要11',
-                    author: '作者',
-                    tags: [{ tagName: 'vue' }],
-                    createDate: '2023-7-7',
-                },
-                {
-                    id: '7',
-                    weight: 0,
-                    title: '标题3',
-                    commentCounts: 123,
-                    viewCounts: 123,
-                    summary: '概要11',
-                    author: '作者',
-                    tags: [{ tagName: 'vue' }],
-                    createDate: '2023-7-7',
-                },
             ],
         };
     },
@@ -121,6 +100,7 @@ export default {
         load() {
             // 如果出发分页，需要调用接口，加载文章列表
             alert('触发分页');
+            this.articles = this.articles.concat(this.articles);
             // this.getArticles();
         },
 
@@ -147,6 +127,10 @@ export default {
                 .finally(() => {});
             this.noData = false;
             this.loading = false;
+        },
+
+        isDownDirection() {
+            this.$emit('isDownDirection');
         },
     },
 };

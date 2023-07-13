@@ -21,28 +21,23 @@ export default {
     name: 'index',
     mounted() {
         //绑定事件监听，滚动的时候触发
-        window.addEventListener('scroll', this.handleScroll, false);
+        window.addEventListener('scroll', this.handleScrollForTop, false);
         // 在DOM更新后执行相关代码
         this.$nextTick(() => {
             if (this.$refs.scroll) {
-                this.handleScroll();
+                this.handleScrollForTop();
             }
         });
     },
     beforeDestroy() {
         //移出事件监听
-        window.removeEventListener('scroll', this.handleScroll);
+        window.removeEventListener('scroll', this.handleScrollForTop);
     },
     data() {
-        return {
-            scrollAction: {
-                x: 'undefined',
-                y: 'undefined',
-            },
-        };
+        return {};
     },
     methods: {
-        handleScroll(e) {
+        handleScrollForTop(e) {
             var that = this;
             //
             if (!that.noData) {
@@ -60,7 +55,7 @@ export default {
                 if (
                     scrollTop + windowHeight + this.offset + 3 >=
                         scrollHeight &&
-                    that.isDownDirection()
+                    that.$emit('isDownDirection')
                 ) {
                     //判断是否到达底部
                     if (!that.loading) {
@@ -69,31 +64,6 @@ export default {
                     }
                 }
             }
-        },
-        isDownDirection() {
-            if (typeof this.scrollAction.x == 'undefined') {
-                this.scrollAction.x = window.scrollX;
-                this.scrollAction.y = window.scrollY;
-            }
-            var diffX = this.scrollAction.x - window.scrollX;
-            var diffY = this.scrollAction.y - window.scrollY;
-
-            this.scrollAction.x = window.scrollX;
-            this.scrollAction.y = window.scrollY;
-
-            if (diffX < 0) {
-                // Scroll right
-            } else if (diffX > 0) {
-                // Scroll left
-            } else if (diffY < 0) {
-                // Scroll down
-                return true;
-            } else if (diffY > 0) {
-                // Scroll up
-            } else {
-                // First scroll event
-            }
-            return false;
         },
     },
 };

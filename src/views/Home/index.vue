@@ -1,15 +1,15 @@
 <template>
     <el-row class="main-container">
         <el-col :xs="24" :sm="9" :md="10">
-            <div class="me-aside">
+            <div ref="aside" class="me-aside">
                 <CardMe />
-
                 <TagCloud :tags="tags" />
+                <Search />
             </div>
         </el-col>
         <el-col :xs="24" :sm="13" :md="14">
             <div class="me-articles">
-                <ArticleList></ArticleList>
+                <ArticleList @isDownDirection="isDownDirection"></ArticleList>
             </div>
         </el-col>
     </el-row>
@@ -20,6 +20,7 @@ import ArticleList from '@/components/ArticleList/index';
 import Navbar from '@/components/Navbar/index';
 import CardMe from '@/components/CardMe/index';
 import TagCloud from '@/components/TagCloud/index';
+import Search from '@/components/Search/index';
 import { ElNotification } from 'element-plus';
 
 export default {
@@ -74,6 +75,10 @@ export default {
                     tagName: 'MATLAB',
                 },
             ],
+            scrollAction: {
+                x: 'undefined',
+                y: 'undefined',
+            },
         };
     },
     components: {
@@ -81,6 +86,7 @@ export default {
         Navbar,
         CardMe,
         TagCloud,
+        Search,
     },
     methods: {
         Welcome() {
@@ -90,6 +96,50 @@ export default {
                 duration: 3000,
             });
         },
+        isDownDirection() {
+            if (typeof this.scrollAction.x == 'undefined') {
+                this.scrollAction.x = window.scrollX;
+                this.scrollAction.y = window.scrollY;
+            }
+            var diffX = this.scrollAction.x - window.scrollX;
+            var diffY = this.scrollAction.y - window.scrollY;
+
+            this.scrollAction.x = window.scrollX;
+            this.scrollAction.y = window.scrollY;
+
+            if (diffX < 0) {
+                // Scroll right
+            } else if (diffX > 0) {
+                // Scroll left
+            } else if (diffY < 0) {
+                // Scroll down
+                return true;
+            } else if (diffY > 0) {
+                // Scroll up
+            } else {
+                // First scroll event
+            }
+            return false;
+        },
+        FixSide() {
+            if (document.documentElement.scrollTop > 800) {
+                this.$nextTick(() => {
+                    const asideElement = this.$refs.aside;
+                    if (asideElement) {
+                        asideElement.style.position = 'fixed';
+                        asideElement.style.top = '15px';
+                    }
+                });
+            } else {
+                this.$nextTick(() => {
+                    const asideElement = this.$refs.aside;
+                    if (asideElement) {
+                        asideElement.style.position = '';
+                        asideElement.style.top = '';
+                    }
+                });
+            }
+        },
     },
     beforeRouteEnter(to, from, next) {
         next((vm) => {
@@ -98,6 +148,7 @@ export default {
     },
     mounted() {
         this.Welcome();
+        window.addEventListener('scroll', this.FixSide);
     },
 };
 </script>
