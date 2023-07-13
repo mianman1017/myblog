@@ -1,6 +1,6 @@
 <template>
     <div id="building" ref="buildingRef"></div>
-    <div class="header">
+    <div class="header" onselectstart="return false">
         <Navbar ref="navbar" :activeIndex="activeIndex" />
     </div>
     <div
