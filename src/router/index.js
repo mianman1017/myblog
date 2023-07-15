@@ -20,6 +20,14 @@ const routes = [
         component: () =>
             import(/* webpackChunkName: "about" */ '../views/Home/index.vue'),
     },
+    {
+        path: '/timeline',
+        name: 'TimeLine',
+        component: () =>
+            import(
+                /* webpackChunkName: "about" */ '../views/TimeLine/index.vue'
+            ),
+    },
 ];
 
 const router = createRouter({

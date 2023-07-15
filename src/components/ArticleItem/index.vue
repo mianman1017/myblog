@@ -97,6 +97,7 @@ export default {
     margin-right: 10px;
     margin-bottom: 20px;
     transition: width 0s;
+    min-width: 470px;
     /* opacity: 0.7;
     transition: opacity 0.15s; */
 }
@@ -174,7 +175,6 @@ export default {
 @media screen and (max-width: 992px) {
     .article-card {
         width: 97%;
-        min-width: 470px;
     }
 }
 

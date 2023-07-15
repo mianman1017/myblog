@@ -26,4 +26,9 @@ export default {
     font-weight: 600;
     border-bottom: solid 2px var(--text_color);
 }
+@media screen and (max-width: 768px) {
+    .search-card {
+        display: none;
+    }
+}
 </style>

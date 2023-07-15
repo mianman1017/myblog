@@ -216,4 +216,8 @@ export default {
 .navbar-padding {
     padding-right: 10px;
 }
+
+.flex-grow {
+    flex-grow: 1;
+}
 </style>

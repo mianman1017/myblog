@@ -1,37 +1,26 @@
 <template>
-    <div class="articlelist-container">
-        <Loading
-            v-if="loading"
-            :loading="loading"
-            :offset="offset"
-            :nodata="noData"
-            @isDownDirection="isDownDirection"
-            @load="load"
-        />
-        <div class="article-list">
-            <ArticleItem
+    <div class="timeline-container">
+        <el-timeline>
+            <el-timeline-item
                 v-for="article in articles"
-                :key="article.id"
-                v-bind="article"
-            />
-        </div>
+                :timestamp="article.createDate"
+                placement="top"
+            >
+                <ArticleItem
+                    class="timeline-article"
+                    :key="article.id"
+                    v-bind="article"
+                />
+            </el-timeline-item>
+        </el-timeline>
     </div>
 </template>
 
 <script>
 import ArticleItem from '@/components/ArticleItem/index';
-import Pagination from '@/components/Pagination/index';
-import Loading from '@/components/Loading/index';
 export default {
     data() {
         return {
-            loading: false,
-            noData: true,
-            offset: 0,
-            innerPage: {
-                currentpage: 1,
-                pageSize: 10,
-            },
             articles: [
                 {
                     id: '1',
@@ -93,53 +82,57 @@ export default {
     },
     components: {
         ArticleItem,
-        Pagination,
-        Loading,
-    },
-    methods: {
-        load() {
-            // 如果出发分页，需要调用接口，加载文章列表
-            alert('触发分页');
-            this.articles = this.articles.concat(this.articles);
-            // this.getArticles();
-        },
-
-        // 分页功能待实现
-        getArticles() {
-            this.loading = true;
-            // 后端发请求
-            this.axios
-                .post('url', 'params')
-                .then((res) => {
-                    //Result(success,msg,data)
-                    if (res.data.success) {
-                        if (res.data.data.length <= 0) {
-                            this.noData = true;
-                        }
-                        this.articles = this.articles.concat(res.data.data);
-                    } else {
-                        this.$message.error(res.data.msg);
-                    }
-                })
-                .catch((err) => {
-                    // this.$message.error('文章加载失败');
-                })
-                .finally(() => {});
-            this.noData = false;
-            this.loading = false;
-        },
-
-        isDownDirection() {
-            this.$emit('isDownDirection');
-        },
     },
 };
 </script>
 
 <style>
-@media screen and (max-width: 768px) {
-    .articlelist-container {
-        margin: auto;
+.timeline-container {
+    width: 50%;
+    margin: auto;
+    border-radius: 13px;
+    background: rgba(255, 255, 255, 0.2);
+    -webkit-backdrop-filter: blur(8px);
+    backdrop-filter: blur(8px);
+    padding-top: 30px;
+    box-shadow: inset 0 0 6px rgba(255, 255, 255, 0.2);
+    min-width: 600px;
+}
+
+.timeline-container .el-timeline {
+    position: relative;
+    min-width: 450px;
+    margin-left: 5%;
+    margin-right: 5%;
+    padding-left: 6%;
+}
+
+.timeline-container .el-timeline-item {
+    padding-bottom: 20px;
+}
+
+.timeline-container .el-timeline-item__wrapper {
+    padding-left: 30px;
+}
+
+.timeline-article {
+    width: 90%;
+    height: 200px;
+    min-width: 405px;
+}
+
+.timeline-article .article-img,
+.timeline-article .me-article {
+    height: 200px;
+}
+
+@media screen and (max-width: 992px) {
+    .timeline-article {
+        height: 170px;
+    }
+    .timeline-article .article-img,
+    .timeline-article .me-article {
+        height: 170px;
     }
 }
 </style>
