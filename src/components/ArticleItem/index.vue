@@ -148,7 +148,7 @@ export default {
     font-size: 13px;
     line-height: 24px;
     margin-bottom: 5px;
-    height: 75px;
+    height: 80px;
 }
 
 .tag-icon {

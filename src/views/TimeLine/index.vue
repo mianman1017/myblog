@@ -95,6 +95,7 @@ export default {
     -webkit-backdrop-filter: blur(8px);
     backdrop-filter: blur(8px);
     padding-top: 30px;
+    margin-bottom: 30px;
     box-shadow: inset 0 0 6px rgba(255, 255, 255, 0.2);
     min-width: 600px;
 }
@@ -126,6 +127,10 @@ export default {
     height: 200px;
 }
 
+.timeline-article .me-article-description {
+    height: 110px;
+}
+
 @media screen and (max-width: 992px) {
     .timeline-article {
         height: 170px;
@@ -133,6 +138,9 @@ export default {
     .timeline-article .article-img,
     .timeline-article .me-article {
         height: 170px;
+    }
+    .timeline-article .me-article-description {
+        height: 83px;
     }
 }
 </style>
