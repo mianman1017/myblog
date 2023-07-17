@@ -36,7 +36,7 @@ export default {
                 {
                     id: '1',
                     weight: 1,
-                    title: '标题1',
+                    title: '利用Docker管理项目环境',
                     commentCounts: 123,
                     viewCounts: 123,
                     summary: '概要11',

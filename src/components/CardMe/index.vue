@@ -76,7 +76,6 @@ export default {
 }
 .me-msg-text {
     position: relative;
-    font-family: '华康手札体W5P';
     font-size: 14px;
     top: -3px;
 }

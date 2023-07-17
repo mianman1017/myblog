@@ -24,8 +24,8 @@ export default {
             articles: [
                 {
                     id: '1',
-                    weight: 1,
-                    title: '标题1',
+                    //weight: 1,
+                    title: '利用Docker管理项目环境',
                     commentCounts: 123,
                     viewCounts: 123,
                     summary: '概要11',
@@ -35,7 +35,7 @@ export default {
                 },
                 {
                     id: '2',
-                    weight: 1,
+                    //weight: 1,
                     title: '标题2',
                     commentCounts: 123,
                     viewCounts: 123,
@@ -46,7 +46,7 @@ export default {
                 },
                 {
                     id: '3',
-                    weight: 1,
+                    //weight: 1,
                     title: '标题3',
                     commentCounts: 123,
                     viewCounts: 123,
@@ -57,7 +57,7 @@ export default {
                 },
                 {
                     id: '4',
-                    weight: 0,
+                    //weight: 0,
                     title: '标题1',
                     commentCounts: 123,
                     viewCounts: 123,
@@ -68,7 +68,7 @@ export default {
                 },
                 {
                     id: '5',
-                    weight: 0,
+                    //weight: 0,
                     title: '标题1',
                     commentCounts: 123,
                     viewCounts: 123,
@@ -97,12 +97,11 @@ export default {
     padding-top: 30px;
     margin-bottom: 30px;
     box-shadow: inset 0 0 6px rgba(255, 255, 255, 0.2);
-    min-width: 600px;
+    min-width: 620px;
 }
 
 .timeline-container .el-timeline {
     position: relative;
-    min-width: 450px;
     margin-left: 5%;
     margin-right: 5%;
     padding-left: 6%;
@@ -116,10 +115,22 @@ export default {
     padding-left: 30px;
 }
 
+.timeline-container .el-timeline-item__timestamp {
+    color: var(--hover_color);
+}
+
+.timeline-container .el-timeline-item__tail {
+    border-left-color: var(--hover_color);
+}
+
+.timeline-container .el-timeline-item__node {
+    background-color: var(--hover_color);
+}
+
 .timeline-article {
-    width: 90%;
+    width: 93%;
     height: 200px;
-    min-width: 405px;
+    min-width: 420px;
 }
 
 .timeline-article .article-img,
@@ -127,20 +138,17 @@ export default {
     height: 200px;
 }
 
+.timeline-article .me-article-title {
+    font-size: 16px;
+}
+
 .timeline-article .me-article-description {
-    height: 110px;
+    height: 105px;
 }
 
 @media screen and (max-width: 992px) {
     .timeline-article {
-        height: 170px;
-    }
-    .timeline-article .article-img,
-    .timeline-article .me-article {
-        height: 170px;
-    }
-    .timeline-article .me-article-description {
-        height: 83px;
+        min-width: 450px;
     }
 }
 </style>

@@ -6,16 +6,16 @@
     >
         <el-row>
             <el-col :span="10">
-                <el-image class="article-img" :src="url" fit="fill" />
+                <div style="overflow: hidden">
+                    <img class="article-img" :src="url" />
+                </div>
             </el-col>
             <el-col :span="14"
                 ><div class="me-article">
                     <div class="me-article-header">
-                        <span>
-                            <el-icon><Paperclip /></el-icon>
-                            <span v-if="weight > 0" class="me-article-icon"
-                                >置顶</span
-                            >
+                        <span v-if="weight > 0">
+                            <span class="me-article-fixed"></span>
+                            <span class="me-article-icon">置顶</span>
                         </span>
                         <span class="me-pull-right">
                             <span class="me-article-count">
@@ -39,6 +39,7 @@
                     <a @click="view(id)" class="me-article-title">{{
                         title
                     }}</a>
+
                     <div class="me-article-description">
                         {{ summary }}
                     </div>
@@ -98,6 +99,7 @@ export default {
     margin-bottom: 20px;
     transition: width 0s;
     min-width: 470px;
+
     /* opacity: 0.7;
     transition: opacity 0.15s; */
 }
@@ -107,17 +109,29 @@ export default {
 } */
 
 .article-img {
+    display: block;
     width: 100%;
     height: 175px;
+    transition: transform 0.4s;
+}
+
+.article-img:hover {
+    transform: scale(1.1);
 }
 
 .me-article {
     padding: 7px 0 0 10px;
 }
 
+.me-article-header {
+    height: 27px;
+}
+
 .me-article-title {
     cursor: pointer;
     position: relative;
+    color: darkorange;
+    white-space: nowrap;
     font-weight: 600;
     top: -2px;
 }
@@ -136,6 +150,15 @@ export default {
     left: 2px;
     padding: 0;
 }
+
+.me-article-fixed {
+    background: url('@/assets/fixed.png') no-repeat;
+    background-size: contain;
+    width: 14px;
+    height: 14px;
+    display: inline-block;
+}
+
 .me-article-count {
     color: var(--text_color);
     padding-right: 7px;
