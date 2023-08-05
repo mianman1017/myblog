@@ -20,8 +20,15 @@ export default {
     min-width: 230px;
     height: 100px;
     color: var(--text_color);
+    background-color: var(--card_color);
+    color: var(--text_color);
     margin-left: 7px;
 }
+
+.search-card:hover {
+    background-color: var(--hover_color);
+}
+
 .search-header {
     font-weight: 600;
     border-bottom: solid 2px var(--text_color);

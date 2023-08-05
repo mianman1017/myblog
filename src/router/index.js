@@ -28,6 +28,14 @@ const routes = [
                 /* webpackChunkName: "about" */ '../views/TimeLine/index.vue'
             ),
     },
+    {
+        path: '/view/:id',
+        name: 'View',
+        component: () =>
+            import(
+                /* webpackChunkName: "about" */ '../views/ArticleDetail/index.vue'
+            ),
+    },
 ];
 
 const router = createRouter({

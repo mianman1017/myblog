@@ -7,7 +7,7 @@
         <el-row>
             <el-col :span="10">
                 <div style="overflow: hidden">
-                    <img class="article-img" :src="url" />
+                    <img class="article-img" :src="img" />
                 </div>
             </el-col>
             <el-col :span="14"
@@ -47,11 +47,11 @@
                         <el-icon class="tag-icon"><PriceTag /></el-icon>
                         <el-tag
                             v-for="t in tags"
-                            :key="t.tagName"
+                            :key="t.id"
                             size="small"
                             type="success"
                             class="article-tag"
-                            >{{ t.tagName }}</el-tag
+                            >{{ t }}</el-tag
                         >
                     </div>
                 </div></el-col
@@ -64,26 +64,27 @@
 export default {
     name: 'ArticleItem',
     props: {
-        id: String,
+        id: Number,
         weight: Number,
         img: String,
         title: String,
+        body: Text,
         commentCounts: Number,
         viewCounts: Number,
         summary: String,
         author: String,
         tags: Array,
-        createDate: String,
+        createDate: Date,
+        updateDate: Date,
     },
     data() {
         return {
             topShow: false,
-            url: require('../../assets/docker.jpg'),
         };
     },
     methods: {
         view(id) {
-            this.$router.push({ path: '/view/${id}' });
+            this.$router.push({ path: '/view/' + id });
         },
     },
 };
@@ -92,18 +93,21 @@ export default {
 <style>
 .article-card {
     border: 0;
-    color: var(--text_color);
     width: 530px;
-    height: 175px;
+    height: 190px;
     margin-right: 10px;
     margin-bottom: 20px;
     transition: width 0s;
     min-width: 470px;
-
+    background-color: var(--card_color);
+    color: var(--text_color);
     /* opacity: 0.7;
     transition: opacity 0.15s; */
 }
 
+.article-card:hover {
+    background-color: var(--hover_color);
+}
 /* .article-card:hover {
     opacity: 0.85;
 } */
@@ -111,7 +115,7 @@ export default {
 .article-img {
     display: block;
     width: 100%;
-    height: 175px;
+    height: 190px;
     transition: transform 0.4s;
 }
 
@@ -171,7 +175,7 @@ export default {
     font-size: 13px;
     line-height: 24px;
     margin-bottom: 5px;
-    height: 80px;
+    height: 90px;
 }
 
 .tag-icon {

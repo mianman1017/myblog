@@ -56,12 +56,17 @@ export default {
 .me-card {
     max-width: 280px;
     min-width: 230px;
-    height: 280px;
+    height: 290px;
     color: var(--text_color);
     margin-left: 7px;
-
+    background-color: var(--card_color);
+    color: var(--text_color);
     /* opacity: 0.7;
     transition: opacity 0.15s; */
+}
+
+.me-card:hover {
+    background-color: var(--hover_color);
 }
 
 .me-profile {
@@ -106,7 +111,7 @@ export default {
 .me-iconlist {
     padding-top: 15px;
     width: 100%;
-    height: 150px;
+    height: 40px;
 }
 
 .me-iconlist a {

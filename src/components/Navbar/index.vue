@@ -96,30 +96,15 @@ export default {
     methods: {
         changeTheme() {
             const theme = document.getElementById('theme');
+            const background = document.getElementById('building');
             console.log(theme.href);
             if (theme.href.includes('light.css')) {
                 theme.href = '../theme/dark.css';
+                background.style.filter = 'brightness(60%)';
             } else {
                 theme.href = '../theme/light.css';
+                background.style.filter = 'brightness(100%)';
             }
-            this.$nextTick(() => {
-                // 等待DOM更新后强制重绘滚动条
-                const html = document.documentElement;
-                // 删除滚动条
-                html.style.overflow = 'hidden';
-                // 用于暂时撑起滚动条的宽度，这样页面就不会抖动
-                html.style.paddingRight = `10px`;
-                // 用于暂时撑起导航栏右侧的宽度，这样导航栏就不会抖动
-                this.hasPadding = true;
-
-                // 等待1ms
-                setTimeout(() => {
-                    // 重新添加滚动条
-                    html.style.overflow = '';
-                    html.style.paddingRight = '';
-                    this.hasPadding = false;
-                }, 1);
-            });
         },
         isDownDirection() {
             if (typeof this.scrollAction.x == 'undefined') {
@@ -171,7 +156,7 @@ export default {
     position: fixed !important;
     width: 100% !important;
     margin-bottom: 30px !important;
-    background-color: var(--card_color) !important;
+    background-color: var(--nav_color) !important;
     border-color: var(--card_color) !important;
     color: var(--text_color) !important;
     transition: transform 0.3s ease;
@@ -186,6 +171,12 @@ export default {
 .el-menu-item:hover,
 .el-menu-item:focus {
     background-color: var(--hover_color) !important;
+    color: rgb(217, 109, 127) !important;
+}
+
+.header > .el-menu--horizontal > .el-menu-item.is-active {
+    border-bottom: 2px solid rgb(217, 109, 127);
+    color: rgb(217, 109, 127) !important;
 }
 
 .logo {

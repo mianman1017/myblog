@@ -3,11 +3,7 @@
     <div class="header" onselectstart="return false">
         <Navbar ref="navbar" :activeIndex="activeIndex" />
     </div>
-    <div
-        class="common-layout"
-        style="padding-top: 90px"
-        onselectstart="return false"
-    >
+    <div class="common-layout" style="padding-top: 90px">
         <!-- 渲染路由匹配到的组件 -->
         <router-view />
 
@@ -47,6 +43,11 @@ export default {
     src: url('../public/fonts/HarmonyOS_Sans_SC_Medium.ttf');
 }
 
+@font-face {
+    font-family: 'JetBrains Mono';
+    src: url('../public/fonts/JetBrainsMono-Light.ttf');
+}
+
 html,
 body,
 #app,
@@ -57,23 +58,6 @@ body,
     margin: 0px;
     /*统一设置高度为100%*/
     height: 100%;
-}
-
-/* 自定义全局滚动条样式 */
-html::-webkit-scrollbar {
-    width: 10px;
-    height: 10px;
-    /**/
-}
-html::-webkit-scrollbar-track {
-    background: var(--scroll_track_color);
-}
-html::-webkit-scrollbar-thumb {
-    background: var(--scroll_thumb_color);
-    border-radius: 10px;
-}
-html::-webkit-scrollbar-thumb:hover {
-    background: var(--scroll_hover_color);
 }
 
 /* 用于添加全局背景图 */

@@ -1,6 +1,6 @@
 <template>
     <el-row class="main-container">
-        <el-col :xs="24" :sm="9" :md="10">
+        <el-col :xs="0" :sm="9" :md="10">
             <div ref="aside" class="me-aside">
                 <CardMe />
                 <TagCloud :tags="tags" />
@@ -157,14 +157,11 @@ export default {
 .el-card {
     font-family: '华康手札体W5P';
     border: 0;
-    background-color: var(--card_color);
     transition: background-color 0s;
-}
-.el-card:hover {
-    background-color: var(--hover_color);
 }
 
 .main-container {
+    margin: auto;
     display: flex;
     flex-direction: row-reverse;
     height: fit-content;

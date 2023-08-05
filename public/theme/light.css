@@ -1,10 +1,9 @@
 /* 定义全局的css变量 */
 :root {
-    --card_color: rgb(255, 255, 255, 0.9);
+    --card_color: rgb(255, 255, 255, 0.95);
     --hover_color: rgb(255, 255, 255);
+    --shadow_color: rgb(34, 34, 34,0.3);
     --text_color: rgb(0, 0, 0, 0.85);
+    --nav_color: rgb(255, 255, 255, 0.95);
 
-    --scroll_track_color: rgb(230,230,230);
-    --scroll_thumb_color: #bfbfbf; 
-    --scroll_hover_color: rgb(150, 150, 150);
 }

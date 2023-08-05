@@ -27,68 +27,8 @@ export default {
         return {
             loading: false,
             noData: true,
-            offset: 0,
-            innerPage: {
-                currentpage: 1,
-                pageSize: 10,
-            },
-            articles: [
-                {
-                    id: '1',
-                    weight: 1,
-                    title: '利用Docker管理项目环境',
-                    commentCounts: 123,
-                    viewCounts: 123,
-                    summary: '概要11',
-                    author: '作者',
-                    tags: [{ tagName: 'vue' }],
-                    createDate: '2023-7-7',
-                },
-                {
-                    id: '2',
-                    weight: 1,
-                    title: '标题2',
-                    commentCounts: 123,
-                    viewCounts: 123,
-                    summary: '概要11',
-                    author: '作者',
-                    tags: [{ tagName: 'vue' }],
-                    createDate: '2023-7-6',
-                },
-                {
-                    id: '3',
-                    weight: 1,
-                    title: '标题3',
-                    commentCounts: 123,
-                    viewCounts: 123,
-                    summary: '概要11',
-                    author: '作者',
-                    tags: [{ tagName: 'vue' }],
-                    createDate: '2023-7-3',
-                },
-                {
-                    id: '4',
-                    weight: 0,
-                    title: '标题1',
-                    commentCounts: 123,
-                    viewCounts: 123,
-                    summary: '概要11',
-                    author: '作者',
-                    tags: [{ tagName: 'vue' }],
-                    createDate: '2023-5-4',
-                },
-                {
-                    id: '5',
-                    weight: 0,
-                    title: '标题1',
-                    commentCounts: 123,
-                    viewCounts: 123,
-                    summary: '概要11',
-                    author: '作者',
-                    tags: [{ tagName: 'vue' }],
-                    createDate: '2023-2-3',
-                },
-            ],
+            offset: 0, // 初始化偏移值为0
+            articles: [], // 初始化文章列表为空
         };
     },
     components: {
@@ -98,25 +38,24 @@ export default {
     },
     methods: {
         load() {
-            // 如果出发分页，需要调用接口，加载文章列表
-            alert('触发分页');
-            this.articles = this.articles.concat(this.articles);
-            // this.getArticles();
-        },
-
-        // 分页功能待实现
-        getArticles() {
+            // 触发分页，调用接口加载文章列表
             this.loading = true;
-            // 后端发请求
+            const params = new URLSearchParams();
+            params.append('offsert', this.offset);
             this.axios
-                .post('url', 'params')
+                .post('http://localhost:8000/articlelist/get/', params)
                 .then((res) => {
                     //Result(success,msg,data)
                     if (res.data.success) {
+                        console.log(res.data.data);
                         if (res.data.data.length <= 0) {
                             this.noData = true;
+                        } else {
+                            this.articles = this.articles.concat(res.data.data);
+                            this.offset += 5;
+                            console.log(this.articles);
+                            console.log(this.articles[0].weight);
                         }
-                        this.articles = this.articles.concat(res.data.data);
                     } else {
                         this.$message.error(res.data.msg);
                     }
@@ -124,14 +63,18 @@ export default {
                 .catch((err) => {
                     // this.$message.error('文章加载失败');
                 })
-                .finally(() => {});
-            this.noData = false;
-            this.loading = false;
+                .finally(() => {
+                    this.loading = false;
+                });
         },
 
         isDownDirection() {
             this.$emit('isDownDirection');
         },
+    },
+    mounted() {
+        // 页面加载时，调用一次load方法加载文章列表
+        this.load();
     },
 };
 </script>

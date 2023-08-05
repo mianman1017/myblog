@@ -90,16 +90,16 @@ export default {
 .timeline-container {
     width: 50%;
     margin: auto;
-    border-radius: 13px;
-    background: rgba(255, 255, 255, 0.2);
-    -webkit-backdrop-filter: blur(8px);
-    backdrop-filter: blur(8px);
+    border-radius: 10px;
+    background: var(--card_color);
     padding-top: 30px;
     margin-bottom: 30px;
     box-shadow: inset 0 0 6px rgba(255, 255, 255, 0.2);
     min-width: 620px;
 }
-
+.timeline-container .el-card {
+    box-shadow: 0 0 5px var(--shadow_color) !important;
+}
 .timeline-container .el-timeline {
     position: relative;
     margin-left: 5%;
@@ -116,15 +116,15 @@ export default {
 }
 
 .timeline-container .el-timeline-item__timestamp {
-    color: var(--hover_color);
+    color: var(--text_color);
 }
 
 .timeline-container .el-timeline-item__tail {
-    border-left-color: var(--hover_color);
+    border-left-color: var(--text_color);
 }
 
 .timeline-container .el-timeline-item__node {
-    background-color: var(--hover_color);
+    background-color: var(--text_color);
 }
 
 .timeline-article {
