@@ -121,25 +121,6 @@ export default {
             }
             return false;
         },
-        FixSide() {
-            if (document.documentElement.scrollTop > 800) {
-                this.$nextTick(() => {
-                    const asideElement = this.$refs.aside;
-                    if (asideElement) {
-                        asideElement.style.position = 'fixed';
-                        asideElement.style.top = '15px';
-                    }
-                });
-            } else {
-                this.$nextTick(() => {
-                    const asideElement = this.$refs.aside;
-                    if (asideElement) {
-                        asideElement.style.position = '';
-                        asideElement.style.top = '';
-                    }
-                });
-            }
-        },
     },
     beforeRouteEnter(to, from, next) {
         next((vm) => {
@@ -148,14 +129,12 @@ export default {
     },
     mounted() {
         this.Welcome();
-        window.addEventListener('scroll', this.FixSide);
     },
 };
 </script>
 
 <style>
 .el-card {
-    font-family: '华康手札体W5P';
     border: 0;
     transition: background-color 0s;
 }
@@ -175,7 +154,8 @@ export default {
 }
 
 .me-aside {
-    position: relative;
+    position: sticky;
+    top: 1rem;
     margin: auto;
     margin-bottom: 20px;
 }
@@ -188,5 +168,9 @@ export default {
 }
 .flex-grow {
     flex-grow: 1;
+}
+
+h1 {
+    border: 0;
 }
 </style>

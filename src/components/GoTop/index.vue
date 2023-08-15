@@ -1,11 +1,8 @@
 <template>
     <Transition>
-        <el-backtop
-            class="backtotop"
-            v-if="needToTop"
-            :right="100"
-            :bottom="50"
-        />
+        <el-backtop class="backtotop" v-if="needToTop" :right="100" :bottom="50"
+            ><el-icon class="top-icon"><Position /></el-icon
+        ></el-backtop>
     </Transition>
 </template>
 
@@ -42,5 +39,16 @@ export default {
 }
 .backtotop:hover {
     background-color: var(--hover_color) !important;
+}
+.top-icon {
+    width: 100% !important;
+    height: 100% !important;
+}
+.top-icon svg {
+    position: relative;
+    left: -1.5px;
+    top: 2px;
+    width: 60% !important;
+    height: 60% !important;
 }
 </style>

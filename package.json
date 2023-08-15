@@ -11,8 +11,6 @@
     "axios": "^1.4.0",
     "core-js": "^3.8.3",
     "element-plus": "^2.3.9",
-    "highlight.js": "^11.8.0",
-    "marked": "^6.0.0",
     "showdown": "^2.1.0",
     "vue": "^3.2.13",
     "vue-axios": "^3.5.2",

@@ -2,7 +2,6 @@
     <el-menu
         ref="navbar"
         :router="true"
-        :default-active="activeIndex"
         :class="{
             'navbar-transform': isNavbarTransformed,
             'navbar-padding': hasPadding,
@@ -69,7 +68,6 @@ import { ref } from 'vue';
 export default {
     name: 'Navbar',
     props: {
-        activeIndex: String,
         simple: {
             type: Boolean,
             default: false,
@@ -154,7 +152,8 @@ export default {
 <style>
 .el-menu {
     position: fixed !important;
-    width: 100% !important;
+    width: 100%;
+    height: 50px;
     margin-bottom: 30px !important;
     background-color: var(--nav_color) !important;
     border-color: var(--card_color) !important;

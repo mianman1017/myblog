@@ -15,7 +15,7 @@
                     <div class="me-article-header">
                         <span v-if="weight > 0">
                             <span class="me-article-fixed"></span>
-                            <span class="me-article-icon">置顶</span>
+                            <span class="me-article-fixed-text">置顶</span>
                         </span>
                         <span class="me-pull-right">
                             <span class="me-article-count">
@@ -92,6 +92,7 @@ export default {
 
 <style>
 .article-card {
+    font-family: '华康手札体W5P';
     border: 0;
     width: 530px;
     height: 190px;
@@ -103,6 +104,10 @@ export default {
     color: var(--text_color);
     /* opacity: 0.7;
     transition: opacity 0.15s; */
+}
+
+.article-card .el-icon {
+    top: 1.5px;
 }
 
 .article-card:hover {
@@ -134,32 +139,32 @@ export default {
 .me-article-title {
     cursor: pointer;
     position: relative;
-    color: darkorange;
     white-space: nowrap;
     font-weight: 600;
     top: -2px;
 }
 .me-article-title:hover {
-    color: cadetblue;
+    color: rgb(90, 90, 90);
 }
 
-.me-article-icon {
+.me-article-fixed-text {
     cursor: default;
     font-family: '华康手札体W5P';
-    font-size: 14px;
+    font-size: 13px;
     font-weight: 600;
     position: relative;
     color: #f56c6c;
-    top: -2.5px;
     left: 2px;
     padding: 0;
 }
 
 .me-article-fixed {
+    position: relative;
     background: url('@/assets/fixed.png') no-repeat;
     background-size: contain;
-    width: 14px;
-    height: 14px;
+    width: 13px;
+    height: 13px;
+    top: 2px;
     display: inline-block;
 }
 
@@ -178,10 +183,15 @@ export default {
     height: 90px;
 }
 
-.tag-icon {
+.article-card .tag-icon {
     position: relative;
-    top: 3px;
+    top: 4px;
     color: #ff00ff;
+}
+
+.article-card .el-tag .el-tag__content {
+    position: relative;
+    top: 1px;
 }
 
 .article-tag {

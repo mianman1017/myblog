@@ -1,7 +1,7 @@
 <template>
     <div id="building" ref="buildingRef"></div>
     <div class="header" onselectstart="return false">
-        <Navbar ref="navbar" :activeIndex="activeIndex" />
+        <Navbar ref="navbar" />
     </div>
     <div class="common-layout" style="padding-top: 90px">
         <!-- 渲染路由匹配到的组件 -->

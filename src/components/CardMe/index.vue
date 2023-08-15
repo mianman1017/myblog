@@ -54,6 +54,7 @@ export default {
 
 <style>
 .me-card {
+    font-family: '华康手札体W5P';
     max-width: 280px;
     min-width: 230px;
     height: 290px;
