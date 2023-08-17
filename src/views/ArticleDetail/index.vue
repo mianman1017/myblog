@@ -200,7 +200,7 @@ export default {
 .article-detail-card h2 {
     margin-top: 13px;
     margin-bottom: 13px;
-    border-bottom: solid rgba(200, 200, 200, 0.9) 0.3px;
+    border-bottom: solid rgb(238, 238, 238) 1px;
 }
 
 .article-detail-card h3,
@@ -225,6 +225,7 @@ export default {
 
 .article-menu-card .title {
     font-size: 20px;
+    border-bottom: solid 2px #e677a3;
 }
 
 .article-menu-card ul:nth-child(1) {
