@@ -103,7 +103,7 @@ export default {
                 .finally(() => {});
         },
         jumpTo(idname) {
-            console.log(idname);
+            // console.log(idname);
             document.querySelector(idname).scrollIntoView({
                 behavior: 'smooth', // 平滑过渡
                 block: 'center', // 上边框与视窗顶部平齐。默认值
