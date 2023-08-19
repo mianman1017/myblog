@@ -48,8 +48,11 @@ export default {
     src: url('../public/fonts/JetBrainsMono-Light.ttf');
 }
 
-html,
-body,
+body {
+    background-color: var(--bg_color);
+    margin: 0px;
+}
+
 #app,
 .el-container {
     /*设置内部填充为0，几个布局元素之间没有间距*/

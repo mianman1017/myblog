@@ -20,14 +20,10 @@ export default {
     max-width: 280px;
     min-width: 230px;
     height: 100px;
-    color: var(--text_color);
     background-color: var(--card_color);
+    border-color: var(--border_color);
     color: var(--text_color);
     margin-left: 7px;
-}
-
-.search-card:hover {
-    background-color: var(--hover_color);
 }
 
 .search-header {

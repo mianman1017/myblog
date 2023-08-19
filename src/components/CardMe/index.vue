@@ -58,16 +58,12 @@ export default {
     max-width: 280px;
     min-width: 230px;
     height: 290px;
-    color: var(--text_color);
     margin-left: 7px;
     background-color: var(--card_color);
+    border-color: var(--border_color);
     color: var(--text_color);
     /* opacity: 0.7;
     transition: opacity 0.15s; */
-}
-
-.me-card:hover {
-    background-color: var(--hover_color);
 }
 
 .me-profile {

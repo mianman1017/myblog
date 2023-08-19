@@ -19,7 +19,9 @@
         <div class="flex-grow" />
 
         <template v-if="!user.login">
-            <el-button class="nav-button" link>登录</el-button>
+            <el-button class="nav-button" link
+                ><el-icon><User /></el-icon
+            ></el-button>
         </template>
 
         <template v-else>
@@ -42,6 +44,7 @@
             style="
                 --el-switch-on-color: rgb(63, 137, 221);
                 --el-switch-off-color: rgb(31, 19, 84);
+                --el-switch-border-color: var(--border_color);
                 opacity: 1;
             "
             @change="changeTheme"
@@ -156,7 +159,7 @@ export default {
     height: 50px;
     margin-bottom: 30px !important;
     background-color: var(--nav_color) !important;
-    border-color: var(--card_color) !important;
+    border-color: var(--border_color) !important;
     color: var(--text_color) !important;
     transition: transform 0.3s ease;
     z-index: 100;
@@ -178,7 +181,7 @@ export default {
     color: rgb(217, 109, 127) !important;
 }
 
-.logo {
+.el-menu .logo {
     cursor: default;
     font-family: '华康手札体W5P';
     font-weight: bold;
@@ -186,17 +189,24 @@ export default {
     line-height: 57.6px;
     text-indent: 30px;
 }
-.el-switch {
+.el-menu .el-switch {
     margin-top: 10px;
     margin-right: 30px;
 }
-.nav-button {
+
+.el-menu .nav-button {
     position: relative;
-    font-family: 'Harmony';
     color: var(--text_color) !important;
-    width: 57.6px;
-    top: -2px;
+    font-size: 20px;
+    width: 50px;
     margin-right: 10px;
+    border-radius: 100%;
+    border: solid var(--text_color) 10px;
+    transition: transform 0.3s;
+}
+
+.el-menu .nav-button:hover {
+    transform: scale(1.2);
 }
 
 .navbar-transform {

@@ -134,10 +134,10 @@ export default {
 </script>
 
 <style>
-.el-card {
+/* .el-card {
     border: 0;
     transition: background-color 0s;
-}
+} */
 
 .main-container {
     margin: auto;

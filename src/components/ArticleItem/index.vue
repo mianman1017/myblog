@@ -93,15 +93,14 @@ export default {
 <style>
 .article-card {
     font-family: '华康手札体W5P';
-    border: 0;
     width: 530px;
     height: 190px;
     margin-right: 10px;
     margin-bottom: 20px;
-    transition: width 0s;
     min-width: 470px;
     background-color: var(--card_color);
     color: var(--text_color);
+    border-color: var(--border_color);
     /* opacity: 0.7;
     transition: opacity 0.15s; */
 }
@@ -110,9 +109,6 @@ export default {
     top: 1.5px;
 }
 
-.article-card:hover {
-    background-color: var(--hover_color);
-}
 /* .article-card:hover {
     opacity: 0.85;
 } */
