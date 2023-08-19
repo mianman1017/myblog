@@ -78,7 +78,7 @@ export default {
 .me-msg {
     height: 50px;
     padding-bottom: 7px;
-    border-bottom: solid plum 2px;
+    border-bottom: solid var(--pink_color) 2px;
 }
 .me-msg-text {
     position: relative;

@@ -142,9 +142,10 @@ export default {
     white-space: nowrap;
     font-weight: 600;
     top: -2px;
+    color: var(--pink_color);
 }
 .me-article-title:hover {
-    color: rgb(90, 90, 90);
+    color: rgb(201, 129, 153);
 }
 
 .me-article-fixed-text {

@@ -103,10 +103,22 @@ export default {
                 .finally(() => {});
         },
         jumpTo(idname) {
-            // console.log(idname);
-            document.querySelector(idname).scrollIntoView({
-                behavior: 'smooth', // 平滑过渡
-                block: 'center', // 上边框与视窗顶部平齐。默认值
+            const targetElement = document.querySelector(idname);
+
+            if (!targetElement) {
+                return; // 目标元素不存在，无法执行滚动
+            }
+
+            const elementRect = targetElement.getBoundingClientRect();
+            const elementTop = elementRect.top + window.scrollY; // 添加滚动位置
+
+            // 计算目标元素的最终滚动位置
+            const scrollOffset = elementTop - 50;
+
+            // 如果目标元素已经在视口内，就不执行滚动
+            window.scrollTo({
+                top: scrollOffset,
+                behavior: 'smooth',
             });
         },
     },
@@ -151,6 +163,7 @@ export default {
 .article-detail-card .title {
     text-align: center;
     font-size: 30px;
+    color: var(--pink_color);
 }
 .article-detail-card .tail {
     text-align: center;
@@ -225,7 +238,7 @@ export default {
 
 .article-menu-card .title {
     font-size: 20px;
-    border-bottom: solid 2px #e677a3;
+    border-bottom: solid 2px var(--pink_color);
 }
 
 .article-menu-card ul:nth-child(1) {
