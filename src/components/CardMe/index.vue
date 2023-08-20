@@ -104,6 +104,7 @@ export default {
     padding-top: 2px;
     top: 4px;
     left: 30%;
+    border: 0;
 }
 .me-iconlist {
     padding-top: 15px;

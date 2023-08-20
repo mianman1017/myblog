@@ -93,7 +93,7 @@ export default {
 <style>
 .article-card {
     font-family: '华康手札体W5P';
-    width: 530px;
+    width: 540px;
     height: 190px;
     margin-right: 10px;
     margin-bottom: 20px;
@@ -166,7 +166,7 @@ export default {
 
 .me-article-count {
     color: var(--text_color);
-    padding-right: 7px;
+    padding-right: 10px;
     font-size: 13px;
 }
 .me-pull-right {
@@ -194,7 +194,7 @@ export default {
     margin-left: 6px;
     color: #ffffff;
     background-color: #ff00ff;
-    border-color: var(--card_color);
+    border: 0;
 }
 
 .me-view {
