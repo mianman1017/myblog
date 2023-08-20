@@ -35,12 +35,10 @@ export default {
 <style>
 .backtotop {
     color: hotpink !important;
-    border-color: var(--border_color) !important;
+    border: solid 1.5px var(--border_color) !important;
     background-color: var(--card_color) !important;
 }
-.backtotop:hover {
-    background-color: var(--hover_color) !important;
-}
+
 .top-icon {
     width: 100% !important;
     height: 100% !important;
