@@ -134,10 +134,9 @@ export default {
 </script>
 
 <style>
-/* .el-card {
-    border: 0;
-    transition: background-color 0s;
-} */
+.el-card {
+    border: solid 1.5px var(--border_color);
+}
 
 .main-container {
     margin: auto;

@@ -10,11 +10,11 @@
         <div class="me-msg">
             <div>
                 <el-icon><LocationInformation /></el-icon>
-                <span class="me-msg-text">南开大学</span>
+                <span class="me-msg-text"> 南开大学</span>
             </div>
             <div>
                 <el-icon><EditPen /></el-icon>
-                <span class="me-msg-text">追风赶月莫停留，平芜尽处是春山</span>
+                <span class="me-msg-text"> 追风赶月莫停留，平芜尽处是春山</span>
             </div>
         </div>
         <div class="me-iconlist">

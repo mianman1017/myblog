@@ -43,13 +43,8 @@ export default {
     min-width: 230px;
     height: 200px;
     color: var(--text_color);
-    border-color: var(--border_color);
     background-color: var(--card_color);
     margin-left: 7px;
-}
-
-.tag-card:hover {
-    background-color: var(--hover_color);
 }
 
 .tag-header {

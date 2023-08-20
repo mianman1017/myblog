@@ -154,8 +154,7 @@ export default {
     font-family: '华康手札体W5P';
     margin-left: 10px;
     margin-right: 10px;
-    background-color: var(--hover_color);
-    border: 0;
+    background-color: var(--card_color);
     color: var(--text_color);
     transition: background-color 0s;
 }
@@ -230,9 +229,8 @@ export default {
     position: sticky;
     top: 1rem;
     font-family: '华康手札体W5P';
-    background-color: var(--hover_color);
+    background-color: var(--card_color);
     color: var(--text_color);
-    border: 0;
     transition: background-color 0s;
 }
 

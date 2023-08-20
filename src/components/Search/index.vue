@@ -21,7 +21,6 @@ export default {
     min-width: 230px;
     height: 100px;
     background-color: var(--card_color);
-    border-color: var(--border_color);
     color: var(--text_color);
     margin-left: 7px;
 }
