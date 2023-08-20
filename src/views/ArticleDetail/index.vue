@@ -1,7 +1,7 @@
 <template>
     <div class="article-detail-container">
         <el-row>
-            <el-col :xs="24" :sm="16" :md="16">
+            <el-col :xs="24" :sm="18" :md="18">
                 <el-card class="article-detail-card">
                     <div class="title">{{ this.article.title }}</div>
                     <div class="tail">
@@ -146,13 +146,17 @@ export default {
 </script>
 
 <style>
+.el-card {
+    border: solid 1.5px var(--border_color);
+}
+
 .article-detail-container {
     margin-left: 10%;
     margin-right: 10%;
 }
 .article-detail-card {
     font-family: '华康手札体W5P';
-    margin-left: 10px;
+    margin-left: 7px;
     margin-right: 10px;
     background-color: var(--card_color);
     color: var(--text_color);
@@ -232,6 +236,7 @@ export default {
     background-color: var(--card_color);
     color: var(--text_color);
     transition: background-color 0s;
+    margin-left: 5px;
 }
 
 .article-menu-card .title {

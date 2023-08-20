@@ -35,6 +35,7 @@ export default {
 <style>
 .backtotop {
     color: hotpink !important;
+    border-color: var(--border_color) !important;
     background-color: var(--card_color) !important;
 }
 .backtotop:hover {
