@@ -1,5 +1,6 @@
 <template>
     <el-menu
+        :default-active="activeIndex"
         ref="navbar"
         :router="true"
         :class="{
@@ -88,6 +89,7 @@ export default {
             },
             isNavbarTransformed: false,
             hasPadding: false,
+            activeIndex: '/',
         };
     },
     setup() {
@@ -148,6 +150,8 @@ export default {
     },
     mounted() {
         window.addEventListener('scroll', this.HandleScrollForNavbarShow);
+        this.activeIndex = this.$route.path;
+        console.log(this.activeIndex);
     },
 };
 </script>
@@ -176,7 +180,7 @@ export default {
     color: rgb(217, 109, 127) !important;
 }
 
-.header > .el-menu--horizontal > .el-menu-item.is-active {
+.common-layout > .el-menu--horizontal > .el-menu-item.is-active {
     border-bottom: 2px solid rgb(217, 109, 127);
     color: rgb(217, 109, 127) !important;
 }

@@ -1,11 +1,10 @@
 /* 定义全局的css变量 */
 :root {
-    --bg_color: rgb(245,245,245);
     --card_color: rgb(255, 255, 255);
+    --hover_color: rgb(255, 255, 255);
     --border_color: rgb(34, 34, 34);
     --shadow_color: rgb(34, 34, 34,0.3);
     --text_color: rgb(0, 0, 0, 0.85);
     --nav_color: rgb(255, 255, 255, 0.95);
     --pink_color: #e44987;
-
 }

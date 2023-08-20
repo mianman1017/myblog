@@ -1,9 +1,9 @@
 <template>
     <div id="building" ref="buildingRef"></div>
-    <div class="header" onselectstart="return false">
+    <!-- <div class="header" onselectstart="return false">
         <Navbar ref="navbar" />
-    </div>
-    <div class="common-layout" style="padding-top: 90px">
+    </div> -->
+    <div class="common-layout">
         <!-- 渲染路由匹配到的组件 -->
         <router-view />
 
@@ -48,11 +48,8 @@ export default {
     src: url('../public/fonts/JetBrainsMono-Light.ttf');
 }
 
-body {
-    background-color: var(--bg_color);
-    margin: 0px;
-}
-
+html,
+body,
 #app,
 .el-container {
     /*设置内部填充为0，几个布局元素之间没有间距*/

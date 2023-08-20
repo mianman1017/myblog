@@ -1,4 +1,5 @@
 <template>
+    <Navbar ref="navbar" />
     <el-row class="main-container">
         <el-col :xs="0" :sm="9" :md="10">
             <div ref="aside" class="me-aside">
@@ -144,6 +145,7 @@ export default {
     flex-direction: row-reverse;
     height: fit-content;
     overflow-x: hidden;
+    padding-top: 90px;
 }
 .me-articles {
     /* font-family: 'Harmony'; */

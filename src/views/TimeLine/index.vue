@@ -1,23 +1,28 @@
 <template>
+    <Navbar ref="navbar" />
     <div class="timeline-container">
-        <el-timeline>
-            <el-timeline-item
-                v-for="article in articles"
-                :timestamp="article.createDate"
-                placement="top"
-            >
-                <ArticleItem
-                    class="timeline-article"
-                    :key="article.id"
-                    v-bind="article"
-                />
-            </el-timeline-item>
-        </el-timeline>
+        <div class="timeline-card">
+            <el-timeline>
+                <el-timeline-item
+                    v-for="article in articles"
+                    :timestamp="article.createDate"
+                    placement="top"
+                >
+                    <ArticleItem
+                        class="timeline-article"
+                        :key="article.id"
+                        v-bind="article"
+                    />
+                </el-timeline-item>
+            </el-timeline>
+        </div>
     </div>
 </template>
 
 <script>
 import ArticleItem from '@/components/ArticleItem/index';
+import Navbar from '@/components/Navbar/index';
+
 export default {
     data() {
         return {
@@ -82,12 +87,17 @@ export default {
     },
     components: {
         ArticleItem,
+        Navbar,
     },
 };
 </script>
 
 <style>
 .timeline-container {
+    padding-top: 90px;
+}
+
+.timeline-card {
     width: 50%;
     margin: auto;
     border-radius: 10px;
@@ -97,33 +107,33 @@ export default {
     box-shadow: inset 0 0 6px rgba(255, 255, 255, 0.2);
     min-width: 620px;
 }
-.timeline-container .el-card {
+.timeline-card .el-card {
     box-shadow: 0 0 5px var(--shadow_color) !important;
 }
-.timeline-container .el-timeline {
+.timeline-card .el-timeline {
     position: relative;
     margin-left: 5%;
     margin-right: 5%;
     padding-left: 6%;
 }
 
-.timeline-container .el-timeline-item {
+.timeline-card .el-timeline-item {
     padding-bottom: 20px;
 }
 
-.timeline-container .el-timeline-item__wrapper {
+.timeline-card .el-timeline-item__wrapper {
     padding-left: 30px;
 }
 
-.timeline-container .el-timeline-item__timestamp {
+.timeline-card .el-timeline-item__timestamp {
     color: var(--text_color);
 }
 
-.timeline-container .el-timeline-item__tail {
+.timeline-card .el-timeline-item__tail {
     border-left-color: var(--text_color);
 }
 
-.timeline-container .el-timeline-item__node {
+.timeline-card .el-timeline-item__node {
     background-color: var(--text_color);
 }
 

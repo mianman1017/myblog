@@ -49,7 +49,7 @@ export default {
                     document.documentElement.scrollTop ||
                     document.body.scrollTop;
                 const windowHeight = window.innerHeight;
-                console.log(scrollTop, windowHeight, scrollHeight, this.offset);
+                // console.log(scrollTop, windowHeight, scrollHeight, this.offset);
 
                 // 至于这里为什么要加3是我通过测试发现的，每次滑到底部总是少一点
                 if (

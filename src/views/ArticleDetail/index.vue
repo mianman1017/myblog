@@ -1,4 +1,5 @@
 <template>
+    <Navbar ref="navbar" />
     <div class="article-detail-container">
         <el-row>
             <el-col :xs="24" :sm="18" :md="18">
@@ -51,6 +52,7 @@
 
 <script>
 import '../../../public/theme/monokai.css';
+import Navbar from '@/components/Navbar/index';
 
 export default {
     name: 'ArticleDetail',
@@ -72,6 +74,9 @@ export default {
                 updateDate: '',
             },
         };
+    },
+    components: {
+        Navbar,
     },
     methods: {
         getArticle() {
@@ -151,16 +156,19 @@ export default {
 }
 
 .article-detail-container {
+    padding-top: 90px;
     margin-left: 10%;
     margin-right: 10%;
 }
+
 .article-detail-card {
+    width: 90%;
     font-family: '华康手札体W5P';
-    margin-left: 7px;
-    margin-right: 10px;
     background-color: var(--card_color);
     color: var(--text_color);
     transition: background-color 0s;
+    padding: 0px 20px 0px 20px;
+    margin: auto;
 }
 
 .article-detail-card .title {
@@ -230,13 +238,13 @@ export default {
 /* 目录结构样式 */
 
 .article-menu-card {
+    width: 90%;
     position: sticky;
     top: 1rem;
     font-family: '华康手札体W5P';
     background-color: var(--card_color);
     color: var(--text_color);
     transition: background-color 0s;
-    margin-left: 5px;
 }
 
 .article-menu-card .title {
