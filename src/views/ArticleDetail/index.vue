@@ -51,7 +51,7 @@
 </template>
 
 <script>
-import '../../../public/theme/monokai.css';
+import '../../../public/theme/dracula.css';
 import Navbar from '@/components/Navbar/index';
 
 export default {
@@ -218,6 +218,7 @@ export default {
     font-family: 'JetBrains Mono';
     font-size: 13px;
     width: 100%;
+    line-height: 150%;
 }
 
 .article-detail-card h1,

@@ -177,12 +177,12 @@ export default {
 .el-menu-item:hover,
 .el-menu-item:focus {
     background-color: var(--hover_color) !important;
-    color: rgb(217, 109, 127) !important;
+    color: var(--pink_color) !important;
 }
 
 .common-layout > .el-menu--horizontal > .el-menu-item.is-active {
-    border-bottom: 2px solid rgb(217, 109, 127);
-    color: rgb(217, 109, 127) !important;
+    border-bottom: 2px solid var(--pink_color);
+    color: var(--pink_color) !important;
 }
 
 .el-menu .logo {
