@@ -1,15 +1,14 @@
 import { createApp } from 'vue';
-import { formatTime } from './utils/time';
 
 import App from './App.vue';
 import router from './router';
 import store from './store';
+import axios from 'axios';
+import VueAxios from 'vue-axios';
+
 import ElementPlus from 'element-plus';
 import 'element-plus/dist/index.css';
 import * as Icons from '@element-plus/icons-vue'; // 引入所有图标，并命名为 Icons
-import Vue from 'vue';
-import axios from 'axios';
-import VueAxios from 'vue-axios';
 
 const app = createApp(App);
 
@@ -19,11 +18,6 @@ app.directive('title', {
         document.title = el.dataset.title;
     },
 });
-
-// 格式化时间
-app.config.globalProperties.$filters = {
-    format: formatTime,
-};
 
 app.use(store);
 app.use(router);

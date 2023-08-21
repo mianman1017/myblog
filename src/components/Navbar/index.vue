@@ -37,7 +37,7 @@
         </template>
 
         <el-switch
-            v-model="value"
+            v-model="currentTheme"
             class="ml-2"
             inline-prompt
             active-text="☀️"
@@ -67,7 +67,7 @@
 </template>
 
 <script>
-import { ref } from 'vue';
+import { mapGetters, mapActions } from 'vuex';
 
 export default {
     name: 'Navbar',
@@ -92,11 +92,8 @@ export default {
             activeIndex: '/',
         };
     },
-    setup() {
-        const value = ref(true);
-        return { value };
-    },
     methods: {
+        ...mapActions(['toggleTheme']), // 映射切换主题的方法
         changeTheme() {
             const theme = document.getElementById('theme');
             const background = document.getElementById('building');
@@ -108,6 +105,8 @@ export default {
                 theme.href = '../theme/light.css';
                 background.style.filter = 'brightness(100%)';
             }
+            this.toggleTheme();
+            // console.log(this.currentTheme);
         },
         isDownDirection() {
             if (typeof this.scrollAction.x == 'undefined') {
@@ -147,6 +146,9 @@ export default {
                 }
             });
         },
+    },
+    computed: {
+        ...mapGetters(['currentTheme']), // 映射当前主题
     },
     mounted() {
         window.addEventListener('scroll', this.HandleScrollForNavbarShow);
