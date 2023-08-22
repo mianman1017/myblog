@@ -2,15 +2,16 @@ import { createStore } from 'vuex';
 
 export default createStore({
     state: {
-        currentTheme: true, // 当前主题,true代表白天，false代表黑夜
+        theme: true, // 当前主题,true代表白天，false代表黑夜
+        login: false, // 当前是否登录
     },
     getters: {
-        currentTheme: (state) => state.currentTheme,
+        theme: (state) => state.theme,
     },
     mutations: {
         // 定义一个mutation来更新开关状态
         toggleTheme(state) {
-            state.currentTheme = !state.currentTheme;
+            state.theme = !state.theme;
         },
     },
     actions: {

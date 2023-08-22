@@ -20,7 +20,7 @@
         <div class="flex-grow" />
 
         <template v-if="!user.login">
-            <el-button class="nav-button" link
+            <el-button class="nav-button" @click="Login" link
                 ><el-icon><User /></el-icon
             ></el-button>
         </template>
@@ -37,7 +37,7 @@
         </template>
 
         <el-switch
-            v-model="currentTheme"
+            v-model="theme"
             class="ml-2"
             inline-prompt
             active-text="☀️"
@@ -68,6 +68,7 @@
 
 <script>
 import { mapGetters, mapActions } from 'vuex';
+import { ElMessage, ElMessageBox } from 'element-plus';
 
 export default {
     name: 'Navbar',
@@ -106,7 +107,7 @@ export default {
                 background.style.filter = 'brightness(100%)';
             }
             this.toggleTheme();
-            // console.log(this.currentTheme);
+            // console.log(this.theme);
         },
         isDownDirection() {
             if (typeof this.scrollAction.x == 'undefined') {
@@ -133,7 +134,7 @@ export default {
             }
             return false;
         },
-        HandleScrollForNavbarShow() {
+        scrollForNavbarShow() {
             this.$nextTick(() => {
                 const navbar = this.$refs.navbar;
                 if (navbar) {
@@ -146,12 +147,33 @@ export default {
                 }
             });
         },
+        Login() {
+            ElMessageBox.confirm(
+                '<strong>proxy is <i>HTML</i> string</strong>',
+                'HTML String',
+                {
+                    dangerouslyUseHTMLString: true,
+                }
+            )
+                .then(() => {
+                    ElMessage({
+                        type: 'success',
+                        message: 'Delete completed',
+                    });
+                })
+                .catch(() => {
+                    ElMessage({
+                        type: 'info',
+                        message: 'Delete canceled',
+                    });
+                });
+        },
     },
     computed: {
-        ...mapGetters(['currentTheme']), // 映射当前主题
+        ...mapGetters(['theme']), // 映射当前主题
     },
     mounted() {
-        window.addEventListener('scroll', this.HandleScrollForNavbarShow);
+        window.addEventListener('scroll', this.scrollForNavbarShow);
         this.activeIndex = this.$route.path;
         console.log(this.activeIndex);
     },

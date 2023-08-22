@@ -70,4 +70,36 @@ body,
     background-size: 100% 100%;
     z-index: -1;
 }
+
+html::-webkit-scrollbar {
+    width: 8px;
+    height: 7px;
+    /**/
+}
+html::-webkit-scrollbar-track {
+    background: rgb(239, 239, 239);
+    border-radius: 2px;
+}
+html::-webkit-scrollbar-thumb {
+    background: linear-gradient(
+        180deg,
+        rgba(76, 155, 218, 0.7) 0%,
+        rgba(162, 0, 255, 0.7) 36%,
+        rgba(179, 0, 255, 0.7) 52%,
+        rgba(230, 119, 163, 0.7) 76%
+    );
+    border-radius: 10px;
+}
+html::-webkit-scrollbar-thumb:hover {
+    background: linear-gradient(
+        180deg,
+        rgba(76, 155, 218, 1) 0%,
+        rgba(162, 0, 255, 1) 36%,
+        rgba(179, 0, 255, 1) 52%,
+        rgba(230, 119, 163, 1) 76%
+    );
+}
+html::-webkit-scrollbar-corner {
+    background: #179a16;
+}
 </style>

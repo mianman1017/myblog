@@ -36,6 +36,14 @@ const routes = [
                 /* webpackChunkName: "about" */ '../views/ArticleDetail/index.vue'
             ),
     },
+    {
+        path: '/personal/:id',
+        name: 'Personal',
+        component: () =>
+            import(
+                /* webpackChunkName: "about" */ '../views/Personal/index.vue'
+            ),
+    },
 ];
 
 const router = createRouter({

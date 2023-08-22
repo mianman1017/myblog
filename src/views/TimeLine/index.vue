@@ -1,7 +1,7 @@
 <template>
     <Navbar ref="navbar" />
     <div class="timeline-container">
-        <div class="timeline-card">
+        <el-card class="timeline-card">
             <el-timeline>
                 <el-timeline-item
                     v-for="article in articles"
@@ -15,7 +15,7 @@
                     />
                 </el-timeline-item>
             </el-timeline>
-        </div>
+        </el-card>
     </div>
 </template>
 
@@ -26,68 +26,52 @@ import Navbar from '@/components/Navbar/index';
 export default {
     data() {
         return {
-            articles: [
-                {
-                    id: '1',
-                    //weight: 1,
-                    title: '利用Docker管理项目环境',
-                    commentCounts: 123,
-                    viewCounts: 123,
-                    summary: '概要11',
-                    author: '作者',
-                    tags: [{ tagName: 'vue' }],
-                    createDate: '2023-7-7',
-                },
-                {
-                    id: '2',
-                    //weight: 1,
-                    title: '标题2',
-                    commentCounts: 123,
-                    viewCounts: 123,
-                    summary: '概要11',
-                    author: '作者',
-                    tags: [{ tagName: 'vue' }],
-                    createDate: '2023-7-6',
-                },
-                {
-                    id: '3',
-                    //weight: 1,
-                    title: '标题3',
-                    commentCounts: 123,
-                    viewCounts: 123,
-                    summary: '概要11',
-                    author: '作者',
-                    tags: [{ tagName: 'vue' }],
-                    createDate: '2023-7-3',
-                },
-                {
-                    id: '4',
-                    //weight: 0,
-                    title: '标题1',
-                    commentCounts: 123,
-                    viewCounts: 123,
-                    summary: '概要11',
-                    author: '作者',
-                    tags: [{ tagName: 'vue' }],
-                    createDate: '2023-5-4',
-                },
-                {
-                    id: '5',
-                    //weight: 0,
-                    title: '标题1',
-                    commentCounts: 123,
-                    viewCounts: 123,
-                    summary: '概要11',
-                    author: '作者',
-                    tags: [{ tagName: 'vue' }],
-                    createDate: '2023-2-3',
-                },
-            ],
+            articles: [],
         };
     },
     components: {
         ArticleItem,
         Navbar,
+    },
+    methods: {
+        load() {
+            // 触发分页，调用接口加载文章列表
+            this.loading = true;
+            const params = new URLSearchParams();
+            params.append('offsert', this.offset);
+            this.axios
+                .post('http://localhost:8000/articlelist/get/', params)
+                .then((res) => {
+                    //Result(success,msg,data)
+                    if (res.data.success) {
+                        console.log(res.data.data);
+                        if (res.data.data.length <= 0) {
+                            this.noData = true;
+                        } else {
+                            this.articles = this.articles.concat(res.data.data);
+                            this.offset += 5;
+                            console.log(this.articles);
+                            console.log(this.articles[0].weight);
+                        }
+                    } else {
+                        this.$message.error(res.data.msg);
+                    }
+                })
+                .catch((err) => {
+                    // this.$message.error('文章加载失败');
+                })
+                .finally(() => {
+                    this.loading = false;
+                });
+        },
+
+        isDownDirection() {
+            this.$emit('isDownDirection');
+        },
+    },
+    mounted() {
+        // 页面加载时，调用一次load方法加载文章列表
+        this.load();
     },
 };
 </script>
@@ -100,12 +84,11 @@ export default {
 .timeline-card {
     width: 50%;
     margin: auto;
-    border-radius: 10px;
     background: var(--card_color);
     padding-top: 30px;
     margin-bottom: 30px;
-    box-shadow: inset 0 0 6px rgba(255, 255, 255, 0.2);
     min-width: 620px;
+    border: solid 1.5px var(--border_color);
 }
 .timeline-card .el-card {
     box-shadow: 0 0 5px var(--shadow_color) !important;
