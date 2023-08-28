@@ -3,7 +3,10 @@ import { createStore } from 'vuex';
 export default createStore({
     state: {
         theme: true, // 当前主题,true代表白天，false代表黑夜
-        login: false, // 当前是否登录
+        user: {
+            login: false, // 当前是否登录
+            userid: 0, // 当前登录用户的id
+        },
     },
     getters: {
         theme: (state) => state.theme,

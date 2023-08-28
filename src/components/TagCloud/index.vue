@@ -5,7 +5,7 @@
             <li class="tag-item" v-for="t in tags" :key="t.id">
                 <!--type="primary"-->
                 <el-button
-                    @click="tag(t.id)"
+                    @click="toTag(t.tagName)"
                     size="small"
                     :type="getType(t.id)"
                     >{{ t.tagName }}</el-button
@@ -29,8 +29,8 @@ export default {
             var types = ['success', 'warning', 'danger', 'primary', 'info'];
             return types[(id - 1) % 5];
         },
-        tag(id) {
-            this.$router.push({ path: `/tag/${id}` });
+        toTag(name) {
+            this.$router.push({ path: `/tags/${name}` });
         },
     },
 };
@@ -64,8 +64,8 @@ export default {
     color: #5fb878;
 }
 
-.tag-item a:hover {
-    text-decoration: underline;
+.tag-item span {
+    font-family: 'JetBrains Mono';
 }
 
 @media screen and (max-width: 768px) {

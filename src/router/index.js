@@ -29,20 +29,26 @@ const routes = [
             ),
     },
     {
+        path: '/message',
+        name: 'Message',
+        component: () =>
+            import(
+                /* webpackChunkName: "about" */ '../views/Message/index.vue'
+            ),
+    },
+    {
         path: '/view/:id',
         name: 'View',
         component: () =>
             import(
-                /* webpackChunkName: "about" */ '../views/ArticleDetail/index.vue'
+                /* webpackChunkName: "about" */ '../views/Article/index.vue'
             ),
     },
     {
-        path: '/personal/:id',
-        name: 'Personal',
+        path: '/tags/:name',
+        name: 'Tag',
         component: () =>
-            import(
-                /* webpackChunkName: "about" */ '../views/Personal/index.vue'
-            ),
+            import(/* webpackChunkName: "about" */ '../views/Tag/index.vue'),
     },
 ];
 

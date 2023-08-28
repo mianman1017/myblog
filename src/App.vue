@@ -63,7 +63,6 @@ body,
 /* 用于添加全局背景图 */
 #building {
     background: url('../public/imgs/background.jpg');
-
     width: 100%;
     height: 100%;
     position: fixed;

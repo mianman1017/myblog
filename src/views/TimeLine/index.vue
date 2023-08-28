@@ -97,7 +97,8 @@ export default {
     position: relative;
     margin-left: 5%;
     margin-right: 5%;
-    padding-left: 6%;
+    padding-left: 3%;
+    transition: padding-left 0.1s;
 }
 
 .timeline-card .el-timeline-item {

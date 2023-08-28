@@ -41,7 +41,7 @@ export default {
                 },
                 {
                     id: 3,
-                    tagName: 'Spring Boot',
+                    tagName: 'SpringBoot',
                 },
                 {
                     id: 4,
@@ -69,11 +69,11 @@ export default {
                 },
                 {
                     id: 10,
-                    tagName: 'QT Creater',
+                    tagName: 'MATLAB',
                 },
                 {
                     id: 11,
-                    tagName: 'MATLAB',
+                    tagName: 'PyTorch',
                 },
             ],
             scrollAction: {

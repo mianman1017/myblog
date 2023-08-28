@@ -19,7 +19,7 @@
         <el-menu-item index="/friends">友链</el-menu-item>
         <div class="flex-grow" />
 
-        <template v-if="!user.login">
+        <!-- <template v-if="!user.login">
             <el-button class="nav-button" @click="Login" link
                 ><el-icon><User /></el-icon
             ></el-button>
@@ -34,7 +34,7 @@
                     ><i class="el-icon-back"></i>退出</el-menu-item
                 >
             </el-sub-menu>
-        </template>
+        </template> -->
 
         <el-switch
             v-model="theme"
@@ -147,27 +147,34 @@ export default {
                 }
             });
         },
-        Login() {
-            ElMessageBox.confirm(
-                '<strong>proxy is <i>HTML</i> string</strong>',
-                'HTML String',
-                {
-                    dangerouslyUseHTMLString: true,
-                }
-            )
-                .then(() => {
-                    ElMessage({
-                        type: 'success',
-                        message: 'Delete completed',
-                    });
-                })
-                .catch(() => {
-                    ElMessage({
-                        type: 'info',
-                        message: 'Delete canceled',
-                    });
-                });
-        },
+        // Login() {
+        //     ElMessageBox.confirm(
+        //         '<div class="input-box">' +
+        //             '<label for="email" class="msgbox-label">邮箱</label>' +
+        //             '<input id="email" class="msgbox-input"/>' +
+        //             '<div/>' +
+        //             '<div class="input-box">' +
+        //             '<label for="password" class="msgbox-label">密码</label>' +
+        //             '<input id="password" class="msgbox-input"/>' +
+        //             '<div/>',
+        //         '新用户',
+        //         {
+        //             dangerouslyUseHTMLString: true,
+        //         }
+        //     )
+        //         .then(() => {
+        //             ElMessage({
+        //                 type: 'success',
+        //                 message: '注册成功',
+        //             });
+        //         })
+        //         .catch(() => {
+        //             ElMessage({
+        //                 type: 'info',
+        //                 message: '已取消注册',
+        //             });
+        //         });
+        // },
     },
     computed: {
         ...mapGetters(['theme']), // 映射当前主题
@@ -247,5 +254,23 @@ export default {
 
 .flex-grow {
     flex-grow: 1;
+}
+
+.input-box {
+    margin-top: 20px;
+    margin-bottom: 20px;
+}
+
+.msgbox-label {
+    padding-left: 30px;
+    padding-right: 10px;
+    font-size: 15px;
+}
+
+.msgbox-input {
+    height: 20px;
+    border: solid;
+    border-radius: 0.1rem;
+    width: 70%;
 }
 </style>
