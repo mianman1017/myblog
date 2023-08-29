@@ -182,7 +182,7 @@ export default {
     mounted() {
         window.addEventListener('scroll', this.scrollForNavbarShow);
         this.activeIndex = this.$route.path;
-        console.log(this.activeIndex);
+        // console.log(this.activeIndex);
     },
 };
 </script>

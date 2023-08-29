@@ -121,27 +121,27 @@ export default {
     background-color: var(--text_color);
 }
 
-.timeline-article {
+.timeline-card .timeline-article {
     width: 93%;
     height: 200px;
     min-width: 420px;
 }
 
-.timeline-article .article-img,
-.timeline-article .me-article {
+.timeline-card .timeline-article .article-img,
+.timeline-card .timeline-article .me-article {
     height: 200px;
 }
 
-.timeline-article .me-article-title {
+.timeline-card .timeline-article .me-article-title {
     font-size: 16px;
 }
 
-.timeline-article .me-article-description {
+.timeline-card .timeline-article .me-article-description {
     height: 105px;
 }
 
 @media screen and (max-width: 992px) {
-    .timeline-article {
+    .timeline-card .timeline-article {
         min-width: 450px;
     }
 }

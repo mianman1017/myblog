@@ -228,12 +228,31 @@ export default {
     border-bottom: solid rgb(238, 238, 238) 1px;
 }
 
+.article-detail-card h3 {
+    width: fit-content;
+    padding-right: 2px;
+    margin-top: 13px;
+    margin-bottom: 13px;
+    border-bottom: solid rgb(238, 238, 238) 1px;
+}
+
 .article-detail-card h3,
 .article-detail-card h4,
 .article-detail-card h5,
 .article-detail-card p {
     margin-top: 13px;
     margin-bottom: 13px;
+}
+
+.article-detail-card img {
+    filter: invert(var(--latex_color));
+}
+
+.article-detail-card blockquote {
+    color: grey;
+    padding-left: 15px;
+    border-left: solid 5px var(--pink_color);
+    margin-left: 0;
 }
 
 /* 目录结构样式 */

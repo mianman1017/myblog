@@ -41,20 +41,20 @@ export default {
             // 触发分页，调用接口加载文章列表
             this.loading = true;
             const params = new URLSearchParams();
-            params.append('offsert', this.offset);
+            params.append('offset', this.offset);
             this.axios
                 .post('http://localhost:8000/articlelist/get/', params)
                 .then((res) => {
                     //Result(success,msg,data)
                     if (res.data.success) {
-                        console.log(res.data.data);
+                        // console.log(res.data.data);
                         if (res.data.data.length <= 0) {
                             this.noData = true;
                         } else {
                             this.articles = this.articles.concat(res.data.data);
                             this.offset += 5;
-                            console.log(this.articles);
-                            console.log(this.articles[0].weight);
+                            // console.log(this.articles);
+                            // console.log(this.articles[0].weight);
                         }
                     } else {
                         this.$message.error(res.data.msg);

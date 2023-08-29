@@ -68,14 +68,14 @@ export default {
         weight: Number,
         img: String,
         title: String,
-        body: Text,
+        body: String,
         commentCounts: Number,
         viewCounts: Number,
         summary: String,
         author: String,
         tags: Array,
-        createDate: Date,
-        updateDate: Date,
+        createDate: String,
+        updateDate: String,
     },
     data() {
         return {

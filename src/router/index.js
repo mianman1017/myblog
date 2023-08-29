@@ -45,7 +45,7 @@ const routes = [
             ),
     },
     {
-        path: '/tags/:name',
+        path: '/tags/:tag',
         name: 'Tag',
         component: () =>
             import(/* webpackChunkName: "about" */ '../views/Tag/index.vue'),

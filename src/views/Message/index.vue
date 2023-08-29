@@ -13,12 +13,12 @@
         <div
             style="display: flex; justify-content: center; align-items: center"
         >
-            <div class="msg-input-card">
+            <el-card class="msg-input-card">
                 <div class="msg-header">留言框</div>
                 <div style="text-align: center">
                     <el-input
                         v-model="message"
-                        placeholder="请输入留言"
+                        placeholder="说点什么吧..."
                         class="msg-input"
                         @keyup.enter="addMessage"
                     ></el-input>
@@ -30,7 +30,7 @@
                         提交
                     </el-button>
                 </div>
-            </div>
+            </el-card>
         </div>
     </div>
 </template>
@@ -115,18 +115,18 @@ export default {
     z-index: 100;
     font-family: '华康手札体W5P';
     position: relative;
-    background-color: #e671e0;
+    background-color: #f38cee;
     border-radius: 1rem;
     padding: 5px 10px 5px 10px;
     white-space: nowrap;
-    animation: barrageMove 15s linear infinite;
+    animation: barrageMove 13s linear infinite;
 }
 
 .msg-input-card {
     font-family: '华康手札体W5P';
     position: absolute;
     top: 42%;
-    width: 400px;
+    width: 370px;
     height: 130px;
     color: var(--text_color);
     background-color: var(--card_color);
@@ -137,16 +137,20 @@ export default {
     transition: opacity 0.3s;
 }
 
+.msg-input-card .el-card__body {
+    padding: 8px 16px;
+}
+
 .msg-input-card:hover {
     opacity: 1;
 }
 
 .msg-header {
+    text-align: start;
     font-weight: 600;
     font-size: 20px;
-    padding: 5px;
     border-bottom: solid 2px var(--text_color);
-    margin-bottom: 20px;
+    margin-bottom: 23px;
 }
 
 .msg-input {
@@ -172,16 +176,16 @@ export default {
     border-radius: 0.1rem;
     border: solid 1.5px var(--border_color);
     color: var(--text_color);
-    background-color: rgb(133, 99, 252);
+    background-color: #6399fc;
     cursor: pointer;
-    top: 0.3px;
-    height: 33.7px;
+    top: 0.1px;
+    height: 34.3px;
 }
 
 .msg-btn:hover {
     border-radius: 0.1rem;
     color: var(--text_color);
-    background-color: rgb(168, 148, 240);
+    background-color: rgb(146, 177, 235);
     border: solid 1.5px var(--border_color);
 }
 
