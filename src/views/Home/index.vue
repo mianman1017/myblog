@@ -41,39 +41,15 @@ export default {
                 },
                 {
                     id: 3,
-                    tagName: 'SpringBoot',
-                },
-                {
-                    id: 4,
-                    tagName: 'Git',
-                },
-                {
-                    id: 5,
-                    tagName: 'Docker',
-                },
-                {
-                    id: 6,
-                    tagName: 'Python',
-                },
-                {
-                    id: 7,
-                    tagName: 'Java',
-                },
-                {
-                    id: 8,
-                    tagName: 'C++',
-                },
-                {
-                    id: 9,
                     tagName: 'MySQL',
                 },
                 {
-                    id: 10,
-                    tagName: 'MATLAB',
+                    id: 4,
+                    tagName: 'PyTorch',
                 },
                 {
-                    id: 11,
-                    tagName: 'PyTorch',
+                    id: 5,
+                    tagName: 'Word2Vec',
                 },
             ],
             scrollAction: {

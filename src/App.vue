@@ -17,16 +17,22 @@ import GoTop from '@/components/GoTop/index';
 import Navbar from '@/components/Navbar/index';
 
 export default {
+    data() {
+        return {
+            publicPath: process.env.BASE_URL,
+        };
+    },
     components: {
         GoTop,
         Navbar,
     },
     mounted() {
+        // console.log(this.publicPath);
         let link = document.createElement('link');
         link.type = 'text/css';
         link.id = 'theme';
         link.rel = 'stylesheet';
-        link.href = '../theme/light.css';
+        link.href = `${this.publicPath}theme/light.css`;
         document.getElementsByTagName('head')[0].appendChild(link);
     },
 };
@@ -62,7 +68,7 @@ body,
 
 /* 用于添加全局背景图 */
 #building {
-    background: url('../public/imgs/background.jpg');
+    background: url('@/assets/imgs/background.jpg');
     width: 100%;
     height: 100%;
     position: fixed;

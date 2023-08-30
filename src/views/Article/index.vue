@@ -3,42 +3,7 @@
     <div class="article-detail-container">
         <el-row>
             <el-col :xs="24" :sm="18" :md="18">
-                <el-card class="article-detail-card">
-                    <div class="title">{{ this.article.title }}</div>
-                    <div class="tail">
-                        <el-icon><Calendar /></el-icon>
-                        <span class="tail-ele"
-                            >发表于:{{ this.article.createDate }}</span
-                        >
-                        <span class="seperator">∣</span>
-                        <el-icon><Refresh /></el-icon>
-                        <span class="tail-ele"
-                            >更新于: {{ this.article.updateDate }}</span
-                        >
-                        <span class="seperator">∣</span>
-                        <el-icon><View /></el-icon>
-                        <span class="tail-ele"
-                            >浏览量: {{ this.article.viewCounts }}</span
-                        >
-                        <span class="seperator">∣</span>
-                        <el-icon><ChatDotRound /></el-icon>
-                        <span class="tail-ele"
-                            >评论量: {{ this.article.commentCounts }}</span
-                        >
-                        <span class="seperator">∣</span>
-                        <el-icon><PriceTag /></el-icon>
-                        <el-tag
-                            v-for="t in this.article.tags"
-                            :key="t.id"
-                            size="small"
-                            type="info"
-                            effect="plain"
-                            class="tail-tag"
-                            >{{ t }}</el-tag
-                        >
-                    </div>
-                    <div v-html="this.article.body"></div>
-                </el-card>
+                <ArticleDetail v-bind="article" />
             </el-col>
             <el-col :xs="0" :sm="6" :md="6">
                 <el-card class="article-menu-card">
@@ -51,11 +16,11 @@
 </template>
 
 <script>
-import '../../../public/theme/dracula.css';
 import Navbar from '@/components/Navbar/index';
+import ArticleDetail from '@/components/ArticleDetail/index';
 
 export default {
-    name: 'ArticleDetail',
+    name: 'Article',
     data() {
         return {
             article: {
@@ -77,13 +42,14 @@ export default {
     },
     components: {
         Navbar,
+        ArticleDetail,
     },
     methods: {
         getArticle() {
-            const id = this.$route.params.id;
+            const title = this.$route.params.title;
             // console.log(id);
             const params = new URLSearchParams();
-            params.append('id', id);
+            params.append('title', title);
 
             this.axios
                 .post('http://localhost:8000/article/get/', params)

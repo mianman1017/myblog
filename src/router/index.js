@@ -37,7 +37,7 @@ const routes = [
             ),
     },
     {
-        path: '/view/:id',
+        path: '/view/:title',
         name: 'View',
         component: () =>
             import(

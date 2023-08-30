@@ -36,7 +36,7 @@
                             </span>
                         </span>
                     </div>
-                    <a @click="view(id)" class="me-article-title">{{
+                    <a @click="view(title)" class="me-article-title">{{
                         title
                     }}</a>
 
@@ -83,8 +83,8 @@ export default {
         };
     },
     methods: {
-        view(id) {
-            this.$router.push({ path: '/view/' + id });
+        view(title) {
+            this.$router.push({ path: '/view/' + title });
         },
     },
 };
@@ -156,7 +156,7 @@ export default {
 
 .me-article-fixed {
     position: relative;
-    background: url('@/assets/fixed.png') no-repeat;
+    background: url('@/assets/imgs/fixed.png') no-repeat;
     background-size: contain;
     width: 13px;
     height: 13px;

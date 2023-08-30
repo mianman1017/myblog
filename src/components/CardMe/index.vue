@@ -40,7 +40,7 @@
 </template>
 
 <script>
-import avatar from '@/assets/avatar.jpg';
+import avatar from '@/assets/imgs/avatar.jpg';
 
 export default {
     name: 'CardMe',
@@ -129,19 +129,19 @@ export default {
 }
 
 .github {
-    background: url('../../assets/github.png') no-repeat;
+    background: url('@/assets/imgs/github.png') no-repeat;
     background-size: contain;
 }
 .bilibili {
-    background: url('../../assets/bilibili.png') no-repeat;
+    background: url('@/assets/imgs/bilibili.png') no-repeat;
     background-size: contain;
 }
 .wechat {
-    background: url('../../assets/wechat.png') no-repeat;
+    background: url('@/assets/imgs/wechat.png') no-repeat;
     background-size: contain;
 }
 .qq {
-    background: url('../../assets/qq.png') no-repeat;
+    background: url('@/assets/imgs/qq.png') no-repeat;
     background-size: contain;
 }
 

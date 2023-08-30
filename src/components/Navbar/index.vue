@@ -12,11 +12,21 @@
     >
         <div class="logo">M-Blog</div>
         <div style="width: 50px"></div>
-        <el-menu-item index="/">首页</el-menu-item>
-        <el-menu-item index="/timeline">时间轴</el-menu-item>
-        <el-menu-item index="/post">说说</el-menu-item>
-        <el-menu-item index="/message">留言</el-menu-item>
-        <el-menu-item index="/friends">友链</el-menu-item>
+        <el-menu-item index="/"
+            ><el-icon><Postcard /></el-icon>首页</el-menu-item
+        >
+        <el-menu-item index="/timeline"
+            ><el-icon><Collection /></el-icon>归档</el-menu-item
+        >
+        <el-menu-item index="/post"
+            ><el-icon><SetUp /></el-icon>说说</el-menu-item
+        >
+        <el-menu-item index="/message"
+            ><el-icon><Edit /></el-icon>留言</el-menu-item
+        >
+        <el-menu-item index="/friends"
+            ><el-icon><Connection /></el-icon>友链</el-menu-item
+        >
         <div class="flex-grow" />
 
         <!-- <template v-if="!user.login">
@@ -47,6 +57,7 @@
                 --el-switch-off-color: rgb(31, 19, 84);
                 --el-switch-border-color: var(--border_color);
                 opacity: 1;
+                top: -1.5px;
             "
             @change="changeTheme"
         />
@@ -68,7 +79,6 @@
 
 <script>
 import { mapGetters, mapActions } from 'vuex';
-import { ElMessage, ElMessageBox } from 'element-plus';
 
 export default {
     name: 'Navbar',
@@ -91,6 +101,7 @@ export default {
             isNavbarTransformed: false,
             hasPadding: false,
             activeIndex: '/',
+            publicPath: process.env.BASE_URL,
         };
     },
     methods: {
@@ -98,12 +109,12 @@ export default {
         changeTheme() {
             const theme = document.getElementById('theme');
             const background = document.getElementById('building');
-            console.log(theme.href);
+            // console.log(theme.href);
             if (theme.href.includes('light.css')) {
-                theme.href = '../theme/dark.css';
+                theme.href = `${this.publicPath}theme/dark.css`;
                 background.style.filter = 'brightness(60%)';
             } else {
-                theme.href = '../theme/light.css';
+                theme.href = `${this.publicPath}theme/light.css`;
                 background.style.filter = 'brightness(100%)';
             }
             this.toggleTheme();
@@ -200,13 +211,15 @@ export default {
     z-index: 100;
     /* opacity: 0.7; */
 }
-.el-menu-item {
-    font-family: 'Harmony' !important;
+.el-menu .el-menu-item {
+    font-family: 'Harmony';
     color: var(--text_color) !important;
+    padding-left: 13px;
+    padding-right: 13px;
 }
 
-.el-menu-item:hover,
-.el-menu-item:focus {
+.el-menu .el-menu-item:hover,
+.el-menu .el-menu-item:focus {
     background-color: var(--hover_color) !important;
     color: var(--pink_color) !important;
 }
@@ -218,11 +231,13 @@ export default {
 
 .el-menu .logo {
     cursor: default;
+    position: relative;
     font-family: '华康手札体W5P';
     font-weight: bold;
     font-size: 20px;
     line-height: 57.6px;
     text-indent: 30px;
+    top: -2px;
 }
 .el-menu .el-switch {
     margin-top: 10px;
