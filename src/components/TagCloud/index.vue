@@ -43,6 +43,7 @@ export default {
     min-width: 230px;
     height: 200px;
     color: var(--text_color);
+    border: solid 1.5px var(--border_color);
     background-color: var(--card_color);
     margin-left: 7px;
 }

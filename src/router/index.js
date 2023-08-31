@@ -29,6 +29,20 @@ const routes = [
             ),
     },
     {
+        path: '/post',
+        name: 'Post',
+        component: () =>
+            import(/* webpackChunkName: "about" */ '../views/Post/index.vue'),
+    },
+    {
+        path: '/friends',
+        name: 'Friends',
+        component: () =>
+            import(
+                /* webpackChunkName: "about" */ '../views/Friends/index.vue'
+            ),
+    },
+    {
         path: '/message',
         name: 'Message',
         component: () =>
@@ -49,6 +63,12 @@ const routes = [
         name: 'Tag',
         component: () =>
             import(/* webpackChunkName: "about" */ '../views/Tag/index.vue'),
+    },
+    {
+        path: '/search/:input',
+        name: 'Search',
+        component: () =>
+            import(/* webpackChunkName: "about" */ '../views/Search/index.vue'),
     },
 ];
 

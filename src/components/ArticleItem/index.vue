@@ -100,6 +100,9 @@ export default {
     min-width: 470px;
     background-color: var(--card_color);
     color: var(--text_color);
+    border: solid 1.5px var(--border_color);
+    transition: width 0s;
+    transition: background-color 0.3s, border-color 0.3s;
     /* opacity: 0.7;
     transition: opacity 0.15s; */
 }

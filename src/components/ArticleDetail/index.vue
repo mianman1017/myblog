@@ -56,13 +56,14 @@ export default {
 
 <style>
 .article-detail-card {
-    width: 90%;
+    width: 80%;
     font-family: '华康手札体W5P';
     background-color: var(--card_color);
     color: var(--text_color);
     transition: background-color 0s;
     padding: 0px 20px 0px 20px;
-    margin: auto;
+    float: right;
+    margin-right: 25px;
 }
 
 .article-detail-card .title {

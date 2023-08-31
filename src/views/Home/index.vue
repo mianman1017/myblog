@@ -5,7 +5,7 @@
             <div ref="aside" class="me-aside">
                 <CardMe />
                 <TagCloud :tags="tags" />
-                <Search />
+                <SearchCard />
             </div>
         </el-col>
         <el-col :xs="24" :sm="13" :md="14">
@@ -21,7 +21,7 @@ import ArticleList from '@/components/ArticleList/index';
 import Navbar from '@/components/Navbar/index';
 import CardMe from '@/components/CardMe/index';
 import TagCloud from '@/components/TagCloud/index';
-import Search from '@/components/Search/index';
+import SearchCard from '@/components/SearchCard/index';
 import { ElNotification } from 'element-plus';
 
 export default {
@@ -63,7 +63,7 @@ export default {
         Navbar,
         CardMe,
         TagCloud,
-        Search,
+        SearchCard,
     },
     methods: {
         Welcome() {
@@ -111,10 +111,6 @@ export default {
 </script>
 
 <style>
-.el-card {
-    border: solid 1.5px var(--border_color);
-}
-
 .main-container {
     margin: auto;
     display: flex;

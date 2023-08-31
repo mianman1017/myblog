@@ -2,7 +2,7 @@
     <el-card class="me-card" style="border-radius: 3px">
         <el-avatar :src="avatar" :size="80" draggable="false" />
         <div class="me-profile">
-            <h3 class="me-name">MianMan</h3>
+            <h3 class="me-name">绵满</h3>
             <el-tag class="me-tag" effect="dark" type="danger" size="small"
                 >💞ZX</el-tag
             >
@@ -60,7 +60,7 @@ export default {
     height: 290px;
     margin-left: 7px;
     background-color: var(--card_color);
-    border-color: var(--border_color);
+    border: solid 1.5px var(--border_color);
     color: var(--text_color);
     /* opacity: 0.7;
     transition: opacity 0.15s; */
@@ -94,7 +94,7 @@ export default {
 .me-name {
     position: relative;
     font-family: '华康手札体W5P';
-    left: 27%;
+    left: 32%;
     margin: 0;
 }
 
@@ -103,7 +103,7 @@ export default {
     font-family: '华康手札体W5P';
     padding-top: 2px;
     top: 4px;
-    left: 30%;
+    left: 34%;
     border: 0;
 }
 .me-iconlist {

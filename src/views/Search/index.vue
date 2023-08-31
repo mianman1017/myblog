@@ -21,29 +21,33 @@
 </template>
 
 <script>
-import Navbar from '@/components/Navbar/index';
 import ArticleItem from '@/components/ArticleItem/index';
+import Navbar from '@/components/Navbar/index';
 
 export default {
     data() {
         return {
-            offset: 0,
-            tag: '',
             articles: [],
+            offset: 0,
         };
     },
-    components: { Navbar, ArticleItem },
+    components: {
+        ArticleItem,
+        Navbar,
+    },
     methods: {
-        getArticleList() {
+        load() {
+            // 触发分页，调用接口加载文章列表
+            this.loading = true;
             const params = new URLSearchParams();
             params.append('offset', this.offset);
-            params.append('tag', this.tag);
+            params.append('input', this.$route.params.input);
             this.axios
-                .post('http://localhost:8000/articlelist/tag/get/', params)
+                .post('http://localhost:8000/articlelist/search/get/', params)
                 .then((res) => {
                     //Result(success,msg,data)
                     if (res.data.success) {
-                        console.log(res.data.data);
+                        // console.log(res.data.data);
                         if (res.data.data.length <= 0) {
                             this.noData = true;
                         } else {
@@ -63,11 +67,14 @@ export default {
                     this.loading = false;
                 });
         },
+
+        isDownDirection() {
+            this.$emit('isDownDirection');
+        },
     },
     mounted() {
-        this.tag = this.$route.params.tag;
-        this.getArticleList();
-        // console.log(this.tag);
+        // 页面加载时，调用一次load方法加载文章列表
+        this.load();
     },
 };
 </script>

@@ -2,6 +2,7 @@
     <Navbar ref="navbar" />
     <div class="timeline-container">
         <el-card class="timeline-card">
+            <!-- <div class="timeline-header">归档</div> -->
             <el-timeline>
                 <el-timeline-item
                     v-for="article in articles"
@@ -27,6 +28,7 @@ export default {
     data() {
         return {
             articles: [],
+            offset: 0,
         };
     },
     components: {
@@ -38,20 +40,20 @@ export default {
             // 触发分页，调用接口加载文章列表
             this.loading = true;
             const params = new URLSearchParams();
-            params.append('offsert', this.offset);
+            params.append('offset', this.offset);
             this.axios
                 .post('http://localhost:8000/articlelist/get/', params)
                 .then((res) => {
                     //Result(success,msg,data)
                     if (res.data.success) {
-                        console.log(res.data.data);
+                        // console.log(res.data.data);
                         if (res.data.data.length <= 0) {
                             this.noData = true;
                         } else {
                             this.articles = this.articles.concat(res.data.data);
                             this.offset += 5;
-                            console.log(this.articles);
-                            console.log(this.articles[0].weight);
+                            // console.log(this.articles);
+                            // console.log(this.articles[0].weight);
                         }
                     } else {
                         this.$message.error(res.data.msg);
@@ -93,6 +95,20 @@ export default {
 .timeline-card .el-card {
     box-shadow: 0 0 5px var(--shadow_color) !important;
 }
+
+/* .timeline-card .timeline-header {
+    font-family: '华康手札体W5P';
+    font-weight: 600;
+    font-size: 30px;
+    margin: auto;
+    width: fit-content;
+    padding-left: 5px;
+    padding-right: 5px;
+    margin-bottom: 30px;
+    color: var(--text_color);
+    border-bottom: solid 2px var(--border_color);
+} */
+
 .timeline-card .el-timeline {
     position: relative;
     margin-left: 5%;
