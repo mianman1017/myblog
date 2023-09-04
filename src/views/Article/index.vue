@@ -4,6 +4,11 @@
         <el-row>
             <el-col :xs="24" :sm="17" :md="17">
                 <ArticleDetail v-bind="article" />
+                <Comment
+                    :comments="this.comments"
+                    :id="this.article.id"
+                    @getComment="getComment"
+                />
             </el-col>
             <el-col :xs="0" :sm="7" :md="7">
                 <el-card class="article-menu-card">
@@ -18,6 +23,7 @@
 <script>
 import Navbar from '@/components/Navbar/index';
 import ArticleDetail from '@/components/ArticleDetail/index';
+import Comment from '@/components/Comment/index';
 
 export default {
     name: 'Article',
@@ -38,11 +44,13 @@ export default {
                 createDate: '',
                 updateDate: '',
             },
+            comments: [],
         };
     },
     components: {
         Navbar,
         ArticleDetail,
+        Comment,
     },
     methods: {
         getArticle() {
@@ -66,12 +74,57 @@ export default {
                             // console.log(this.article.weight);
                             // console.log(this.article.body);
                         }
+                        this.addView();
+                        this.getComment();
                     }
                 })
                 .catch((err) => {
                     // this.$message.error('文章加载失败');
                 })
                 .finally(() => {});
+        },
+        addView() {
+            const params = new URLSearchParams();
+            params.append('id', this.article.id);
+
+            this.axios
+                .post('http://localhost:8000/article/view/add/', params)
+                .then((res) => {
+                    //Result(success,msg,data)
+                    // console.log(id);
+                    if (res.data.success) {
+                        // console.log(res.data);
+                    }
+                })
+                .catch((err) => {
+                    // this.$message.error('文章加载失败');
+                })
+                .finally(() => {});
+        },
+        getComment() {
+            const params = new URLSearchParams();
+            params.append('id', this.article.id);
+            // console.log(this.offset);
+            this.axios
+                .post('http://localhost:8000/commentlist/get/', params)
+                .then((res) => {
+                    //Result(success,msg,data)
+                    if (res.data.success) {
+                        //console.log(res.data.data.length);
+                        this.comments = res.data.data;
+                        // console.log(this.articles.length);
+                        // console.log(res.data.data);
+                        this.article.commentCounts = this.comments.length;
+                    } else {
+                        this.$message.error(res.data.msg);
+                    }
+                })
+                .catch((err) => {
+                    // this.$message.error('文章加载失败');
+                })
+                .finally(() => {
+                    this.loading = false;
+                });
         },
         jumpTo(idname) {
             const targetElement = document.querySelector(idname);
@@ -130,7 +183,7 @@ export default {
 /* 目录结构样式 */
 
 .article-menu-card {
-    width: 70%;
+    width: 75%;
     position: sticky;
     top: 1rem;
     font-family: '华康手札体W5P';
@@ -154,13 +207,14 @@ export default {
 
 .article-menu-card li {
     list-style-type: none;
+    white-space: nowrap;
+    overflow: hidden;
+    text-overflow: ellipsis;
 }
 .article-menu-card li a {
     cursor: pointer;
     font-weight: bold;
     padding: 2px;
-    border: 5px;
-    border-radius: 3px;
 }
 
 .article-menu-card li a:hover {

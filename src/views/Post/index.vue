@@ -2,9 +2,10 @@
     <Navbar />
     <div class="post-container">
         <el-card class="post-card">
-            <div v-for="post in posts" :key="post.id">
+            <div v-if="!noData" v-for="post in posts" :key="post.id">
                 <PostItem v-bind="post" />
             </div>
+            <h1 v-else class="nodata"></h1>
         </el-card>
     </div>
 </template>
@@ -73,15 +74,20 @@ export default {
 .post-card {
     width: 50%;
     margin: auto;
-    background: var(--card_color);
+    background: var(--bg_color);
+    border: solid 1.5px var(--border_color);
     padding-top: 30px;
     padding-bottom: 30px;
     margin-bottom: 30px;
     min-width: 620px;
-    border: solid 1.5px var(--border_color);
 }
 
 .post-card .el-card__body {
     padding-right: 17px;
+}
+
+.nodata {
+    font-family: '华康手札体W5P';
+    text-align: center;
 }
 </style>

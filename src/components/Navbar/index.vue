@@ -10,7 +10,7 @@
         mode="horizontal"
         :ellipsis="false"
     >
-        <div class="logo">M-Blog</div>
+        <div class="logo">绵满の博客</div>
         <div style="width: 50px"></div>
         <el-menu-item index="/"
             ><el-icon><Postcard /></el-icon>首页</el-menu-item

@@ -3,6 +3,7 @@
     <div class="timeline-container">
         <el-card class="timeline-card">
             <!-- <div class="timeline-header">归档</div> -->
+
             <el-timeline>
                 <el-timeline-item
                     v-for="article in articles"
@@ -16,6 +17,7 @@
                     />
                 </el-timeline-item>
             </el-timeline>
+            <!-- <Loading v-if="loading" :loading="loading" /> -->
         </el-card>
     </div>
 </template>
@@ -27,8 +29,10 @@ import Navbar from '@/components/Navbar/index';
 export default {
     data() {
         return {
+            loading: false,
             articles: [],
             offset: 0,
+            noData: false,
         };
     },
     components: {
@@ -46,15 +50,13 @@ export default {
                 .then((res) => {
                     //Result(success,msg,data)
                     if (res.data.success) {
-                        // console.log(res.data.data);
-                        if (res.data.data.length <= 0) {
+                        if (res.data.data.length < 5) {
                             this.noData = true;
-                        } else {
-                            this.articles = this.articles.concat(res.data.data);
-                            this.offset += 5;
-                            // console.log(this.articles);
-                            // console.log(this.articles[0].weight);
                         }
+                        this.articles = this.articles.concat(res.data.data);
+                        this.offset += 5;
+                        // console.log(this.articles.length);
+                        // console.log(res.data.data);
                     } else {
                         this.$message.error(res.data.msg);
                     }
@@ -66,14 +68,63 @@ export default {
                     this.loading = false;
                 });
         },
-
         isDownDirection() {
-            this.$emit('isDownDirection');
+            if (typeof this.scrollAction == 'undefined') {
+                this.scrollAction = {}; // 初始化scrollAction对象
+                this.scrollAction.x = window.scrollX;
+                this.scrollAction.y = window.scrollY;
+            }
+            var diffX = this.scrollAction.x - window.scrollX;
+            var diffY = this.scrollAction.y - window.scrollY;
+
+            this.scrollAction.x = window.scrollX;
+            this.scrollAction.y = window.scrollY;
+
+            //console.log(diffX, diffY);
+
+            if (diffX < 0) {
+                // Scroll right
+            } else if (diffX > 0) {
+                // Scroll left
+            } else if (diffY < 0) {
+                // Scroll down
+                return true;
+            } else if (diffY > 0) {
+                // Scroll up
+            } else {
+                // First scroll event
+            }
+            return false;
+        },
+        scrollToBottom(e) {
+            // console.log(this.noData);
+            if (!this.noData) {
+                // console.log(this.loading);
+                //如果有数据，触发
+                const scrollHeight =
+                    document.documentElement.scrollHeight ||
+                    document.body.scrollHeight;
+                const scrollTop =
+                    document.documentElement.scrollTop ||
+                    document.body.scrollTop;
+                const windowHeight = window.innerHeight;
+                // console.log(scrollTop, windowHeight, scrollHeight, this.offset);
+
+                // 至于这里为什么要加3是我通过测试发现的，每次滑到底部总是少一点
+                if (
+                    scrollTop + windowHeight + this.offset >= scrollHeight &&
+                    this.isDownDirection()
+                ) {
+                    //调用load加载数据
+                    this.load();
+                }
+            }
         },
     },
     mounted() {
         // 页面加载时，调用一次load方法加载文章列表
         this.load();
+        window.addEventListener('scroll', this.scrollToBottom, false);
     },
 };
 </script>
@@ -86,7 +137,7 @@ export default {
 .timeline-card {
     width: 50%;
     margin: auto;
-    background: var(--card_color);
+    background: var(--bg_color);
     padding-top: 30px;
     margin-bottom: 30px;
     min-width: 620px;
@@ -154,6 +205,11 @@ export default {
 
 .timeline-card .timeline-article .me-article-description {
     height: 105px;
+}
+
+.nodata {
+    font-family: '华康手札体W5P';
+    text-align: center;
 }
 
 @media screen and (max-width: 992px) {

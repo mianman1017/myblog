@@ -79,16 +79,15 @@ export default {
                         //Result(success,msg,data)
                         // console.log(id);
                         if (res.data.success) {
-                            console.log(res.data);
+                            // console.log(res.data);
+                            this.message = '';
+                            this.getMessage();
                         }
                     })
                     .catch((err) => {
                         // this.$message.error('文章加载失败');
                     })
-                    .finally(() => {
-                        this.message = '';
-                        this.getMessage();
-                    });
+                    .finally(() => {});
             }
             // this.message = '';
             // this.getMessage();

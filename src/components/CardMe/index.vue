@@ -86,7 +86,7 @@ export default {
     opacity: 0.85;
 } */
 
-.el-avatar {
+.me-card .el-avatar {
     position: relative;
     left: 33%;
 }

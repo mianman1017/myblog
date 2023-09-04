@@ -9,9 +9,9 @@
             <span class="tail-ele">更新于: {{ updateDate }}</span>
             <span class="seperator">∣</span>
             <el-icon><View /></el-icon>
-            <span class="tail-ele">浏览量: {{ viewCounts }}</span>
+            <span class="tail-ele">浏览量: {{ viewCounts + 1 }}</span>
             <span class="seperator">∣</span>
-            <el-icon><ChatDotRound /></el-icon>
+            <el-icon><ChatLineRound /></el-icon>
             <span class="tail-ele">评论量: {{ commentCounts }}</span>
             <span class="seperator">∣</span>
             <el-icon><PriceTag /></el-icon>
@@ -56,7 +56,7 @@ export default {
 
 <style>
 .article-detail-card {
-    width: 80%;
+    width: 82%;
     font-family: '华康手札体W5P';
     background-color: var(--card_color);
     color: var(--text_color);
@@ -64,6 +64,7 @@ export default {
     padding: 0px 20px 0px 20px;
     float: right;
     margin-right: 25px;
+    margin-bottom: 10px;
 }
 
 .article-detail-card .title {
@@ -80,13 +81,6 @@ export default {
     padding-right: 3px;
 }
 
-.tail .tail-tag {
-    margin-right: 5px;
-    border-color: var(--text_color);
-    color: var(--text_color);
-    background-color: var(--card_color);
-}
-
 .tail .el-icon {
     position: relative;
     top: 2px;
@@ -96,14 +90,19 @@ export default {
 }
 
 .tail .el-tag {
+    font-family: 'JetBrains Mono';
     height: 15px;
     padding: 5px;
+    margin-right: 5px;
+    border-color: var(--text_color);
+    color: var(--text_color);
+    background-color: var(--card_color);
 }
 
 .tail .el-tag .el-tag__content {
     height: 13px;
     position: relative;
-    top: 1.5px;
+    top: 1px;
 }
 
 /* 代码块样式 */
@@ -124,6 +123,7 @@ export default {
 }
 
 .article-detail-card h3 {
+    font-size: 20px;
     width: fit-content;
     padding-right: 2px;
     margin-top: 13px;
@@ -131,15 +131,19 @@ export default {
     border-bottom: solid rgb(238, 238, 238) 1px;
 }
 
-.article-detail-card h3,
-.article-detail-card h4,
+.article-detail-card h4 {
+    font-size: 17px;
+    margin-top: 13px;
+    margin-bottom: 13px;
+}
 .article-detail-card h5,
 .article-detail-card p {
     margin-top: 13px;
     margin-bottom: 13px;
+    white-space: pre-line;
 }
 
-.article-detail-card img {
+.article-detail-card #latex {
     filter: invert(var(--latex_color));
 }
 
@@ -148,5 +152,9 @@ export default {
     padding-left: 15px;
     border-left: solid 5px var(--pink_color);
     margin-left: 0;
+}
+
+.article-detail-card blockquote #latex {
+    filter: invert(0.5);
 }
 </style>

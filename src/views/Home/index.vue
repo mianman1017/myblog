@@ -10,7 +10,7 @@
         </el-col>
         <el-col :xs="24" :sm="13" :md="14">
             <div class="me-articles">
-                <ArticleList @isDownDirection="isDownDirection"></ArticleList>
+                <ArticleList />
             </div>
         </el-col>
     </el-row>
@@ -49,7 +49,7 @@ export default {
                 },
                 {
                     id: 5,
-                    tagName: 'Word2Vec',
+                    tagName: 'NLP',
                 },
             ],
             scrollAction: {
@@ -73,31 +73,6 @@ export default {
                 duration: 3000,
             });
         },
-        isDownDirection() {
-            if (typeof this.scrollAction.x == 'undefined') {
-                this.scrollAction.x = window.scrollX;
-                this.scrollAction.y = window.scrollY;
-            }
-            var diffX = this.scrollAction.x - window.scrollX;
-            var diffY = this.scrollAction.y - window.scrollY;
-
-            this.scrollAction.x = window.scrollX;
-            this.scrollAction.y = window.scrollY;
-
-            if (diffX < 0) {
-                // Scroll right
-            } else if (diffX > 0) {
-                // Scroll left
-            } else if (diffY < 0) {
-                // Scroll down
-                return true;
-            } else if (diffY > 0) {
-                // Scroll up
-            } else {
-                // First scroll event
-            }
-            return false;
-        },
     },
     beforeRouteEnter(to, from, next) {
         next((vm) => {
@@ -116,7 +91,6 @@ export default {
     display: flex;
     flex-direction: row-reverse;
     height: fit-content;
-    overflow-x: hidden;
     padding-top: 90px;
 }
 .me-articles {

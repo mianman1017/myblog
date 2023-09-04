@@ -3,7 +3,7 @@
     <div class="timeline-container">
         <el-card class="timeline-card">
             <!-- <div class="timeline-header">归档</div> -->
-            <el-timeline>
+            <el-timeline v-if="!noData">
                 <el-timeline-item
                     v-for="article in articles"
                     :timestamp="article.createDate"
@@ -16,6 +16,7 @@
                     />
                 </el-timeline-item>
             </el-timeline>
+            <h1 v-else class="nodata">Oh no, 没有结果😢</h1>
         </el-card>
     </div>
 </template>
@@ -30,6 +31,7 @@ export default {
             offset: 0,
             tag: '',
             articles: [],
+            noData: false,
         };
     },
     components: { Navbar, ArticleItem },
@@ -80,7 +82,7 @@ export default {
 .timeline-card {
     width: 50%;
     margin: auto;
-    background: var(--card_color);
+    background: var(--bg_color);
     padding-top: 30px;
     margin-bottom: 30px;
     min-width: 620px;
@@ -148,6 +150,11 @@ export default {
 
 .timeline-card .timeline-article .me-article-description {
     height: 105px;
+}
+
+.nodata {
+    font-family: '华康手札体W5P';
+    text-align: center;
 }
 
 @media screen and (max-width: 992px) {

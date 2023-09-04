@@ -28,7 +28,14 @@ export default {
     methods: {
         search() {
             if (this.input) {
-                this.$router.push({ path: '/search/' + this.input });
+                if (this.input.includes('#')) {
+                    ElMessage({
+                        message: '输入内容不能包含非法字符',
+                        type: 'warning',
+                    });
+                } else {
+                    this.$router.push({ path: '/search/' + this.input });
+                }
             } else {
                 ElMessage({
                     message: '输入内容不能为空',

@@ -15,7 +15,7 @@
         <el-row>
             <div class="postitem-content">{{ content }}</div>
         </el-row>
-        <el-row>
+        <el-row style="margin-left: 4px">
             <div
                 v-for="(img, index) in imgs"
                 :key="index"
@@ -69,9 +69,6 @@ export default {
     transition: background-color 0.3s, border-color 0.3s;
 }
 
-.postitem-card .el-card__body {
-}
-
 .postitem-name {
     position: relative;
     top: 5px;
@@ -98,11 +95,11 @@ export default {
 }
 
 .postitem-content {
-    text-indent: 5px;
+    text-indent: 7px;
     margin-bottom: 5px;
 }
 
 .postitem-imgs {
-    margin-left: 5px;
+    margin-left: 3px;
 }
 </style>

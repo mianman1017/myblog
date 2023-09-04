@@ -190,10 +190,10 @@ export default {
 
 .article-card .el-tag .el-tag__content {
     position: relative;
-    top: 1px;
 }
 
 .article-tag {
+    font-family: 'JetBrains Mono';
     margin-left: 6px;
     color: #ffffff;
     background-color: #ff00ff;
