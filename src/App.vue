@@ -41,17 +41,17 @@ export default {
 <style>
 @font-face {
     font-family: '华康手札体W5P';
-    src: url('../public/fonts/华康手札体w5.ttf');
+    src: url('../public/fonts/华康手札体W5P简化版.woff2') format('woff2');
 }
 
 @font-face {
     font-family: 'Harmony';
-    src: url('../public/fonts/HarmonyOS_Sans_SC_Medium.ttf');
+    src: url('../public/fonts/HarmonyOS_Sans_SC_simple.ttf');
 }
 
 @font-face {
     font-family: 'JetBrains Mono';
-    src: url('../public/fonts/JetBrainsMono-Light.ttf');
+    src: url('../public/fonts/JetBrainsMono-simple.ttf');
 }
 
 html,
@@ -68,7 +68,8 @@ body,
 
 /* 用于添加全局背景图 */
 #building {
-    background: url('@/assets/imgs/background.jpg');
+    /* background: url('@/assets/imgs/background.jpg'); */
+    background-image: linear-gradient(to top, #fbc2eb 0%, #a6c1ee 100%);
     width: 100%;
     height: 100%;
     position: fixed;
@@ -77,7 +78,7 @@ body,
 }
 
 html::-webkit-scrollbar {
-    width: 8px;
+    width: 7px;
     height: 7px;
     /**/
 }
@@ -86,23 +87,11 @@ html::-webkit-scrollbar-track {
     border-radius: 2px;
 }
 html::-webkit-scrollbar-thumb {
-    background: linear-gradient(
-        180deg,
-        rgba(76, 155, 218, 0.7) 0%,
-        rgba(162, 0, 255, 0.7) 36%,
-        rgba(179, 0, 255, 0.7) 52%,
-        rgba(230, 119, 163, 0.7) 76%
-    );
+    background-image: linear-gradient(to bottom, #ec77ab 0%, #7873f5 100%);
     border-radius: 10px;
 }
 html::-webkit-scrollbar-thumb:hover {
-    background: linear-gradient(
-        180deg,
-        rgba(76, 155, 218, 1) 0%,
-        rgba(162, 0, 255, 1) 36%,
-        rgba(179, 0, 255, 1) 52%,
-        rgba(230, 119, 163, 1) 76%
-    );
+    background-image: linear-gradient(to bottom, #d15f92 0%, #6662df 100%);
 }
 html::-webkit-scrollbar-corner {
     background: #179a16;

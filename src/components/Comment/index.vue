@@ -55,26 +55,36 @@ export default {
             params.append('content', this.content);
             console.log(this.content);
             if (this.content) {
-                this.axios
-                    .post('http://localhost:8000/comment/add/', params)
-                    .then((res) => {
-                        //Result(success,msg,data)
-                        if (res.data.success) {
-                            //console.log(res.data.data.length);
-                            // console.log(this.articles.length);
-                            // console.log(res.data.data);
-                            this.$emit('getComment');
-                            this.content = '';
-                        } else {
-                            this.$message.error(res.data.msg);
-                        }
-                    })
-                    .catch((err) => {
-                        // this.$message.error('文章加载失败');
-                    })
-                    .finally(() => {
-                        this.loading = false;
+                if (this.content.length < 100) {
+                    this.axios
+                        .post(
+                            'http://111.229.204.126:8000/comment/add/',
+                            params
+                        )
+                        .then((res) => {
+                            //Result(success,msg,data)
+                            if (res.data.success) {
+                                //console.log(res.data.data.length);
+                                // console.log(this.articles.length);
+                                // console.log(res.data.data);
+                                this.$emit('getComment');
+                                this.content = '';
+                            } else {
+                                this.$message.error(res.data.msg);
+                            }
+                        })
+                        .catch((err) => {
+                            // this.$message.error('文章加载失败');
+                        })
+                        .finally(() => {
+                            this.loading = false;
+                        });
+                } else {
+                    ElMessage({
+                        message: '输入内容不能超过100个字符',
+                        type: 'warning',
                     });
+                }
             } else {
                 ElMessage({
                     message: '输入内容不能为空',

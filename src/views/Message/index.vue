@@ -1,4 +1,5 @@
 <template>
+    <Loading v-if="loading" />
     <Navbar ref="navbar" />
     <div class="message-container">
         <div class="barrage">
@@ -37,19 +38,23 @@
 
 <script>
 import Navbar from '@/components/Navbar/index';
+import Loading from '@/components/Loading/index';
+import { ElMessage } from 'element-plus';
+
 export default {
     data() {
         return {
             message: '',
             messagelist: [],
             noData: false,
+            loading: true,
         };
     },
-    components: { Navbar },
+    components: { Navbar, Loading },
     methods: {
         getMessage() {
             this.axios
-                .post('http://localhost:8000/messagelist/get/')
+                .post('http://111.229.204.126:8000/messagelist/get/')
                 .then((res) => {
                     //Result(success,msg,data)
                     // console.log(id);
@@ -73,21 +78,36 @@ export default {
             params.append('right', Math.floor(Math.random() * 70) + 'vw');
             params.append('message', this.message);
             if (this.message) {
-                this.axios
-                    .post('http://localhost:8000/message/add/', params)
-                    .then((res) => {
-                        //Result(success,msg,data)
-                        // console.log(id);
-                        if (res.data.success) {
-                            // console.log(res.data);
-                            this.message = '';
-                            this.getMessage();
-                        }
-                    })
-                    .catch((err) => {
-                        // this.$message.error('文章加载失败');
-                    })
-                    .finally(() => {});
+                if (this.message.length < 50) {
+                    this.axios
+                        .post(
+                            'http://111.229.204.126:8000/message/add/',
+                            params
+                        )
+                        .then((res) => {
+                            //Result(success,msg,data)
+                            // console.log(id);
+                            if (res.data.success) {
+                                // console.log(res.data);
+                                this.message = '';
+                                this.getMessage();
+                            }
+                        })
+                        .catch((err) => {
+                            // this.$message.error('文章加载失败');
+                        })
+                        .finally(() => {});
+                } else {
+                    ElMessage({
+                        message: '输入内容不能超过50个字符',
+                        type: 'warning',
+                    });
+                }
+            } else {
+                ElMessage({
+                    message: '输入内容不能为空',
+                    type: 'warning',
+                });
             }
             // this.message = '';
             // this.getMessage();
@@ -95,6 +115,7 @@ export default {
     },
     mounted() {
         this.getMessage();
+        this.loading = false;
     },
 };
 </script>

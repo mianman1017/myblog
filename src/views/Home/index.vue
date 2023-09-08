@@ -1,4 +1,5 @@
 <template>
+    <Loading v-if="loading" />
     <Navbar ref="navbar" />
     <el-row class="main-container">
         <el-col :xs="0" :sm="9" :md="10">
@@ -10,7 +11,7 @@
         </el-col>
         <el-col :xs="24" :sm="13" :md="14">
             <div class="me-articles">
-                <ArticleList />
+                <ArticleList @loadingOver="loadingOver" />
             </div>
         </el-col>
     </el-row>
@@ -22,6 +23,7 @@ import Navbar from '@/components/Navbar/index';
 import CardMe from '@/components/CardMe/index';
 import TagCloud from '@/components/TagCloud/index';
 import SearchCard from '@/components/SearchCard/index';
+import Loading from '@/components/Loading/index';
 import { ElNotification } from 'element-plus';
 
 export default {
@@ -56,6 +58,7 @@ export default {
                 x: 'undefined',
                 y: 'undefined',
             },
+            loading: true,
         };
     },
     components: {
@@ -64,6 +67,7 @@ export default {
         CardMe,
         TagCloud,
         SearchCard,
+        Loading,
     },
     methods: {
         Welcome() {
@@ -72,6 +76,10 @@ export default {
                 customClass: 'notification', //自定义类名
                 duration: 3000,
             });
+        },
+        loadingOver() {
+            // console.log('success');
+            this.loading = false;
         },
     },
     beforeRouteEnter(to, from, next) {

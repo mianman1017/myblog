@@ -1,4 +1,5 @@
 <template>
+    <Loading v-if="loading" />
     <Navbar ref="navbar" />
     <div class="timeline-container">
         <el-card class="timeline-card">
@@ -24,6 +25,7 @@
 <script>
 import ArticleItem from '@/components/ArticleItem/index';
 import Navbar from '@/components/Navbar/index';
+import Loading from '@/components/Loading/index';
 
 export default {
     data() {
@@ -31,21 +33,25 @@ export default {
             articles: [],
             offset: 0,
             noData: false,
+            loading: true,
         };
     },
     components: {
         ArticleItem,
         Navbar,
+        Loading,
     },
     methods: {
         load() {
             // 触发分页，调用接口加载文章列表
-            this.loading = true;
             const params = new URLSearchParams();
             params.append('offset', this.offset);
             params.append('input', this.$route.params.input);
             this.axios
-                .post('http://localhost:8000/articlelist/search/get/', params)
+                .post(
+                    'http://111.229.204.126:8000/articlelist/search/get/',
+                    params
+                )
                 .then((res) => {
                     //Result(success,msg,data)
                     if (res.data.success) {

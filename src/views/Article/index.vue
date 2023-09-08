@@ -1,4 +1,5 @@
 <template>
+    <loading v-if="loading" />
     <Navbar ref="navbar" />
     <div class="article-detail-container">
         <el-row>
@@ -24,6 +25,7 @@
 import Navbar from '@/components/Navbar/index';
 import ArticleDetail from '@/components/ArticleDetail/index';
 import Comment from '@/components/Comment/index';
+import Loading from '@/components/Loading/index';
 
 export default {
     name: 'Article',
@@ -45,12 +47,14 @@ export default {
                 updateDate: '',
             },
             comments: [],
+            loading: true,
         };
     },
     components: {
         Navbar,
         ArticleDetail,
         Comment,
+        Loading,
     },
     methods: {
         getArticle() {
@@ -60,7 +64,7 @@ export default {
             params.append('title', title);
 
             this.axios
-                .post('http://localhost:8000/article/get/', params)
+                .post('http://111.229.204.126:8000/article/get/', params)
                 .then((res) => {
                     //Result(success,msg,data)
                     // console.log(id);
@@ -81,14 +85,16 @@ export default {
                 .catch((err) => {
                     // this.$message.error('文章加载失败');
                 })
-                .finally(() => {});
+                .finally(() => {
+                    this.loading = false;
+                });
         },
         addView() {
             const params = new URLSearchParams();
             params.append('id', this.article.id);
 
             this.axios
-                .post('http://localhost:8000/article/view/add/', params)
+                .post('http://111.229.204.126:8000/article/view/add/', params)
                 .then((res) => {
                     //Result(success,msg,data)
                     // console.log(id);
@@ -106,7 +112,7 @@ export default {
             params.append('id', this.article.id);
             // console.log(this.offset);
             this.axios
-                .post('http://localhost:8000/commentlist/get/', params)
+                .post('http://111.229.204.126:8000/commentlist/get/', params)
                 .then((res) => {
                     //Result(success,msg,data)
                     if (res.data.success) {
@@ -115,6 +121,7 @@ export default {
                         // console.log(this.articles.length);
                         // console.log(res.data.data);
                         this.article.commentCounts = this.comments.length;
+                        this.loading = false;
                     } else {
                         this.$message.error(res.data.msg);
                     }
@@ -122,9 +129,7 @@ export default {
                 .catch((err) => {
                     // this.$message.error('文章加载失败');
                 })
-                .finally(() => {
-                    this.loading = false;
-                });
+                .finally(() => {});
         },
         jumpTo(idname) {
             const targetElement = document.querySelector(idname);

@@ -1,4 +1,5 @@
 <template>
+    <Loading v-if="loading" />
     <Navbar />
     <div class="post-container">
         <el-card class="post-card">
@@ -13,6 +14,7 @@
 <script>
 import Navbar from '@/components/Navbar/index';
 import PostItem from '@/components/PostItem/index';
+import Loading from '@/components/Loading/index';
 
 export default {
     data() {
@@ -20,11 +22,13 @@ export default {
             offset: 0,
             noData: false,
             posts: [],
+            loading: true,
         };
     },
     components: {
         Navbar,
         PostItem,
+        Loading,
     },
     methods: {
         load() {
@@ -32,7 +36,7 @@ export default {
             const params = new URLSearchParams();
             params.append('offset', this.offset);
             this.axios
-                .post('http://localhost:8000/postlist/get/', params)
+                .post('http://111.229.204.126:8000/postlist/get/', params)
                 .then((res) => {
                     //Result(success,msg,data)
                     if (res.data.success) {

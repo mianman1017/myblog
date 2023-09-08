@@ -1,7 +1,7 @@
-/* 定义全局的css变量 */
 :root {
     --card_color: rgb(34,34,34);
     --bg_color: rgb(25,25,25);
+    --bg_brightness: 50%;
     --hover_color: rgb(25,25,25);
     --border_color: rgb(255, 255, 255);
     --shadow_color: rgb(0,0,0);

@@ -30,7 +30,7 @@
 </template>
 
 <script>
-import '@/assets/css/dracula.css';
+import '@/assets/styles/dracula.css';
 
 export default {
     data() {

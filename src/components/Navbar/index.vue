@@ -112,7 +112,7 @@ export default {
             // console.log(theme.href);
             if (theme.href.includes('light.css')) {
                 theme.href = `${this.publicPath}theme/dark.css`;
-                background.style.filter = 'brightness(60%)';
+                background.style.filter = 'brightness(50%)';
             } else {
                 theme.href = `${this.publicPath}theme/light.css`;
                 background.style.filter = 'brightness(100%)';

@@ -6,7 +6,6 @@
                 :key="article.id"
                 v-bind="article"
             />
-            <!-- <Loading v-if="loading" :loading="loading" /> -->
         </div>
     </div>
 </template>
@@ -14,12 +13,10 @@
 <script>
 import ArticleItem from '@/components/ArticleItem/index';
 import Pagination from '@/components/Pagination/index';
-import Loading from '@/components/Loading/index';
 
 export default {
     data() {
         return {
-            loading: false,
             noData: false,
             offset: 0, // 初始化偏移值为0
             articles: [], // 初始化文章列表为空
@@ -28,17 +25,15 @@ export default {
     components: {
         ArticleItem,
         Pagination,
-        Loading,
     },
     methods: {
         load() {
             // 触发分页，调用接口加载文章列表
-            this.loading = true;
             const params = new URLSearchParams();
             params.append('offset', this.offset);
             // console.log(this.offset);
             this.axios
-                .post('http://localhost:8000/articlelist/get/', params)
+                .post('http://111.229.204.126:8000/articlelist/get/', params)
                 .then((res) => {
                     //Result(success,msg,data)
                     if (res.data.success) {
@@ -47,6 +42,9 @@ export default {
                             this.noData = true;
                         }
                         this.articles = this.articles.concat(res.data.data);
+                        for (article in this.articles) {
+                            console.log(article.img);
+                        }
                         this.offset += 5;
                         // console.log(this.articles.length);
                         // console.log(res.data.data);
@@ -58,7 +56,7 @@ export default {
                     // this.$message.error('文章加载失败');
                 })
                 .finally(() => {
-                    this.loading = false;
+                    this.$emit('loadingOver');
                 });
         },
         isDownDirection() {

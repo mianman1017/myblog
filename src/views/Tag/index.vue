@@ -1,4 +1,5 @@
 <template>
+    <Loading v-if="loading" />
     <Navbar ref="navbar" />
     <div class="timeline-container">
         <el-card class="timeline-card">
@@ -24,6 +25,7 @@
 <script>
 import Navbar from '@/components/Navbar/index';
 import ArticleItem from '@/components/ArticleItem/index';
+import Loading from '@/components/Loading/index';
 
 export default {
     data() {
@@ -32,16 +34,20 @@ export default {
             tag: '',
             articles: [],
             noData: false,
+            loading: true,
         };
     },
-    components: { Navbar, ArticleItem },
+    components: { Navbar, ArticleItem, Loading },
     methods: {
         getArticleList() {
             const params = new URLSearchParams();
             params.append('offset', this.offset);
             params.append('tag', this.tag);
             this.axios
-                .post('http://localhost:8000/articlelist/tag/get/', params)
+                .post(
+                    'http://111.229.204.126:8000/articlelist/tag/get/',
+                    params
+                )
                 .then((res) => {
                     //Result(success,msg,data)
                     if (res.data.success) {

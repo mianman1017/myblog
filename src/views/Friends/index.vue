@@ -1,4 +1,5 @@
 <template>
+    <Loading v-if="loading" />
     <Navbar />
     <div class="friends-container">
         <el-row>
@@ -83,6 +84,7 @@
 
 <script>
 import Navbar from '@/components/Navbar/index';
+import Loading from '@/components/Loading/index';
 
 export default {
     data() {
@@ -94,10 +96,12 @@ export default {
             input2: '',
             input3: '',
             input4: '',
+            loading: true,
         };
     },
     components: {
         Navbar,
+        Loading,
     },
     methods: {
         load() {
@@ -105,7 +109,7 @@ export default {
             // const params = new URLSearchParams();
             // params.append('offset', this.offset);
             this.axios
-                .post('http://localhost:8000/friendlist/get/')
+                .post('http://111.229.204.126:8000/friendlist/get/')
                 .then((res) => {
                     //Result(success,msg,data)
                     if (res.data.success) {
