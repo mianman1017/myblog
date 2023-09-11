@@ -2,7 +2,12 @@
     <el-card class="postitem-card">
         <el-row>
             <el-col :span="1">
-                <el-avatar :src="avatar" :size="55" draggable="false" />
+                <el-avatar
+                    style="position: relative; left: 5px"
+                    :src="avatar"
+                    :size="55"
+                    draggable="false"
+                />
             </el-col>
             <el-col :span="23">
                 <div class="postitem-name">
@@ -15,7 +20,7 @@
         <el-row>
             <div class="postitem-content">{{ content }}</div>
         </el-row>
-        <el-row style="margin-left: 4px">
+        <el-row style="margin-left: 5px">
             <div
                 v-for="(img, index) in imgs"
                 :key="index"
@@ -72,6 +77,7 @@ export default {
 .postitem-name {
     position: relative;
     top: 5px;
+    left: -3px;
     font-weight: 600;
     font-size: 17px;
     text-indent: 45px;
@@ -91,6 +97,7 @@ export default {
 .postitem-time {
     position: relative;
     top: 3px;
+    left: -3px;
     text-indent: 45px;
 }
 

@@ -3,7 +3,7 @@
     <Navbar />
     <div class="post-container">
         <el-card class="post-card">
-            <div v-if="!noData" v-for="post in posts" :key="post.id">
+            <div v-if="this.posts.length" v-for="post in posts" :key="post.id">
                 <PostItem v-bind="post" />
             </div>
             <h1 v-else class="nodata"></h1>
@@ -41,12 +41,11 @@ export default {
                     //Result(success,msg,data)
                     if (res.data.success) {
                         // console.log(res.data.data);
-                        if (res.data.data.length <= 0) {
+                        if (res.data.data.length < 7) {
                             this.noData = true;
-                        } else {
-                            this.posts = this.posts.concat(res.data.data);
-                            this.offset += 7;
                         }
+                        this.posts = this.posts.concat(res.data.data);
+                        this.offset += 7;
                     } else {
                         this.$message.error(res.data.msg);
                     }
@@ -57,10 +56,6 @@ export default {
                 .finally(() => {
                     this.loading = false;
                 });
-        },
-
-        isDownDirection() {
-            this.$emit('isDownDirection');
         },
     },
     mounted() {
@@ -92,6 +87,7 @@ export default {
 
 .nodata {
     font-family: '华康手札体W5P';
+    color: var(--text_color);
     text-align: center;
 }
 </style>

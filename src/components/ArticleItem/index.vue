@@ -51,6 +51,7 @@
                             size="small"
                             type="success"
                             class="article-tag"
+                            @click="toTag(t)"
                             >{{ t }}</el-tag
                         >
                     </div>
@@ -85,6 +86,9 @@ export default {
     methods: {
         view(title) {
             this.$router.push({ path: '/view/' + title });
+        },
+        toTag(name) {
+            this.$router.push({ path: `/tags/${name}` });
         },
     },
 };
@@ -139,6 +143,7 @@ export default {
     position: relative;
     white-space: nowrap;
     font-weight: 600;
+    font-size: 17px;
     top: -2px;
     color: var(--pink_color);
 }
@@ -180,6 +185,7 @@ export default {
     line-height: 24px;
     margin-bottom: 5px;
     height: 90px;
+    padding-right: 10px;
 }
 
 .article-card .tag-icon {
@@ -198,20 +204,19 @@ export default {
     color: #ffffff;
     background-color: #ff00ff;
     border: 0;
+    cursor: pointer;
 }
 
-.me-view {
+.article-tag:hover {
+    background-color: #e414e4;
+}
+
+.article-tag .me-view {
     height: 27px;
     width: 65px;
     background-color: hotpink;
     border-radius: 8px 0 0 0;
     text-indent: 10px;
-}
-
-@media screen and (max-width: 992px) {
-    .article-card {
-        width: 97%;
-    }
 }
 
 @media screen and (max-width: 768px) {

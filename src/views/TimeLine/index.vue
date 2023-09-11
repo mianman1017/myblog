@@ -36,6 +36,7 @@ export default {
             offset: 0,
             noData: false,
             loading: true,
+            requesting: false,
         };
     },
     components: {
@@ -46,6 +47,7 @@ export default {
     methods: {
         load() {
             // 触发分页，调用接口加载文章列表
+            this.requesting = true;
             const params = new URLSearchParams();
             params.append('offset', this.offset);
             this.axios
@@ -63,6 +65,7 @@ export default {
                     } else {
                         this.$message.error(res.data.msg);
                     }
+                    this.requesting = false;
                 })
                 .catch((err) => {
                     // this.$message.error('文章加载失败');
@@ -115,11 +118,14 @@ export default {
 
                 // 至于这里为什么要加3是我通过测试发现的，每次滑到底部总是少一点
                 if (
-                    scrollTop + windowHeight + this.offset >= scrollHeight &&
+                    scrollTop + windowHeight + this.offset + 5 >=
+                        scrollHeight &&
                     this.isDownDirection()
                 ) {
                     //调用load加载数据
-                    this.load();
+                    if (!this.requesting) {
+                        this.load();
+                    }
                 }
             }
         },
@@ -212,6 +218,7 @@ export default {
 
 .nodata {
     font-family: '华康手札体W5P';
+    color: var(--text_color);
     text-align: center;
 }
 

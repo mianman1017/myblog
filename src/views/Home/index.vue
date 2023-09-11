@@ -53,6 +53,10 @@ export default {
                     id: 5,
                     tagName: 'NLP',
                 },
+                {
+                    id: 6,
+                    tagName: 'CS224N',
+                },
             ],
             scrollAction: {
                 x: 'undefined',

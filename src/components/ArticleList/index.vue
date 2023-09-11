@@ -20,6 +20,7 @@ export default {
             noData: false,
             offset: 0, // 初始化偏移值为0
             articles: [], // 初始化文章列表为空
+            requesting: false,
         };
     },
     components: {
@@ -29,6 +30,7 @@ export default {
     methods: {
         load() {
             // 触发分页，调用接口加载文章列表
+            this.requesting = true;
             const params = new URLSearchParams();
             params.append('offset', this.offset);
             // console.log(this.offset);
@@ -42,15 +44,16 @@ export default {
                             this.noData = true;
                         }
                         this.articles = this.articles.concat(res.data.data);
-                        for (article in this.articles) {
-                            console.log(article.img);
-                        }
+                        //for (article in this.articles) {
+                        //    console.log(article.img);
+                        //}
                         this.offset += 5;
                         // console.log(this.articles.length);
                         // console.log(res.data.data);
                     } else {
                         this.$message.error(res.data.msg);
                     }
+                    this.requesting = false;
                 })
                 .catch((err) => {
                     // this.$message.error('文章加载失败');
@@ -90,7 +93,7 @@ export default {
         scrollToBottom(e) {
             //console.log(this.noData);
             if (!this.noData) {
-                console.log(this.loading);
+                // console.log(this.loading);
                 //如果有数据，触发
                 const scrollHeight =
                     document.documentElement.scrollHeight ||
@@ -103,11 +106,14 @@ export default {
 
                 // 至于这里为什么要加3是我通过测试发现的，每次滑到底部总是少一点
                 if (
-                    scrollTop + windowHeight + this.offset >= scrollHeight &&
+                    scrollTop + windowHeight + this.offset + 5 >=
+                        scrollHeight &&
                     this.isDownDirection()
                 ) {
                     //调用load加载数据
-                    this.load();
+                    if (!this.requesting) {
+                        this.load();
+                    }
                 }
             }
         },

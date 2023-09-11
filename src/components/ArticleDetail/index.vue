@@ -157,4 +157,8 @@ export default {
 .article-detail-card blockquote #latex {
     filter: invert(0.5);
 }
+
+.article-detail-card .md-image {
+    width: 100%;
+}
 </style>

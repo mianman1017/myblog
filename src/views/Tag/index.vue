@@ -4,7 +4,7 @@
     <div class="timeline-container">
         <el-card class="timeline-card">
             <!-- <div class="timeline-header">归档</div> -->
-            <el-timeline v-if="!noData">
+            <el-timeline v-if="this.articles.length">
                 <el-timeline-item
                     v-for="article in articles"
                     :timestamp="article.createDate"
@@ -35,11 +35,13 @@ export default {
             articles: [],
             noData: false,
             loading: true,
+            requesting: false,
         };
     },
     components: { Navbar, ArticleItem, Loading },
     methods: {
         getArticleList() {
+            this.requesting = true;
             const params = new URLSearchParams();
             params.append('offset', this.offset);
             params.append('tag', this.tag);
@@ -51,18 +53,16 @@ export default {
                 .then((res) => {
                     //Result(success,msg,data)
                     if (res.data.success) {
-                        console.log(res.data.data);
-                        if (res.data.data.length <= 0) {
+                        // console.log(res.data.data);
+                        if (res.data.data.length < 5) {
                             this.noData = true;
-                        } else {
-                            this.articles = this.articles.concat(res.data.data);
-                            this.offset += 5;
-                            // console.log(this.articles);
-                            // console.log(this.articles[0].weight);
                         }
+                        this.articles = this.articles.concat(res.data.data);
+                        this.offset += 5;
                     } else {
                         this.$message.error(res.data.msg);
                     }
+                    this.requesting = false;
                 })
                 .catch((err) => {
                     // this.$message.error('文章加载失败');
@@ -71,10 +71,66 @@ export default {
                     this.loading = false;
                 });
         },
+        isDownDirection() {
+            if (typeof this.scrollAction == 'undefined') {
+                this.scrollAction = {}; // 初始化scrollAction对象
+                this.scrollAction.x = window.scrollX;
+                this.scrollAction.y = window.scrollY;
+            }
+            var diffX = this.scrollAction.x - window.scrollX;
+            var diffY = this.scrollAction.y - window.scrollY;
+
+            this.scrollAction.x = window.scrollX;
+            this.scrollAction.y = window.scrollY;
+
+            //console.log(diffX, diffY);
+
+            if (diffX < 0) {
+                // Scroll right
+            } else if (diffX > 0) {
+                // Scroll left
+            } else if (diffY < 0) {
+                // Scroll down
+                return true;
+            } else if (diffY > 0) {
+                // Scroll up
+            } else {
+                // First scroll event
+            }
+            return false;
+        },
+        scrollToBottom(e) {
+            // console.log(this.noData);
+            if (!this.noData) {
+                // console.log(this.loading);
+                //如果有数据，触发
+                const scrollHeight =
+                    document.documentElement.scrollHeight ||
+                    document.body.scrollHeight;
+                const scrollTop =
+                    document.documentElement.scrollTop ||
+                    document.body.scrollTop;
+                const windowHeight = window.innerHeight;
+                // console.log(scrollTop, windowHeight, scrollHeight, this.offset);
+
+                // 至于这里为什么要加3是我通过测试发现的，每次滑到底部总是少一点
+                if (
+                    scrollTop + windowHeight + this.offset + 5 >=
+                        scrollHeight &&
+                    this.isDownDirection()
+                ) {
+                    //调用load加载数据
+                    if (!this.requesting) {
+                        this.load();
+                    }
+                }
+            }
+        },
     },
     mounted() {
         this.tag = this.$route.params.tag;
         this.getArticleList();
+        window.addEventListener('scroll', this.scrollToBottom, false);
         // console.log(this.tag);
     },
 };
@@ -160,6 +216,7 @@ export default {
 
 .nodata {
     font-family: '华康手札体W5P';
+    color: var(--text_color);
     text-align: center;
 }
 
