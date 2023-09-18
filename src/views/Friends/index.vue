@@ -232,4 +232,10 @@ export default {
     background-color: rgb(146, 177, 235);
     border: solid 1.5px var(--border_color);
 }
+
+@media screen and (max-width: 768px) {
+    .friends-card {
+        margin-right: 4.5%;
+    }
+}
 </style>

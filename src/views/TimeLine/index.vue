@@ -151,6 +151,7 @@ export default {
     margin-bottom: 30px;
     min-width: 620px;
     border: solid 1.5px var(--border_color);
+    transition: width 0s;
 }
 .timeline-card .el-card {
     box-shadow: 0 0 5px var(--shadow_color) !important;
@@ -222,9 +223,29 @@ export default {
     text-align: center;
 }
 
-@media screen and (max-width: 992px) {
+@media screen and (max-width: 675px) {
+    .timeline-card {
+        min-width: 470px !important;
+    }
     .timeline-card .timeline-article {
-        min-width: 450px;
+        min-width: 400px !important;
+    }
+    .timeline-card .el-timeline {
+        margin: 0;
+        padding: 0;
+    }
+}
+
+@media screen and (max-width: 470px) {
+    .timeline-card {
+        min-width: 95% !important;
+    }
+    .timeline-card .timeline-article {
+        min-width: 90% !important;
+    }
+    .timeline-card .el-timeline {
+        margin: 0;
+        padding: 0;
     }
 }
 </style>

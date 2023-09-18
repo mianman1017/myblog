@@ -109,4 +109,16 @@ export default {
 .postitem-imgs {
     margin-left: 3px;
 }
+
+@media screen and (max-width: 675px) {
+    .postitem-card {
+        min-width: 430px !important;
+    }
+}
+
+@media screen and (max-width: 470px) {
+    .postitem-card {
+        min-width: 80% !important;
+    }
+}
 </style>

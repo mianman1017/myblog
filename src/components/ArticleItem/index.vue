@@ -101,7 +101,6 @@ export default {
     height: 190px;
     margin-right: 10px;
     margin-bottom: 20px;
-    min-width: 470px;
     background-color: var(--card_color);
     color: var(--text_color);
     border: solid 1.5px var(--border_color);
@@ -124,6 +123,7 @@ export default {
     width: 100%;
     height: 190px;
     transition: transform 0.4s;
+    padding-bottom: 10px;
 }
 
 .article-img:hover {
@@ -131,7 +131,7 @@ export default {
 }
 
 .me-article {
-    padding: 7px 0 0 10px;
+    padding: 7px 5px 15px 20px;
 }
 
 .me-article-header {
@@ -174,17 +174,18 @@ export default {
 
 .me-article-count {
     color: var(--text_color);
-    padding-right: 10px;
+    padding-right: 5px;
     font-size: 13px;
 }
 .me-pull-right {
     float: right;
+    margin-right: 5px;
 }
 .me-article-description {
     font-size: 13px;
     line-height: 24px;
     margin-bottom: 5px;
-    height: 90px;
+    height: 89px;
     padding-right: 10px;
 }
 
@@ -221,6 +222,14 @@ export default {
 
 @media screen and (max-width: 768px) {
     .article-card {
+        width: 470px;
+        margin: auto;
+    }
+}
+
+@media screen and (max-width: 470px) {
+    .article-card {
+        width: 95%;
         margin: auto;
     }
 }

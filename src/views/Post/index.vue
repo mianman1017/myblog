@@ -90,4 +90,16 @@ export default {
     color: var(--text_color);
     text-align: center;
 }
+
+@media screen and (max-width: 675px) {
+    .post-card {
+        min-width: 470px !important;
+    }
+}
+
+@media screen and (max-width: 470px) {
+    .post-card {
+        min-width: 95% !important;
+    }
+}
 </style>

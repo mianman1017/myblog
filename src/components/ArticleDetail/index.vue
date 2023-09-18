@@ -161,4 +161,10 @@ export default {
 .article-detail-card .md-image {
     width: 100%;
 }
+
+@media screen and (max-width: 768px) {
+    .article-detail-card {
+        margin: auto;
+    }
+}
 </style>

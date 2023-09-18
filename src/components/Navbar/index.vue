@@ -10,23 +10,53 @@
         mode="horizontal"
         :ellipsis="false"
     >
-        <div class="logo">绵满の博客</div>
-        <div style="width: 50px"></div>
-        <el-menu-item index="/"
-            ><el-icon><Postcard /></el-icon>首页</el-menu-item
-        >
-        <el-menu-item index="/timeline"
-            ><el-icon><Collection /></el-icon>归档</el-menu-item
-        >
-        <el-menu-item index="/post"
-            ><el-icon><SetUp /></el-icon>说说</el-menu-item
-        >
-        <el-menu-item index="/message"
-            ><el-icon><Edit /></el-icon>留言</el-menu-item
-        >
-        <el-menu-item index="/friends"
-            ><el-icon><Connection /></el-icon>友链</el-menu-item
-        >
+        <div v-if="!isMobile" class="logo">绵满の博客</div>
+        <template v-if="!isMobile">
+            <div style="width: 50px"></div>
+            <el-menu-item index="/"
+                ><el-icon><Postcard /></el-icon>首页</el-menu-item
+            >
+            <el-menu-item index="/timeline"
+                ><el-icon><Collection /></el-icon>归档</el-menu-item
+            >
+            <el-menu-item index="/post"
+                ><el-icon><SetUp /></el-icon>说说</el-menu-item
+            >
+            <el-menu-item index="/message"
+                ><el-icon><Edit /></el-icon>留言</el-menu-item
+            >
+            <el-menu-item index="/friends"
+                ><el-icon><Connection /></el-icon>友链</el-menu-item
+            >
+        </template>
+        <template v-else>
+            <el-icon class="drawer-btn" @click="drawer = true"
+                ><More
+            /></el-icon>
+
+            <el-drawer
+                v-model="drawer"
+                title="I am the title"
+                :with-header="false"
+                class="drawer"
+            >
+                <el-menu-item index="/"
+                    ><el-icon><Postcard /></el-icon>首页</el-menu-item
+                >
+                <el-menu-item index="/timeline"
+                    ><el-icon><Collection /></el-icon>归档</el-menu-item
+                >
+                <el-menu-item index="/post"
+                    ><el-icon><SetUp /></el-icon>说说</el-menu-item
+                >
+                <el-menu-item index="/message"
+                    ><el-icon><Edit /></el-icon>留言</el-menu-item
+                >
+                <el-menu-item index="/friends"
+                    ><el-icon><Connection /></el-icon>友链</el-menu-item
+                >
+            </el-drawer>
+        </template>
         <div class="flex-grow" />
 
         <!-- <template v-if="!user.login">
@@ -102,10 +132,12 @@ export default {
             hasPadding: false,
             activeIndex: '/',
             publicPath: process.env.BASE_URL,
+            isMobile: false,
+            drawer: false,
         };
     },
     methods: {
-        ...mapActions(['toggleTheme']), // 映射切换主题的方法
+        ...mapActions(['toggleTheme']),
         changeTheme() {
             const theme = document.getElementById('theme');
             const background = document.getElementById('building');
@@ -127,10 +159,8 @@ export default {
             }
             var diffX = this.scrollAction.x - window.scrollX;
             var diffY = this.scrollAction.y - window.scrollY;
-
             this.scrollAction.x = window.scrollX;
             this.scrollAction.y = window.scrollY;
-
             if (diffX < 0) {
                 // Scroll right
             } else if (diffX > 0) {
@@ -157,6 +187,9 @@ export default {
                     }
                 }
             });
+        },
+        widthForMobile() {
+            this.isMobile = window.innerWidth < 675;
         },
         // Login() {
         //     ElMessageBox.confirm(
@@ -192,7 +225,9 @@ export default {
     },
     mounted() {
         window.addEventListener('scroll', this.scrollForNavbarShow);
+        window.addEventListener('resize', this.widthForMobile);
         this.activeIndex = this.$route.path;
+        this.isMobile = window.innerWidth < 675;
         // console.log(this.activeIndex);
     },
 };
@@ -287,5 +322,28 @@ export default {
     border: solid;
     border-radius: 0.1rem;
     width: 70%;
+}
+
+.drawer-btn {
+    position: relative;
+    cursor: pointer;
+    transition: transform 0.2s;
+    font-size: 30px !important;
+    margin: auto;
+    left: 5%;
+}
+
+.drawer-btn:hover {
+    transform: scale(1.2);
+}
+
+.drawer {
+    background-color: var(--nav_color) !important;
+    border-left: solid 1.5px var(--border_color);
+    border-radius: 2px;
+}
+
+.drawer .el-menu-item {
+    border-radius: 7px;
 }
 </style>
