@@ -139,8 +139,49 @@ export default {
 .article-detail-card pre::-webkit-scrollbar-corner {
     background: #179a16;
 }
-/* markdown样式 */
 
+.hljs-class .hljs-title,
+.hljs-params,
+.hljs-title.class_ {
+    color: rgb(90, 212, 230);
+}
+
+.hljs-attr,
+.hljs-keyword,
+.hljs-name,
+.hljs-selector-tag {
+    color: rgb(252, 97, 141);
+}
+
+.hljs-addition,
+.hljs-selector-attr,
+.hljs-selector-id,
+.hljs-selector-pseudo,
+.hljs-string,
+.hljs-template-variable,
+.hljs-type,
+.hljs-variable {
+    color: rgb(252, 229, 102);
+}
+
+.hljs-bullet,
+.hljs-link,
+.hljs-literal,
+.hljs-number,
+.hljs-quote,
+.hljs-regexp {
+    color: rgb(148, 138, 227);
+}
+
+.hljs-built_in,
+.hljs-code,
+.hljs-section,
+.hljs-selector-class,
+.hljs-title {
+    color: rgb(123, 216, 143);
+}
+
+/* markdown样式 */
 .article-detail-card h1,
 .article-detail-card h2 {
     margin-top: 13px;

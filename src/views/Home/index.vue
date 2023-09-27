@@ -57,6 +57,34 @@ export default {
                     id: 6,
                     tagName: 'CS224N',
                 },
+                {
+                    id: 7,
+                    tagName: 'Word2Vec',
+                },
+                {
+                    id: 8,
+                    tagName: 'NNLM',
+                },
+                {
+                    id: 9,
+                    tagName: 'NER',
+                },
+                {
+                    id: 10,
+                    tagName: 'RNN',
+                },
+                {
+                    id: 11,
+                    tagName: 'LSTM',
+                },
+                {
+                    id: 12,
+                    tagName: 'Attention',
+                },
+                {
+                    id: 13,
+                    tagName: 'Transformer',
+                },
             ],
             scrollAction: {
                 x: 'undefined',
