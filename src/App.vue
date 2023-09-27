@@ -51,7 +51,7 @@ export default {
 
 @font-face {
     font-family: 'JetBrains Mono';
-    src: url('../public/fonts/JetBrainsMono-simple.ttf');
+    src: url('../public/fonts/JetBrainsMono-Light.ttf');
 }
 
 html,

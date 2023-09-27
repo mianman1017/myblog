@@ -5,10 +5,11 @@ import router from './router';
 import store from './store';
 import axios from 'axios';
 import VueAxios from 'vue-axios';
-
 import ElementPlus from 'element-plus';
 import 'element-plus/dist/index.css';
 import * as Icons from '@element-plus/icons-vue'; // 引入所有图标，并命名为 Icons
+import hljs from 'highlight.js';
+import 'highlight.js/styles/monokai-sublime.css';
 
 const app = createApp(App);
 
@@ -16,6 +17,16 @@ const app = createApp(App);
 app.directive('title', {
     mounted(el, binding) {
         document.title = el.dataset.title;
+    },
+});
+
+app.directive('highlight', {
+    updated(el) {
+        console.log('el', el);
+        const blocks = el.querySelectorAll('pre code');
+        for (let i = 0; i < blocks.length; i++) {
+            hljs.highlightElement(blocks[i]);
+        }
     },
 });
 

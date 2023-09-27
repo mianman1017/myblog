@@ -25,13 +25,11 @@
                 >{{ t }}</el-tag
             >
         </div>
-        <div v-html="body"></div>
+        <div v-html="body" v-highlight></div>
     </el-card>
 </template>
 
 <script>
-import '@/assets/styles/dracula.css';
-
 export default {
     data() {
         return {};
@@ -107,13 +105,41 @@ export default {
 
 /* 代码块样式 */
 
+.article-detail-card pre {
+    overflow-x: auto;
+    background-color: rgb(35, 36, 31);
+    border-radius: 7px;
+}
+
 .article-detail-card code {
     display: block;
     font-family: 'JetBrains Mono';
     font-size: 13px;
     width: 100%;
     line-height: 150%;
+    overflow-x: visible !important;
 }
+
+.article-detail-card pre::-webkit-scrollbar {
+    width: 8px;
+    height: 8px;
+    /**/
+}
+.article-detail-card pre::-webkit-scrollbar-track {
+    background: rgb(239, 239, 239);
+    border-radius: 2px;
+}
+.article-detail-card pre::-webkit-scrollbar-thumb {
+    background-image: linear-gradient(to right, #ec77ab 0%, #7873f5 100%);
+    border-radius: 10px;
+}
+.article-detail-card pre::-webkit-scrollbar-thumb:hover {
+    background-image: linear-gradient(to right, #d15f92 0%, #6662df 100%);
+}
+.article-detail-card pre::-webkit-scrollbar-corner {
+    background: #179a16;
+}
+/* markdown样式 */
 
 .article-detail-card h1,
 .article-detail-card h2 {
