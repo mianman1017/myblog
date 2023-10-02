@@ -115,7 +115,6 @@ export default {
     display: block;
     font-family: 'JetBrains Mono';
     font-size: 13px;
-    width: 100%;
     line-height: 150%;
     overflow-x: visible !important;
 }
