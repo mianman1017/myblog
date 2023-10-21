@@ -54,7 +54,7 @@ export default {
 
 <style>
 .article-detail-card {
-    width: 82%;
+    width: 85.5%;
     font-family: '华康手札体W5P';
     background-color: var(--card_color);
     color: var(--text_color);

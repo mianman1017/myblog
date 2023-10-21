@@ -3,7 +3,7 @@
     <Navbar ref="navbar" />
     <div class="article-detail-container">
         <el-row>
-            <el-col :xs="24" :sm="17" :md="17">
+            <el-col :xs="24" :sm="18" :md="18">
                 <ArticleDetail v-bind="article" />
                 <Comment
                     :comments="this.comments"
@@ -11,7 +11,7 @@
                     @getComment="getComment"
                 />
             </el-col>
-            <el-col :xs="0" :sm="7" :md="7">
+            <el-col :xs="0" :sm="6" :md="6">
                 <el-card class="article-menu-card">
                     <div class="title">文章目录</div>
                     <div v-html="processedTOC"></div>
@@ -188,7 +188,7 @@ export default {
 /* 目录结构样式 */
 
 .article-menu-card {
-    width: 75%;
+    width: 80%;
     position: sticky;
     top: 1rem;
     font-family: '华康手札体W5P';

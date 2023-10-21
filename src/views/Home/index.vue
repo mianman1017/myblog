@@ -67,7 +67,7 @@ export default {
                 },
                 {
                     id: 9,
-                    tagName: 'NER',
+                    tagName: 'CNN',
                 },
                 {
                     id: 10,
@@ -79,11 +79,19 @@ export default {
                 },
                 {
                     id: 12,
-                    tagName: 'Attention',
+                    tagName: 'Seq2Seq',
                 },
                 {
                     id: 13,
+                    tagName: 'Attention',
+                },
+                {
+                    id: 14,
                     tagName: 'Transformer',
+                },
+                {
+                    id: 15,
+                    tagName: 'BERT',
                 },
             ],
             scrollAction: {

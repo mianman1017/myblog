@@ -185,4 +185,10 @@ export default {
     margin-top: 7px;
     border-bottom: solid 0.5px var(--border_color);
 }
+
+@media screen and (max-width: 768px) {
+    .comment-card {
+        margin: auto;
+    }
+}
 </style>
