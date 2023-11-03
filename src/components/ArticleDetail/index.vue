@@ -49,6 +49,9 @@ export default {
         createDate: String,
         updateDate: String,
     },
+    mounted() {
+        console.log(this.body);
+    },
 };
 </script>
 
