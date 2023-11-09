@@ -93,6 +93,18 @@ export default {
                     id: 15,
                     tagName: 'BERT',
                 },
+                {
+                    id: 16,
+                    tagName: 'Paper',
+                },
+                {
+                    id: 17,
+                    tagName: 'ReCode',
+                },
+                {
+                    id: 18,
+                    tagName: 'AIOps',
+                },
             ],
             scrollAction: {
                 x: 'undefined',
