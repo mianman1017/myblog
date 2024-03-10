@@ -105,6 +105,18 @@ export default {
                     id: 18,
                     tagName: 'AIOps',
                 },
+                {
+                    id: 19,
+                    tagName: 'ELMO',
+                }
+                {
+                    id: 20,
+                    tagName: 'GNN',
+                },
+                {
+                    id: 21,
+                    tagName: 'GPT',
+                },
             ],
             scrollAction: {
                 x: 'undefined',
